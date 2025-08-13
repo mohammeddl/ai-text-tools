@@ -457,51 +457,6 @@ const page = () => {
                 />
               </div>
             </div>
-            <div className='col-xl-5 col-md-6'>
-              <div className='row'>
-                <div className='col-xl-6 col-sm-6' data-animation='fade-right'>
-                  <div className='counter_item counter_item_icon'>
-                    <h2 className='count'>
-                      <Counter end={10} decimals={0} extraClass='' />k
-                    </h2>
-                    <p>Project completed</p>
-                  </div>
-                </div>
-                <div
-                  className='col-xl-6 col-sm-6'
-                  data-animation='fade-right'
-                  data-delay='.5'>
-                  <div className='counter_item'>
-                    <h2 className='count'>
-                      <Counter end={180} decimals={0} extraClass='' />
-                    </h2>
-                    <p>Skilled Professional</p>
-                  </div>
-                </div>
-                <div
-                  className='col-xl-6 col-sm-6'
-                  data-animation='fade-right'
-                  data-delay='.75'>
-                  <div className='counter_item'>
-                    <h2 className='count'>
-                      <Counter end={500} decimals={0} extraClass='' />
-                    </h2>
-                    <p>Visited Conference</p>
-                  </div>
-                </div>
-                <div
-                  className='col-xl-6 col-sm-6'
-                  data-animation='fade-right'
-                  data-delay={1}>
-                  <div className='counter_item counter_item_icon'>
-                    <h2 className='count'>
-                      <Counter end={30} decimals={0} extraClass='' />k
-                    </h2>
-                    <p>Happy Clients</p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>

@@ -1,5 +1,10 @@
 // GSAP Plugins
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
 
-export { default as ScrollSmoother } from "../../public/gsap-plugins/ScrollSmoother.min.js";
-export { default as ScrollTrigger } from "../../public/gsap-plugins/ScrollTrigger.min";
-export { default as SplitText } from "../../public/gsap-plugins/SplitText.min.js";
+gsap.registerPlugin(ScrollTrigger, SplitText);
+
+
+
+export { gsap, ScrollTrigger, SplitText };
