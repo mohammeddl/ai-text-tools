@@ -424,24 +424,6 @@ const page = ({ params }: Props) => {
   LATEST PROJECT END
     ===============================*/}
       {/*===============================
-  COUNTER START
-    ===============================*/}
-      <section className='counter pt_120 xs_pt_70 pb_140 xs_pb_90'>
-        <div className='container'>
-          <div className='row justify-content-between'>
-            <div className='col-xl-6 col-md-6'>
-              <div className='counter_img'>
-                <img
-                  src='images/counter_img.png'
-                  alt='counter'
-                  className='img-fluid w-100'
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/*===============================
   COUNTER END
     ===============================*/}
       {/*===============================
