@@ -1,0 +1,132 @@
+{
+    "nav": {
+      "home": "Home",
+      "tools": "Tools",
+      "about": "About",
+      "contact": "Contact",
+      "features": "Features"
+    },
+    "hero": {
+      "subtitle": "AI-Powered Text Tools",
+      "title": "Transform Your Text with {span}AI Intelligence{/span}",
+      "description": "Convert, format, and enhance your text with our powerful AI-driven tools. From simple case conversions to advanced text processing."
+    },
+    "tools": {
+      "title": "Text Transformation Tools",
+      "subtitle": "CORE FEATURES",
+      "description": "Powerful text processing tools designed to make your text formatting tasks effortless and efficient.",
+      "viewAll": "View All Tools",
+      "items": {
+        "uppercase": {
+          "title": "UPPERCASE Converter",
+          "description": "Transform any text into UPPERCASE letters instantly. Perfect for headings, emphasis, and formal documents."
+        },
+        "lowercase": {
+          "title": "lowercase converter",
+          "description": "Convert all your text to lowercase letters. Ideal for URLs, usernames, and consistent formatting."
+        },
+        "capitalize": {
+          "title": "Capitalize Case",
+          "description": "Capitalize The First Letter Of Each Word. Great for titles, names, and professional documents."
+        },
+        "inverse": {
+          "title": "iNvErSe CaSe",
+          "description": "cReAtE uNiQuE aLtErNaTiNg CaPiTaLiZaTiOn. Perfect for creative text and social media posts."
+        },
+        "sentence": {
+          "title": "Sentence case",
+          "description": "Convert text to proper sentence case format. Only the first letter of each sentence is capitalized."
+        },
+        "download": {
+          "title": "Download Text",
+          "description": "Save your converted text as a file. Export to TXT, DOC, or other formats for easy sharing."
+        }
+      }
+    },
+    "features": {
+      "title": "Why Choose Our Text Tools?",
+      "subtitle": "ADVANTAGES",
+      "items": {
+        "instant": {
+          "title": "Instant Processing",
+          "description": "Get results immediately with our lightning-fast text processing engine."
+        },
+        "secure": {
+          "title": "100% Secure",
+          "description": "Your text is processed locally. We don't store or share your data."
+        },
+        "free": {
+          "title": "Completely Free",
+          "description": "All basic text conversion tools are free to use without any limitations."
+        },
+        "ai": {
+          "title": "AI-Enhanced",
+          "description": "Advanced features powered by artificial intelligence for superior results."
+        }
+      }
+    },
+    "stats": {
+      "conversions": "Text Conversions",
+      "users": "Happy Users",
+      "tools": "Available Tools",
+      "accuracy": "Accuracy Rate"
+    },
+    "testimonials": {
+      "title": "What Our Users Say",
+      "subtitle": "TESTIMONIALS",
+      "items": {
+        "user1": {
+          "text": "This text converter has saved me hours of manual formatting. The AI features are incredibly accurate and the interface is so intuitive.",
+          "name": "Sarah Johnson",
+          "role": "Content Writer"
+        },
+        "user2": {
+          "text": "As a developer, I use these tools daily for code formatting and documentation. The bulk processing feature is a game-changer.",
+          "name": "Mike Chen",
+          "role": "Software Developer"
+        }
+      }
+    },
+    "blog": {
+      "title": "Text Tips & Tutorials",
+      "subtitle": "LATEST GUIDES",
+      "description": "Learn tips, tricks, and best practices for text formatting and conversion.",
+      "viewAll": "View All Guides",
+      "posts": {
+        "post1": {
+          "category": "Text Formatting",
+          "date": "December 15, 2024",
+          "title": "Complete Guide to Text Case Conversions"
+        },
+        "post2": {
+          "category": "AI Tools",
+          "date": "December 10, 2024",
+          "title": "How AI Enhances Text Processing"
+        },
+        "post3": {
+          "category": "Tips & Tricks",
+          "date": "December 5, 2024",
+          "title": "Batch Processing Large Text Files"
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to Transform Your Text?",
+      "button": "Start Converting Now"
+    },
+    "footer": {
+      "description": "Transform your text with our powerful AI-driven tools. Fast, secure, and completely free to use.",
+      "links": {
+        "tools": "Text Tools",
+        "about": "About Us",
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service",
+        "contact": "Contact Us"
+      },
+      "contact": {
+        "email": "support@aitexttools.com",
+        "address": "AI Text Tools Platform"
+      },
+      "copyright": "© 2024 AI Text Tools. All rights reserved."
+    }
+  } 
