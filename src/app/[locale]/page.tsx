@@ -4,7 +4,15 @@ import TestimonialSlider from "@/components/TestimonialSlider";
 import FxotaryLayout from "@/layout/FxotaryLayout";
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
-const page = () => {
+import { useTranslations } from "next-intl";
+
+interface Props {
+  params: { locale: string };
+}
+
+const page = ({ params }: Props) => {
+  const t = useTranslations();
+
   return (
     <FxotaryLayout errorPage={false}>
       {/*===============================
@@ -17,11 +25,11 @@ const page = () => {
           <div className='row'>
             <div className='col-12'>
               <div className='banner_text'>
-                <h4>We are Digital Agency</h4>
+                <h4>{t("banner.subtitle")}</h4>
                 <h1 className='banner_title'>
-                  Helping the Brands to{" "}
+                  {t("banner.title")}{" "}
                   <span>
-                    Grow <b>Business.</b>
+                    <b></b>
                   </span>
                 </h1>
               </div>
@@ -39,7 +47,7 @@ const page = () => {
         </div>
         <ul className='d-flex flex-wrap'>
           <li>
-            <span>Follow Us</span>
+            <span>{t("common.followUs")}</span>
           </li>
           <li>
             <a href='#'>Fb.</a>
@@ -64,16 +72,16 @@ const page = () => {
             <div className='col-lg-4 col-md-7'>
               <div className='about_text'>
                 <div className='section_heading'>
-                  <h5 data-text-animation=''>ABOUT COMPANY</h5>
+                  <h5 data-text-animation=''>{t("about.subtitle")}</h5>
                   <h2
                     data-text-animation=''
                     data-split='word'
                     data-duration={1}>
-                    We are a top Digital agency in the world.
+                    {t("about.title")}
                   </h2>
                 </div>
                 <Link className='circle_btn' href='about_us'>
-                  Learn More <i className='fx-icon-next-arrow' />
+                  {t("common.learnMore")} <i className='fx-icon-next-arrow' />
                 </Link>
               </div>
             </div>
@@ -88,11 +96,7 @@ const page = () => {
                     />
                   </div>
                 </div>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipiscing elit viverra
-                  purus senectus sapien habitant rutrum himenaeos curabitur
-                  posuere congue ac non eu odio tempor placerat id.
-                </p>
+                <p>{t("about.description")}</p>
               </div>
             </div>
             <div className='col-lg-3 col-md-5'>
@@ -120,21 +124,17 @@ const page = () => {
           <div className='row justify-content-between'>
             <div className='col-xl-5 col-md-7'>
               <div className='what_we_do_text'>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipiscing elit eros
-                  nullam inceptos placerat aliquet taciti conubia himenaeos
-                  elementum mattis per velit eleifend ridiculus.
-                </p>
+                <p>{t("features.description")}</p>
                 <a className='view_btn' href='#'>
-                  View All Services <i className='fx-icon-next-arrow' />
+                  {t("about.viewServices")} <i className='fx-icon-next-arrow' />
                 </a>
               </div>
             </div>
             <div className='col-xl-5 col-md-5'>
               <div className='section_heading'>
-                <h5 data-text-animation=''>WHAT WE DO</h5>
+                <h5 data-text-animation=''>{t("features.subtitle")}</h5>
                 <h2 data-text-animation='' data-split='word'>
-                  Expertise Field.
+                  {t("features.title")}
                 </h2>
               </div>
             </div>
@@ -155,13 +155,8 @@ const page = () => {
                     />
                   </div>
                   <div className='text'>
-                    <h3>UI/UX Design</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipiscing elit
-                      etiam accumsan, tellus viverra aliquet donec nisi
-                      vulputate erat Cursus ornare nullam scelerisque
-                      sollicitudin nisi odio sociosqu in euismod
-                    </p>
+                    <h3>🔠 {t("features.upperCase.title")}</h3>
+                    <p>{t("features.upperCase.description")}</p>
                   </div>
                   <div className='img'>
                     <img
@@ -171,7 +166,7 @@ const page = () => {
                     />
                   </div>
                   <a className='circle_btn' href='#'>
-                    details
+                    {t("common.details")}
                   </a>
                 </li>
                 <li
@@ -186,13 +181,8 @@ const page = () => {
                     />
                   </div>
                   <div className='text'>
-                    <h3>Web Development</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipiscing elit
-                      etiam accumsan, tellus viverra aliquet donec nisi
-                      vulputate erat Cursus ornare nullam scelerisque
-                      sollicitudin nisi odio sociosqu in euismod
-                    </p>
+                    <h3>🔡 {t("features.uiUx.title")}</h3>
+                    <p>{t("features.uiUx.description")}</p>
                   </div>
                 </li>
                 <li
@@ -207,13 +197,8 @@ const page = () => {
                     />
                   </div>
                   <div className='text'>
-                    <h3>Digital Marketing</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipiscing elit
-                      etiam accumsan, tellus viverra aliquet donec nisi
-                      vulputate erat Cursus ornare nullam scelerisque
-                      sollicitudin nisi odio sociosqu in euismod
-                    </p>
+                    <h3>🔤 {t("features.webDev.title")}</h3>
+                    <p>{t("features.webDev.description")}</p>
                   </div>
                   <div className='img'>
                     <img
@@ -223,7 +208,7 @@ const page = () => {
                     />
                   </div>
                   <a className='circle_btn' href='#'>
-                    details
+                    {t("common.details")}
                   </a>
                 </li>
               </ul>
@@ -243,16 +228,12 @@ const page = () => {
             <div className='col-xl-5 col-md-6'>
               <div className='latest_project_text'>
                 <div className='section_heading'>
-                  <h5>LATEST PROJECTS</h5>
+                  <h5>{t("projects.subtitle")}</h5>
                   <h2 data-text-animation='' data-split='char'>
-                    Here’s our latest projects
+                    {t("projects.title")}
                   </h2>
                 </div>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipiscing elit eros
-                  nullam inceptos placerat aliquet taciti conubia himenaeos
-                  elementum mattis per velit eleifend ridiculus.
-                </p>
+                <p>{t("projects.description")}</p>
               </div>
               <Link
                 href='portfolio_details'
@@ -266,8 +247,8 @@ const page = () => {
                   />
                 </div>
                 <div className='text d-flex flex-column'>
-                  <h3>Mark Wide Website</h3>
-                  <h3>Design Project</h3>
+                  <h3>🤖 {t("features.aiCompletion.title")}</h3>
+                  <h3>AI Text Processing</h3>
                 </div>
               </Link>
             </div>
@@ -284,11 +265,11 @@ const page = () => {
                   />
                 </div>
                 <div className='text d-flex flex-column'>
-                  <h3>Mark Wide Website</h3>
-                  <h3>Design Project</h3>
+                  <h3>✨ {t("features.styledText.title")}</h3>
+                  <h3>Creative Text Styling</h3>
                 </div>
               </Link>
-              <h4>Want to See More Projects</h4>
+              <h4>{t("projects.moreProjects")}</h4>
             </div>
           </div>
         </div>
@@ -299,7 +280,7 @@ const page = () => {
                 <ul className='project_slider d-flex flex-wrap'>
                   <li>
                     <a href='#'>
-                      <p>UI/UX Design</p>
+                      <p>🔀 {t("features.marketing.title")}</p>
                       <div className='img'>
                         <img
                           src='images/project_iten_img.jpg'
@@ -312,7 +293,7 @@ const page = () => {
                   </li>
                   <li>
                     <a href='#'>
-                      <p>Digital Marketing</p>
+                      <p>💾 {t("features.downloadText.title")}</p>
                       <div className='img'>
                         <img
                           src='images/project_iten_img.jpg'
@@ -325,7 +306,7 @@ const page = () => {
                   </li>
                   <li>
                     <a href='#'>
-                      <p>Web Development</p>
+                      <p>🔠 {t("features.upperCase.title")}</p>
                       <div className='img'>
                         <img
                           src='images/project_iten_img.jpg'
@@ -338,7 +319,7 @@ const page = () => {
                   </li>
                   <li>
                     <a href='#'>
-                      <p>Web Design</p>
+                      <p>🔡 {t("features.uiUx.title")}</p>
                       <div className='img'>
                         <img
                           src='images/project_iten_img.jpg'
@@ -351,7 +332,7 @@ const page = () => {
                   </li>
                   <li>
                     <a href='#'>
-                      <p>Graphic Design</p>
+                      <p>🔤 {t("features.webDev.title")}</p>
                       <div className='img'>
                         <img
                           src='images/project_iten_img.jpg'
@@ -371,7 +352,7 @@ const page = () => {
               <ul className='project_slider d-flex flex-wrap'>
                 <li>
                   <a href='#'>
-                    <p>UI/UX Design</p>
+                    <p>🤖 {t("features.aiCompletion.title")}</p>
                     <div className='img'>
                       <img
                         src='images/project_iten_img.jpg'
@@ -384,7 +365,7 @@ const page = () => {
                 </li>
                 <li>
                   <a href='#'>
-                    <p>Digital Marketing</p>
+                    <p>✨ {t("features.styledText.title")}</p>
                     <div className='img'>
                       <img
                         src='images/project_iten_img.jpg'
@@ -397,7 +378,7 @@ const page = () => {
                 </li>
                 <li>
                   <a href='#'>
-                    <p>Web Development</p>
+                    <p>🔀 {t("features.marketing.title")}</p>
                     <div className='img'>
                       <img
                         src='images/project_iten_img.jpg'
@@ -410,7 +391,7 @@ const page = () => {
                 </li>
                 <li>
                   <a href='#'>
-                    <p>Web Design</p>
+                    <p>💾 {t("features.downloadText.title")}</p>
                     <div className='img'>
                       <img
                         src='images/project_iten_img.jpg'
@@ -423,7 +404,7 @@ const page = () => {
                 </li>
                 <li>
                   <a href='#'>
-                    <p>Graphic Design</p>
+                    <p>🔠 {t("features.upperCase.title")}</p>
                     <div className='img'>
                       <img
                         src='images/project_iten_img.jpg'
@@ -471,49 +452,16 @@ const page = () => {
           <div className='row justify-content-between'>
             <div className='col-xl-5 col-lg-6'>
               <div className='section_heading'>
-                <h5>ACHIVEMENTS</h5>
+                <h5>{t("achievements.subtitle")}</h5>
                 <h2 data-text-animation='' data-split='word'>
-                  Company awards &amp; achievements
+                  {t("achievements.title")}
                 </h2>
               </div>
             </div>
-            <div className='col-xl-5 col-lg-6'>
-              <div className='achivement_right_text'>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipiscing elit viverra
-                  purus senectus sapien habitant rutrum himenaeos curabitur
-                  posuere congue ac non eu odio tempor placerat id.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className='row justify-content-between mt_50'>
-            <div className='col-xxl-3 col-md-6 col-lg-4 col-xl-4'>
-              <div className='achivement_img'>
-                <div className='img_1'>
-                  <div data-animation='img-blur'>
-                    <img
-                      src='images/achivement_img_1.jpg'
-                      alt='achivement'
-                      className='img-fluid w-100'
-                    />
-                  </div>
-                </div>
-                <div className='img_2'>
-                  <div data-animation='img-blur'>
-                    <img
-                      src='images/achivement_img_2.jpg'
-                      alt='achivement'
-                      className='img-fluid w-100'
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className='col-xxl-8 col-lg-8 col-xl-8'>
-              <div className='achivement_list'>
+            <div className='col-xl-6 col-lg-6'>
+              <div className='achivement_right'>
                 <ul>
-                  <li data-animation=''>
+                  <li>
                     <div className='icon'>
                       <img
                         src='images/achivement_icon_1.png'
@@ -522,14 +470,14 @@ const page = () => {
                       />
                     </div>
                     <div className='text'>
-                      <h4>Awwwards Interior excellence.</h4>
-                      <span>2015</span>
+                      <h4>{t("achievements.award1.title")}</h4>
+                      <span>{t("achievements.award1.year")}</span>
                       <a href='#' className='achivement_link'>
                         <i className='fx-icon-long-next-arrow' />
                       </a>
                     </div>
                   </li>
-                  <li data-animation=''>
+                  <li>
                     <div className='icon'>
                       <img
                         src='images/achivement_icon_2.png'
@@ -538,14 +486,14 @@ const page = () => {
                       />
                     </div>
                     <div className='text'>
-                      <h4>Best Site of the Year Awards.</h4>
-                      <span>2018</span>
+                      <h4>{t("achievements.award2.title")}</h4>
+                      <span>{t("achievements.award2.year")}</span>
                       <a href='#' className='achivement_link'>
                         <i className='fx-icon-long-next-arrow' />
                       </a>
                     </div>
                   </li>
-                  <li data-animation=''>
+                  <li>
                     <div className='icon'>
                       <img
                         src='images/achivement_icon_3.png'
@@ -554,14 +502,14 @@ const page = () => {
                       />
                     </div>
                     <div className='text'>
-                      <h4>Template of the seasons in this month.</h4>
-                      <span>2020</span>
+                      <h4>{t("achievements.award3.title")}</h4>
+                      <span>{t("achievements.award3.year")}</span>
                       <a href='#' className='achivement_link'>
                         <i className='fx-icon-long-next-arrow' />
                       </a>
                     </div>
                   </li>
-                  <li data-animation=''>
+                  <li>
                     <div className='icon'>
                       <img
                         src='images/achivement_icon_4.png'
@@ -570,8 +518,8 @@ const page = () => {
                       />
                     </div>
                     <div className='text'>
-                      <h4>Best Selling of this week &amp; month.</h4>
-                      <span>2023</span>
+                      <h4>{t("achievements.award4.title")}</h4>
+                      <span>{t("achievements.award4.year")}</span>
                       <a href='#' className='achivement_link'>
                         <i className='fx-icon-long-next-arrow' />
                       </a>
@@ -605,22 +553,17 @@ const page = () => {
           <div className='row justify-content-between'>
             <div className='col-lg-5 col-md-8'>
               <div className='section_heading'>
-                <h5>LATEST NEWS</h5>
+                <h5>{t("blog.subtitle")}</h5>
                 <h2 data-text-animation='' data-split='word'>
-                  Latest News &amp; Updates.
+                  {t("blog.title")}
                 </h2>
               </div>
             </div>
             <div className='col-lg-7 col-md-12'>
               <div className='blog_right_text'>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipiscing elit
-                  lobortis sagittis, velit nec vehicula netus elementum interdum
-                  ultricies hendrerit tristique.
-                </p>
+                <p>{t("blog.description")}</p>
                 <Link className='circle_btn' href='blog_grid'>
-                  View All <br />
-                  Our News <i className='fx-icon-next-arrow' />
+                  {t("blog.viewAll")} <i className='fx-icon-next-arrow' />
                 </Link>
               </div>
             </div>

@@ -1,5 +1,8 @@
-const withNextIntl = require("next-intl/plugin")("./src/i18n/request.ts");
+import createNextIntlPlugin from 'next-intl/plugin';
 
-module.exports = withNextIntl({
-  // Remove the old i18n config as it's not needed with App Router
-});
+const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {};
+
+export default withNextIntl(nextConfig);

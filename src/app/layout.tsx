@@ -2,21 +2,17 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AI Text Tools",
-  description: "Digital Agency",
+  title: "AI Text Tools - Transform and Generate Text with AI Power",
+  description:
+    "AI Text Tools allows users to transform and generate text quickly and efficiently with manual utilities and AI-powered features.",
 };
 
 import Preloader from "@/layout/Preloader";
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
-  return (
-    <>
-      <Preloader />
-      {children}
-    </>
-  );
+}) {
+  return children;
 }

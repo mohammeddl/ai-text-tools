@@ -1,0 +1,113 @@
+{
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "banner": {
+    "subtitle": "We are AI Text Tools",
+    "title": "Transform and Generate Text with AI Power",
+    "description": "AI Text Tools allows users to transform and generate text quickly and efficiently. It provides both manual text utilities and AI-powered features, making text processing simple and fast."
+  },
+  "hero": {
+    "title": "AI Text Tools",
+    "subtitle": "Transform and Generate Text with AI Power",
+    "description": "AI Text Tools is a Next.js-based web application that allows users to transform and generate text quickly and efficiently. It provides both manual text utilities and AI-powered features, making text processing simple and fast.",
+    "getStarted": "Get Started",
+    "learnMore": "Learn More"
+  },
+  "features": {
+    "subtitle": "WHAT WE OFFER",
+    "title": "Text Processing Features.",
+    "description": "Transform your text with our powerful suite of manual and AI-powered tools designed for speed and efficiency.",
+    "upperCase": {
+      "title": "Upper Case Conversion",
+      "description": "Convert your text to uppercase letters instantly with our fast and reliable text transformation tool."
+    },
+    "uiUx": {
+      "title": "Lower Case Conversion",
+      "description": "Transform your text to lowercase format quickly and efficiently for all your text processing needs."
+    },
+    "webDev": {
+      "title": "Capitalize Case",
+      "description": "Capitalize the first letter of each word in your text with our smart capitalization feature."
+    },
+    "marketing": {
+      "title": "Inverse Case (InVeRsE)",
+      "description": "Create alternating case text patterns for unique styling and creative text effects."
+    },
+    "aiCompletion": {
+      "title": "AI Text Completion",
+      "description": "Extend your sentences with AI-powered text generation for creative writing and content creation."
+    },
+    "styledText": {
+      "title": "Styled Text Generation",
+      "description": "Generate fun and creative text variations with our advanced styling algorithms."
+    },
+    "downloadText": {
+      "title": "Download as TXT",
+      "description": "Save your processed text as downloadable .txt files for easy sharing and storage."
+    }
+  },
+  "projects": {
+    "subtitle": "LATEST TOOLS",
+    "title": "Here are our latest text processing features",
+    "description": "Discover our most recent additions to the AI Text Tools platform, designed to enhance your text processing experience.",
+    "moreProjects": "Want to See More Features"
+  },
+  "achievements": {
+    "subtitle": "ACHIEVEMENTS",
+    "title": "Our text processing milestones and recognition.",
+    "award1": {
+      "title": "Best Text Processing Tool of the year.",
+      "year": "2024"
+    },
+    "award2": {
+      "title": "Most Innovative AI Text Platform.",
+      "year": "2024"
+    },
+    "award3": {
+      "title": "Fastest Growing Text Tool Platform.",
+      "year": "2024"
+    },
+    "award4": {
+      "title": "Best User Experience for Text Tools.",
+      "year": "2024"
+    }
+  },
+  "about": {
+    "subtitle": "ABOUT AI TEXT TOOLS",
+    "title": "We are the fastest text processing platform in the world.",
+    "description": "Our platform is designed to be simple, fast, and accessible for everyone. Whether you need basic text transformations or advanced AI-powered features, we've got you covered.",
+    "viewServices": "View All Tools"
+  },
+  "blog": {
+    "subtitle": "LATEST NEWS",
+    "title": "Latest News & Updates.",
+    "description": "Stay updated with the latest developments in AI text processing and new feature announcements from our platform.",
+    "viewAll": "View All Our News",
+    "posts": {
+      "post1": {
+        "category": "AI Technology",
+        "date": "January 15, 2024",
+        "title": "Revolutionary AI text completion now available."
+      },
+      "post2": {
+        "category": "Product Updates",
+        "date": "January 10, 2024",
+        "title": "New text transformation features launched."
+      },
+      "post3": {
+        "category": "User Experience",
+        "date": "January 5, 2024",
+        "title": "Enhanced user interface for better text processing."
+      }
+    }
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "details": "details",
+    "followUs": "Follow Us"
+  }
+}
