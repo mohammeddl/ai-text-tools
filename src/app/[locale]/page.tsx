@@ -1,6 +1,5 @@
 "use client";
 import Counter from "@/components/Counter";
-import TestimonialSlider from "@/components/TestimonialSlider";
 import FxotaryLayout from "@/layout/FxotaryLayout";
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
@@ -50,13 +49,10 @@ const page = ({ params }: Props) => {
             <span>{t("common.followUs")}</span>
           </li>
           <li>
-            <a href='#'>Fb.</a>
+            <a href='www.linkedin.com/in/daali-mohammed-85736b271'>LK.</a>
           </li>
           <li>
-            <a href='#'>Be.</a>
-          </li>
-          <li>
-            <a href='#'>Yt.</a>
+            <a href='https://github.com/mohammeddl'>GH.</a>
           </li>
         </ul>
       </section>
@@ -427,106 +423,8 @@ const page = ({ params }: Props) => {
   COUNTER END
     ===============================*/}
       {/*===============================
-  ACHIVEMENT START
-    ===============================*/}
-      <section className='achivement pt_100 xs_pt_50 pb_120 xs_pb_70'>
-        <div className='container'>
-          <div className='row justify-content-between'>
-            <div className='col-xl-5 col-lg-6'>
-              <div className='section_heading'>
-                <h5>{t("achievements.subtitle")}</h5>
-                <h2 data-text-animation='' data-split='word'>
-                  {t("achievements.title")}
-                </h2>
-              </div>
-            </div>
-            <div className='col-xl-6 col-lg-6'>
-              <div className='achivement_right'>
-                <ul>
-                  <li>
-                    <div className='icon'>
-                      <img
-                        src='images/achivement_icon_1.png'
-                        alt='icon'
-                        className='img-fluid w-100'
-                      />
-                    </div>
-                    <div className='text'>
-                      <h4>{t("achievements.award1.title")}</h4>
-                      <span>{t("achievements.award1.year")}</span>
-                      <a href='#' className='achivement_link'>
-                        <i className='fx-icon-long-next-arrow' />
-                      </a>
-                    </div>
-                  </li>
-                  <li>
-                    <div className='icon'>
-                      <img
-                        src='images/achivement_icon_2.png'
-                        alt='icon'
-                        className='img-fluid w-100'
-                      />
-                    </div>
-                    <div className='text'>
-                      <h4>{t("achievements.award2.title")}</h4>
-                      <span>{t("achievements.award2.year")}</span>
-                      <a href='#' className='achivement_link'>
-                        <i className='fx-icon-long-next-arrow' />
-                      </a>
-                    </div>
-                  </li>
-                  <li>
-                    <div className='icon'>
-                      <img
-                        src='images/achivement_icon_3.png'
-                        alt='icon'
-                        className='img-fluid w-100'
-                      />
-                    </div>
-                    <div className='text'>
-                      <h4>{t("achievements.award3.title")}</h4>
-                      <span>{t("achievements.award3.year")}</span>
-                      <a href='#' className='achivement_link'>
-                        <i className='fx-icon-long-next-arrow' />
-                      </a>
-                    </div>
-                  </li>
-                  <li>
-                    <div className='icon'>
-                      <img
-                        src='images/achivement_icon_4.png'
-                        alt='icon'
-                        className='img-fluid w-100'
-                      />
-                    </div>
-                    <div className='text'>
-                      <h4>{t("achievements.award4.title")}</h4>
-                      <span>{t("achievements.award4.year")}</span>
-                      <a href='#' className='achivement_link'>
-                        <i className='fx-icon-long-next-arrow' />
-                      </a>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
       {/*===============================
-  ACHIVEMENT END
-    ===============================*/}
-      {/*===============================
-  TESTIMONIAL START
-    ===============================*/}
-      <section className='testimonial pt_120'>
-        <div className='container'>
-          <TestimonialSlider />
-        </div>
-      </section>
-      {/*===============================
-  TESTIMONIAL END
-    ===============================*/}
       {/*===============================
   BLOG START
     ===============================*/}

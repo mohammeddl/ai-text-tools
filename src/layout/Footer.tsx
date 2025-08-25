@@ -31,7 +31,7 @@ const Footer = () => {
             <div className='footer_content'>
               <Link className='footer_logo' href='/'>
                 <img
-                  src='images/ai_text_tools_logo_footer.png'
+                  src='images/TextCrafterLogoWhite.png'
                   alt='AI Text Tools'
                   className='img-fluid w-100'
                 />
@@ -44,17 +44,12 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href='https://linkedin.com'>
+                  <a href='www.linkedin.com/in/daali-mohammed-85736b271'>
                     <i className='fab fa-linkedin-in' />
                   </a>
                 </li>
                 <li>
-                  <a href='https://twitter.com'>
-                    <i className='fab fa-twitter' />
-                  </a>
-                </li>
-                <li>
-                  <a href='https://github.com'>
+                  <a href='https://github.com/mohammeddl'>
                     <i className='fab fa-github' />
                   </a>
                 </li>

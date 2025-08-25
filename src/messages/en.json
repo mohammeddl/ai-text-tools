@@ -154,5 +154,55 @@
     "learnMore": "Learn More",
     "details": "details",
     "followUs": "Follow Us"
+  },
+  "footer": {
+    "description": "AI Text Tools is dedicated to providing fast, reliable, and easy-to-use text processing solutions powered by AI technology.",
+    "links": {
+      "about": "About Us",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    },
+    "contact": {
+      "email": "daali.22.ss@gmail.com",
+      "address": "123 AI Street, Tech City, TX 75001"
+    },
+    "copyright": "© 2025 AI Text Tools. All rights reserved."
+  },
+  "upcomingFeatures": {
+    "subtitle": "WHAT WE OFFER",
+    "title": "Why Choose Our Text Tools?",
+    "description": "Transform your text with our powerful suite of manual and AI-powered tools designed for speed and efficiency.",
+    "comingSoon": "Coming Soon",
+    "items": {
+      "grammar": {
+        "icon": "📝",
+        "title": "Grammar & Spell Check",
+        "description": "Advanced AI-powered grammar and spell checking for perfect text."
+      },
+      "slugify": {
+        "icon": "🔗", 
+        "title": "Slugify / Clean Text",
+        "description": "Convert text to URL-friendly slugs and clean unwanted characters."
+      },
+      "wordCount": {
+        "icon": "📊",
+        "title": "Word & Character Count",
+        "description": "Detailed analysis of word count, character count, and text statistics."
+      },
+      "translation": {
+        "icon": "🌍",
+        "title": "Multi-language Translation",
+        "description": "Translate your text between multiple languages using AI."
+      },
+      "funCases": {
+        "icon": "🎨",
+        "title": "Fun Case Modes",
+        "description": "SpongeBob case, random case, and more creative text transformations."
+      }
+    }
+  },
+  "cta": {
+    "title": "Ready to Transform Your Text?",
+    "button": "Get Started Now"
   }
 }

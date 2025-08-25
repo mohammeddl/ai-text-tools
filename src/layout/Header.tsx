@@ -2,22 +2,15 @@
 import TextHoverAnimation from "@/components/TextHoverAnimation";
 import Link from "next/link";
 import { Fragment, useState } from "react";
-import { useRouter, usePathname } from 'next/navigation';
 import { useParams } from 'next/navigation';
+import { useTranslations } from "next-intl";
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
-  const router = useRouter();
-  const pathname = usePathname();
   const params = useParams();
+  const t = useTranslations();
   
-  const currentLocale = params.locale;
-
-  const switchLanguage = () => {
-    const newLocale = currentLocale === 'en' ? 'ar' : 'en';
-    const newPathname = pathname.replace(`/${currentLocale}`, `/${newLocale}`);
-    router.push(newPathname);
-  };
+  const currentLocale = params.locale || 'en';
 
   return (
     <Fragment>
@@ -26,60 +19,40 @@ const Header = () => {
           <div className="container-fluid">
             <Link href="/" className="navbar-brand">
               <img
-                src="images/logo.png"
+                src="images/TextCrafterLogo.png"
                 alt="Fxotary"
-                className="img-fluid w-100"
+                className="img-fluid w-100 h-50"
               />
             </Link>
             <div className="main-menu">
               <nav className="navbar-nav m-auto" id="navbarNav">
                 <ul>
                   <li className="dropdown-nav">
-                    <a href="#" className="text_hover_animaiton">
-                      <TextHoverAnimation text={"Home"} />
-                    </a>
-                    <ul className="submenu">
-                      <li>
-                        <Link href="/">Home 1</Link>
-                      </li>
-                      <li>
-                        <Link href="index_2">Home 2</Link>
-                      </li>
-                    </ul>
+                    <Link href={`/${currentLocale}`} className="text_hover_animaiton">
+                      <TextHoverAnimation text={t("nav.home")} />
+                    </Link>
                   </li>
-                  {/* Add other menu items here */}
+                  <li className="dropdown-nav">
+                    <Link href={`/${currentLocale}/tools`} className="text_hover_animaiton">
+                      <TextHoverAnimation text={t("nav.tools")} />
+                    </Link>
+                  </li>
+                  <li className="dropdown-nav">
+                    <Link href={`/${currentLocale}/about`} className="text_hover_animaiton">
+                      <TextHoverAnimation text={t("nav.about")} />
+                    </Link>
+                  </li>
+                  <li className="dropdown-nav">
+                    <Link href={`/${currentLocale}/contact`} className="text_hover_animaiton">
+                      <TextHoverAnimation text={t("nav.contact")} />
+                    </Link>
+                  </li>
                 </ul>
               </nav>
             </div>
             <div className="nav_right d-flex flex-wrap align-items-center">
-              <a
-                href="#"
-                className="search_icon"
-                onClick={() => setToggle(true)}
-              >
-                <i className="fa-sharp fa-regular fa-magnifying-glass" />
-              </a>
-              
-              {/* Language Toggle Button */}
-              <button
-                onClick={switchLanguage}
-                className="language-toggle"
-                style={{ 
-                  background: 'none',
-                  border: '1px solid #ddd',
-                  padding: '8px 16px',
-                  marginLeft: '15px',
-                  borderRadius: '25px',
-                  cursor: 'pointer',
-                  fontSize: '14px',
-                  transition: 'all 0.3s ease'
-                }}
-              >
-                {currentLocale === 'en' ? 'عربي' : 'English'}
-              </button>
-              
-              <Link href="contact" className="common_btn">
-                Request Quote
+              <Link href={`/${currentLocale}/tools`} className="common_btn">
+                Get Started Now
               </Link>
             </div>
           </div>
