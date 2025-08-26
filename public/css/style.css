@@ -1251,7 +1251,8 @@ html.lenis {
 
 .latest_project_img a::after,
 .what_we_do ul li a::after {
-  background: url(../images/button_shapes_3.png);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1262,7 +1263,8 @@ html.lenis {
 .what_we_do ul li::after {
   position: absolute;
   content: "";
-  background: url(../images/button_shapes_4.png);
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  border-radius: 50%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -3470,7 +3472,8 @@ footer::after {
 }
 
 .circle_btn_2::after {
-  background: url(../images/button_shapes_2.png);
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  border-radius: 50%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

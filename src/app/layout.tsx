@@ -7,8 +7,6 @@ export const metadata: Metadata = {
     "AI Text Tools allows users to transform and generate text quickly and efficiently with manual utilities and AI-powered features.",
 };
 
-import Preloader from "@/layout/Preloader";
-
 export default function RootLayout({
   children,
 }: {

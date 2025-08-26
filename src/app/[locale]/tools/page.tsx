@@ -3,11 +3,7 @@ import ToolsLayout from "@/layout/ToolsLayout";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
-interface Props {
-  params: { locale: string };
-}
-
-const ToolsPage = ({ }: Props) => {
+const ToolsPage = () => {
   const t = useTranslations();
   const [inputText, setInputText] = useState("");
   const [outputText, setOutputText] = useState("");
@@ -90,7 +86,7 @@ const ToolsPage = ({ }: Props) => {
           <div className='row mb-5'>
             <div className='col-12'>
               <div className='text-center'>
-                <div className='btn-group' role='group'>
+                <div className='d-flex flex-wrap justify-content-center gap-3'>
                   {[
                     { id: "uppercase", icon: "🔠", key: "uppercase" },
                     { id: "lowercase", icon: "🔡", key: "lowercase" },
@@ -101,14 +97,15 @@ const ToolsPage = ({ }: Props) => {
                     <button
                       key={tool.id}
                       type='button'
-                      className={`common_btn mx-2 mb-3 ${
+                      className={`common_btn ${
                         activeTab === tool.id ? 'active' : ''
                       }`}
                       onClick={() => setActiveTab(tool.id)}
                       style={{
                         backgroundColor: activeTab === tool.id ? '#ff6b6b' : 'transparent',
                         color: activeTab === tool.id ? 'white' : '#333',
-                        border: '2px solid #ff6b6b'
+                        border: '2px solid #ff6b6b',
+                        minWidth: '180px'
                       }}>
                       {tool.icon} {t(`tools.items.${tool.key}.title`)}
                     </button>
@@ -320,11 +317,11 @@ const ToolsPage = ({ }: Props) => {
 
           <div className='row mt-5'>
             {[
-              { key: "grammar" },
-              { key: "slugify" },
-              { key: "wordCount" },
-              { key: "translation" },
-              { key: "funCases" }
+              { key: "aiSummarization" },
+              { key: "contentOptimization" },
+              { key: "voiceToText" },
+              { key: "multilanguageAI" },
+              { key: "sentimentAnalysis" }
             ].map((feature) => (
               <div key={feature.key} className='col-lg-4 col-md-6 mb-4'>
                 <div className='upcoming-feature-card position-relative overflow-hidden' style={{ 

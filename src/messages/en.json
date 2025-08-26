@@ -20,7 +20,13 @@
     "subtitle": "ABOUT TextCrafter",
     "title": "We are the fastest text processing platform in the world.",
     "description": "Our platform is designed to be simple, fast, and accessible for everyone. Whether you need basic text transformations or advanced AI-powered features, we've got you covered.",
-    "viewServices": "View All Tools"
+    "viewServices": "View All Tools",
+    "ourStory": "Our Story"
+  },
+  "contact": {
+    "subtitle": "GET IN TOUCH",
+    "title": "Contact Our Support Team",
+    "description": "Get in touch with us. We're here to help and answer any questions you might have."
   },
   "tools": {
     "title": "Text Conversion Tools",
@@ -58,33 +64,33 @@
     "subtitle": "WHAT WE OFFER",
     "title": "Why Choose Our Text Tools?",
     "description": "Transform your text with our powerful suite of manual and AI-powered tools designed for speed and efficiency.",
-    "upperCase": {
-      "title": "Upper Case Conversion",
-      "description": "Convert your text to uppercase letters instantly with our fast and reliable text transformation tool."
+    "aiContentGeneration": {
+      "title": "AI Content Generation",
+      "description": "Generate high-quality content, summaries, and creative text using advanced AI models for marketing and writing."
     },
-    "uiUx": {
-      "title": "Lower Case Conversion", 
-      "description": "Transform your text to lowercase format quickly and efficiently for all your text processing needs."
+    "smartTextAnalysis": {
+      "title": "Smart Text Analysis", 
+      "description": "Advanced sentiment analysis, readability scoring, and content insights powered by machine learning algorithms."
     },
-    "webDev": {
-      "title": "Capitalize Case",
-      "description": "Capitalize the first letter of each word in your text with our smart capitalization feature."
+    "autoFormatting": {
+      "title": "Auto Text Formatting",
+      "description": "Intelligent text formatting with automatic detection of patterns, citations, and professional document structuring."
     },
-    "marketing": {
-      "title": "Inverse Case (InVeRsE)",
-      "description": "Create alternating case text patterns for unique styling and creative text effects."
+    "languageProcessing": {
+      "title": "Natural Language Processing",
+      "description": "Extract entities, keywords, and insights from text using state-of-the-art NLP models and semantic analysis."
     },
     "aiCompletion": {
       "title": "AI Text Completion",
       "description": "Extend your sentences with AI-powered text generation for creative writing and content creation."
     },
     "styledText": {
-      "title": "Styled Text Generation", 
-      "description": "Generate fun and creative text variations with our advanced styling algorithms."
+      "title": "Advanced Text Styling", 
+      "description": "Professional text formatting with custom styles, typography enhancements, and visual text effects."
     },
-    "downloadText": {
-      "title": "Download as TXT",
-      "description": "Save your processed text as downloadable .txt files for easy sharing and storage."
+    "bulkProcessing": {
+      "title": "Bulk Text Processing",
+      "description": "Process multiple documents simultaneously with batch operations and automated text transformations."
     },
     "items": {
       "instant": {
@@ -169,35 +175,35 @@
     "copyright": "© 2025 TextCrafter. All rights reserved."
   },
   "upcomingFeatures": {
-    "subtitle": "WHAT WE OFFER",
-    "title": "Why Choose Our Text Tools?",
-    "description": "Transform your text with our powerful suite of manual and AI-powered tools designed for speed and efficiency.",
+    "subtitle": "COMING SOON",
+    "title": "Next-Generation AI Text Tools",
+    "description": "Revolutionary AI-powered features that will transform how you work with text and content creation.",
     "comingSoon": "Coming Soon",
     "items": {
-      "grammar": {
-        "icon": "📝",
-        "title": "Grammar & Spell Check",
-        "description": "Advanced AI-powered grammar and spell checking for perfect text."
+      "aiSummarization": {
+        "icon": "🧠",
+        "title": "AI Text Summarization",
+        "description": "Automatically generate concise summaries from long documents using advanced AI algorithms."
       },
-      "slugify": {
-        "icon": "🔗", 
-        "title": "Slugify / Clean Text",
-        "description": "Convert text to URL-friendly slugs and clean unwanted characters."
+      "contentOptimization": {
+        "icon": "🎯", 
+        "title": "SEO Content Optimization",
+        "description": "Optimize your content for search engines with AI-powered keyword analysis and suggestions."
       },
-      "wordCount": {
-        "icon": "📊",
-        "title": "Word & Character Count",
-        "description": "Detailed analysis of word count, character count, and text statistics."
+      "voiceToText": {
+        "icon": "🎤",
+        "title": "Voice-to-Text AI",
+        "description": "Convert speech to text with high accuracy using advanced speech recognition technology."
       },
-      "translation": {
-        "icon": "🌍",
-        "title": "Multi-language Translation",
-        "description": "Translate your text between multiple languages using AI."
+      "multilanguageAI": {
+        "icon": "🌐",
+        "title": "AI Translation Hub",
+        "description": "Real-time translation and localization powered by cutting-edge neural machine translation."
       },
-      "funCases": {
-        "icon": "🎨",
-        "title": "Fun Case Modes",
-        "description": "SpongeBob case, random case, and more creative text transformations."
+      "sentimentAnalysis": {
+        "icon": "💭",
+        "title": "Sentiment & Tone Analysis",
+        "description": "Analyze emotional tone, sentiment, and writing style with advanced AI text understanding."
       }
     }
   },

@@ -1,6 +1,7 @@
 "use client";
 import TextHoverAnimation from "@/components/TextHoverAnimation";
 import Link from "next/link";
+import Image from "next/image";
 import { Fragment, useState } from "react";
 import { useParams } from 'next/navigation';
 import { useTranslations } from "next-intl";
@@ -18,9 +19,11 @@ const Header = () => {
         <div className="main_menu navbar d-none d-xl-flex">
           <div className="container-fluid">
             <Link href="/" className="navbar-brand">
-              <img
-                src="images/TextCrafterLogo.png"
+              <Image
+                src="/images/TextCrafterLogo.png"
                 alt="Fxotary"
+                width={180}
+                height={60}
                 className="img-fluid w-100 h-50"
               />
             </Link>
@@ -64,9 +67,11 @@ const Header = () => {
             <div className="d-flex align-items-center justify-content-between w-100">
               <div className="navbar-brand ms-3">
                 <Link href="index">
-                  <img
-                    src="images/logo.png"
+                  <Image
+                    src="/images/logo.png"
                     alt="Fxotary"
+                    width={120}
+                    height={40}
                     className="img-fluid w-100"
                   />
                 </Link>
@@ -87,9 +92,11 @@ const Header = () => {
             <div className="d-flex align-items-center justify-content-between">
               <div className="navbar-brand">
                 <Link href="index">
-                  <img
-                    src="images/logo.png"
+                  <Image
+                    src="/images/logo.png"
                     alt="Fxotary"
+                    width={120}
+                    height={40}
                     className="img-fluid w-100"
                   />
                 </Link>

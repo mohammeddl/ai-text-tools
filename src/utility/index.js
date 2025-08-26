@@ -321,8 +321,8 @@ export const fxotaryUtility = {
           this.hover = true;
           this.moveBubble(e);
           timelineBubble.play();
-          let that = this;
-          this.interval = setInterval(this.magnetize, 30, that);
+          const self = this;
+          this.interval = setInterval(this.magnetize, 30, self);
           ball.classList.remove("d-block");
           ball.classList.add("d-none");
         });

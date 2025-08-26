@@ -4,25 +4,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 const Footer = () => {
-  let t;
-  try {
-    t = useTranslations("footer");
-  } catch (error) {
-    // Fallback translations if context is not available
-    t = (key: string) => {
-      const fallbacks: Record<string, string> = {
-        description:
-          "Transform your text with our powerful AI-driven tools. Fast, secure, and completely free to use.",
-        "links.about": "About Us",
-        "links.privacy": "Privacy Policy",
-        "links.terms": "Terms of Service",
-        "contact.email": "support@aitexttools.com",
-        "contact.address": "AI Text Tools Platform",
-        copyright: "© 2024 AI Text Tools. All rights reserved.",
-      };
-      return fallbacks[key] || key;
-    };
-  }
+  const t = useTranslations("footer");
 
   return (
     <footer className='pt_120 xs_pt_80'>
@@ -62,37 +44,37 @@ const Footer = () => {
             <ul className='footer_menu'>
               <li>
                 <Link
-                  href='/tools/uppercase'
+                  href='/tools'
                   className='text_hover_animaiton text_hover_type_2'>
-                  UPPERCASE
+                  AI Content Generation
                 </Link>
               </li>
               <li>
                 <Link
-                  href='/tools/lowercase'
+                  href='/tools'
                   className='text_hover_animaiton text_hover_type_2'>
-                  lowercase
+                  Smart Text Analysis
                 </Link>
               </li>
               <li>
                 <Link
-                  href='/tools/capitalize'
+                  href='/tools'
                   className='text_hover_animaiton text_hover_type_2'>
-                  Capitalize
+                  Auto Formatting
                 </Link>
               </li>
               <li>
                 <Link
-                  href='/tools/inverse'
+                  href='/tools'
                   className='text_hover_animaiton text_hover_type_2'>
-                  iNvErSe CaSe
+                  NLP Processing
                 </Link>
               </li>
               <li>
                 <Link
-                  href='/tools/sentence'
+                  href='/tools'
                   className='text_hover_animaiton text_hover_type_2'>
-                  Sentence case
+                  Bulk Processing
                 </Link>
               </li>
             </ul>
