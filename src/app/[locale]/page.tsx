@@ -86,7 +86,7 @@ const page = ({ params }: Props) => {
                 <div className='img'>
                   <div data-animation='img-blur'>
                     <img
-                      src='images/about_img_1.jpg'
+                      src='images/about_img_1.png'
                       alt='about'
                       className='img-fluid w-100'
                     />
@@ -99,7 +99,7 @@ const page = ({ params }: Props) => {
               <div className='about_img_2'>
                 <div data-animation='img-blur'>
                   <img
-                    src='images/about_img_2.jpg'
+                    src='images/about_img_2.png'
                     alt='about'
                     className='img-fluid w-100'
                   />
@@ -237,7 +237,7 @@ const page = ({ params }: Props) => {
                 data-cursor='<i class="fx-icon-long-next-arrow"></i>'>
                 <div data-animation='img-blur'>
                   <img
-                    src='images/project_img_1.jpg'
+                    src='images/project_img_1.png'
                     alt='projext'
                     className='img-fluid w-100'
                   />
@@ -255,7 +255,7 @@ const page = ({ params }: Props) => {
                 data-cursor='<i class="fx-icon-long-next-arrow"></i>'>
                 <div data-animation='img-blur'>
                   <img
-                    src='images/project_img_2.jpg'
+                    src='images/project_img_2.png'
                     alt='projext'
                     className='img-fluid w-100'
                   />
@@ -428,117 +428,117 @@ const page = ({ params }: Props) => {
       {/*===============================
   BLOG START
     ===============================*/}
-      <section className='blog pt_120 xs_pt_80'>
-        <div className='container'>
-          <div className='row justify-content-between'>
-            <div className='col-lg-5 col-md-8'>
-              <div className='section_heading'>
-                <h5>{t("blog.subtitle")}</h5>
-                <h2 data-text-animation='' data-split='word'>
-                  {t("blog.title")}
-                </h2>
-              </div>
-            </div>
-            <div className='col-lg-7 col-md-12'>
-              <div className='blog_right_text'>
-                <p>{t("blog.description")}</p>
-                <Link className='circle_btn' href='blog_grid'>
-                  {t("blog.viewAll")} <i className='fx-icon-next-arrow' />
-                </Link>
-              </div>
-            </div>
+<section className='blog pt_120 xs_pt_80'>
+  <div className='container'>
+    <div className='row justify-content-between'>
+      <div className='col-lg-5 col-md-8'>
+        <div className='section_heading'>
+          <h5>{t("blog.subtitle")}</h5>
+          <h2 data-text-animation='' data-split='word'>
+            {t("blog.title")}
+          </h2>
+        </div>
+      </div>
+      <div className='col-lg-7 col-md-12'>
+        <div className='blog_right_text'>
+          <p>{t("blog.description")}</p>
+          <Link className='circle_btn' href='blog_grid'>
+            {t("blog.viewAll")} <i className='fx-icon-next-arrow' />
+          </Link>
+        </div>
+      </div>
+    </div>
+    <div className='row mt_20'>
+      <div className='col-lg-4 col-md-6' data-animation='fade-left'>
+        <div className='single_blog first_blog'>
+          <div className='single_blog_text'>
+            <ul className='d-flex flex-wrap'>
+              <li>AI Technology</li>
+              <li>December 15, 2024</li>
+            </ul>
+            <Link className='title' href='blog_details'>
+            AI is Revolutionizing Text Processing and Content Creation
+            </Link>
           </div>
-          <div className='row mt_20'>
-            <div className='col-lg-4 col-md-6' data-animation='fade-left'>
-              <div className='single_blog first_blog'>
-                <div className='single_blog_text'>
-                  <ul className='d-flex flex-wrap'>
-                    <li>User Experience</li>
-                    <li>September 10, 2023</li>
-                  </ul>
-                  <Link className='title' href='blog_details'>
-                    Creative advertising our life became noise.
-                  </Link>
-                </div>
-                <div className='single_blog_img'>
-                  <Link
-                    href='blog_details'
-                    data-cursor='<i class="fx-icon-long-next-arrow"></i>'
-                    className='img w-100'>
-                    <div data-animation='img-blur' className='w-100'>
-                      <img
-                        src='images/blog_1.jpg'
-                        alt='blog'
-                        className='img-fluid w-100'
-                      />
-                    </div>
-                  </Link>
-                </div>
+          <div className='single_blog_img'>
+            <Link
+              href='blog_details'
+              data-cursor='<i class="fx-icon-long-next-arrow"></i>'
+              className='img w-100'>
+              <div data-animation='img-blur' className='w-100'>
+                <img
+                  src='images/blog_1.png'
+                  alt='AI Text Processing'
+                  className='img-fluid w-100'
+                />
               </div>
-            </div>
-            <div
-              className='col-lg-4 col-md-6'
-              data-animation='fade-left'
-              data-delay='.75'>
-              <div className='single_blog'>
-                <div className='single_blog_text'>
-                  <ul className='d-flex flex-wrap'>
-                    <li>User Experience</li>
-                    <li>September 10, 2023</li>
-                  </ul>
-                  <Link className='title' href='blog_details'>
-                    Creative advertising our life became noise.
-                  </Link>
-                </div>
-                <div className='single_blog_img'>
-                  <Link
-                    href='blog_details'
-                    data-cursor='<i class="fx-icon-long-next-arrow"></i>'
-                    className='img w-100'>
-                    <div data-animation='img-blur' className='w-100'>
-                      <img
-                        src='images/blog_2.jpg'
-                        alt='blog'
-                        className='img-fluid w-100'
-                      />
-                    </div>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div
-              className='col-lg-4 col-md-6'
-              data-animation='fade-left'
-              data-delay={1}>
-              <div className='single_blog last_blog'>
-                <div className='single_blog_text'>
-                  <ul className='d-flex flex-wrap'>
-                    <li>User Experience</li>
-                    <li>September 10, 2023</li>
-                  </ul>
-                  <Link className='title' href='blog_details'>
-                    Creative advertising our life became noise.
-                  </Link>
-                </div>
-                <div className='single_blog_img'>
-                  <Link
-                    href='blog_details'
-                    data-cursor='<i class="fx-icon-long-next-arrow"></i>'
-                    className='img w-100'>
-                    <div data-animation='img-blur' className='w-100'>
-                      <img
-                        src='images/blog_3.jpg'
-                        alt='blog'
-                        className='img-fluid w-100'
-                      />
-                    </div>
-                  </Link>
-                </div>
-              </div>
-            </div>
+            </Link>
           </div>
         </div>
-      </section>
+      </div>
+      <div
+        className='col-lg-4 col-md-6'
+        data-animation='fade-left'
+        data-delay='.75'>
+        <div className='single_blog'>
+          <div className='single_blog_text'>
+            <ul className='d-flex flex-wrap'>
+              <li>Productivity</li>
+              <li>December 20, 2024</li>
+            </ul>
+            <Link className='title' href='blog_details'>
+              10 Essential Text Formatting Tools Every Content Creator Needs
+            </Link>
+          </div>
+          <div className='single_blog_img'>
+            <Link
+              href='blog_details'
+              data-cursor='<i class="fx-icon-long-next-arrow"></i>'
+              className='img w-100'>
+              <div data-animation='img-blur' className='w-100'>
+                <img
+                  src='images/blog_2.png'
+                  alt='Text Formatting Tools'
+                  className='img-fluid w-100'
+                />
+              </div>
+            </Link>
+          </div>
+        </div>
+      </div>
+      <div
+        className='col-lg-4 col-md-6'
+        data-animation='fade-left'
+        data-delay={1}>
+        <div className='single_blog last_blog'>
+          <div className='single_blog_text'>
+            <ul className='d-flex flex-wrap'>
+              <li>Web Development</li>
+              <li>December 25, 2024</li>
+            </ul>
+            <Link className='title' href='blog_details'>
+              Building Modern Text Processing Apps with Next.js and TypeScript
+            </Link>
+          </div>
+          <div className='single_blog_img'>
+            <Link
+              href='blog_details'
+              data-cursor='<i class="fx-icon-long-next-arrow"></i>'
+              className='img w-100'>
+              <div data-animation='img-blur' className='w-100'>
+                <img
+                  src='images/blog_3.png'
+                  alt='Next.js Development'
+                  className='img-fluid w-100'
+                />
+              </div>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
       {/*===============================
   BLOG END
     ===============================*/}

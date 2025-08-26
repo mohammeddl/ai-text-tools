@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 const Footer = () => {
@@ -29,13 +30,14 @@ const Footer = () => {
         <div className='row justify-content-between'>
           <div className='col-xl-4 col-sm-8 col-md-6 col-lg-4'>
             <div className='footer_content'>
-              <Link className='footer_logo' href='/'>
-                <img
-                  src='images/TextCrafterLogoWhite.png'
+                  <Image
+                  src='/images/TextCrafterLogoWhite.png'
                   alt='AI Text Tools'
-                  className='img-fluid w-100'
+                  width={100}
+                  height={60}
+                  className=' w-50 h-48'
+                  priority
                 />
-              </Link>
               <p>{t("description")}</p>
               <ul className='d-flex flex-wrap'>
                 <li>
@@ -143,11 +145,7 @@ const Footer = () => {
                 </a>
               </p>
               <p>{t("contact.address")}</p>
-              <div className='mt-3'>
-                <Link href='/tools' className='common_btn'>
-                  Try Tools Now
-                </Link>
-              </div>
+              
             </div>
           </div>
         </div>
