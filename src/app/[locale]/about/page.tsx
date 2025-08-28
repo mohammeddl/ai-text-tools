@@ -1,56 +1,13 @@
 "use client";
 import FxotaryLayout from "@/layout/FxotaryLayout";
-import Link from "next/link";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { useParams } from "next/navigation";
 
 const AboutPage = () => {
-  const params = useParams();
-  const locale = params.locale as string;
   const t = useTranslations();
 
   return (
     <FxotaryLayout errorPage={false}>
-      {/*===============================
-  BANNER START
-    ===============================*/}
-      <section
-        className='banner'
-        style={{ background: "url(/images/banner_bg.png)" }}>
-        <div className='container'>
-          <div className='row'>
-            <div className='col-12'>
-              <div className='banner_text'>
-                <h4>{t("about.subtitle")}</h4>
-                <h1 className='banner_title'>
-                  {t("about.title")}{" "}
-                  <span>
-                    <b></b>
-                  </span>
-                </h1>
-                <p className='mt-4' style={{ color: '#fff', fontSize: '18px', maxWidth: '600px' }}>
-                  {t("about.description")}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <ul className='d-flex flex-wrap'>
-          <li>
-            <span>{t("common.followUs")}</span>
-          </li>
-          <li>
-            <a href='https://www.linkedin.com/in/daali-mohammed-85736b271'>LK.</a>
-          </li>
-          <li>
-            <a href='https://github.com/mohammeddl'>GH.</a>
-          </li>
-        </ul>
-      </section>
-      {/*===============================
-  BANNER END
-    ===============================*/}
 
       {/*===============================
   ABOUT DETAILS START
@@ -75,92 +32,7 @@ const AboutPage = () => {
                 <p className='mb-4'>
                   Founded by passionate developers and AI enthusiasts, we&apos;ve created a comprehensive platform that combines cutting-edge machine learning algorithms with intuitive user interfaces. Our tools are designed to save time, enhance productivity, and unlock creative potential.
                 </p>
-                <div className='row mt-5'>
-                  <div className='col-md-6 mb-4'>
-                    <div className='d-flex align-items-center'>
-                      <div style={{ 
-                        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                        width: '60px',
-                        height: '60px',
-                        borderRadius: '50%',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginRight: '20px',
-                        fontSize: '24px'
-                      }}>
-                        🚀
-                      </div>
-                      <div>
-                        <h4 className='mb-1'>Innovation First</h4>
-                        <p className='mb-0' style={{ color: '#666' }}>Cutting-edge AI technology</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className='col-md-6 mb-4'>
-                    <div className='d-flex align-items-center'>
-                      <div style={{ 
-                        background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-                        width: '60px',
-                        height: '60px',
-                        borderRadius: '50%',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginRight: '20px',
-                        fontSize: '24px'
-                      }}>
-                        🎯
-                      </div>
-                      <div>
-                        <h4 className='mb-1'>User-Focused</h4>
-                        <p className='mb-0' style={{ color: '#666' }}>Intuitive and accessible design</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className='col-md-6 mb-4'>
-                    <div className='d-flex align-items-center'>
-                      <div style={{ 
-                        background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-                        width: '60px',
-                        height: '60px',
-                        borderRadius: '50%',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginRight: '20px',
-                        fontSize: '24px'
-                      }}>
-                        🔒
-                      </div>
-                      <div>
-                        <h4 className='mb-1'>Privacy & Security</h4>
-                        <p className='mb-0' style={{ color: '#666' }}>Your data stays secure</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className='col-md-6 mb-4'>
-                    <div className='d-flex align-items-center'>
-                      <div style={{ 
-                        background: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-                        width: '60px',
-                        height: '60px',
-                        borderRadius: '50%',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginRight: '20px',
-                        fontSize: '24px'
-                      }}>
-                        ⚡
-                      </div>
-                      <div>
-                        <h4 className='mb-1'>Lightning Fast</h4>
-                        <p className='mb-0' style={{ color: '#666' }}>Instant results every time</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+
               </div>
             </div>
             <div className='col-lg-6 col-md-12'>
@@ -382,52 +254,6 @@ const AboutPage = () => {
   TEAM VALUES END
     ===============================*/}
 
-      {/*===============================
-  CTA SECTION START
-    ===============================*/}
-      <section className='pt_120 xs_pt_70 pb_120 xs_pb_70' style={{ 
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        color: 'white'
-      }}>
-        <div className='container'>
-          <div className='row justify-content-center text-center'>
-            <div className='col-lg-8'>
-              <h2 className='mb-4' style={{ color: 'white', fontWeight: '700' }}>
-                Ready to Transform Your Text Processing?
-              </h2>
-              <p className='mb-5' style={{ fontSize: '18px', opacity: '0.9' }}>
-                Join thousands of users who are already experiencing the power of AI-driven text tools.
-              </p>
-              <Link 
-                href={`/${locale}/tools`}
-                className='common_btn'
-                style={{ 
-                  background: 'white',
-                  color: '#667eea',
-                  padding: '15px 40px',
-                  borderRadius: '50px',
-                  fontWeight: '600',
-                  textDecoration: 'none',
-                  display: 'inline-block',
-                  transition: 'all 0.3s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 10px 25px rgba(0,0,0,0.2)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0px)';
-                  e.currentTarget.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
-                }}>
-                Get Started Now
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/*===============================
-  CTA SECTION END
-    ===============================*/}
     </FxotaryLayout>
   );
 };

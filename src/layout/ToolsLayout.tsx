@@ -1,10 +1,14 @@
 "use client";
 import { fxotaryUtility } from "@/utility";
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, ReactNode } from "react";
 import Cursor from "./Cursor";
 import ScrollTopBtn from "./ScrollTopBtn";
 
-const ToolsLayout = ({ children }) => {
+interface ToolsLayoutProps {
+  children: ReactNode;
+}
+
+const ToolsLayout = ({ children }: ToolsLayoutProps) => {
   useEffect(() => {
     fxotaryUtility.customMouse();
     fxotaryUtility.buttonHover();

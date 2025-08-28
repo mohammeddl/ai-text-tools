@@ -1,11 +1,9 @@
 "use client";
 import FxotaryLayout from "@/layout/FxotaryLayout";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 const ContactPage = () => {
-  const t = useTranslations();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -43,45 +41,7 @@ const ContactPage = () => {
 
   return (
     <FxotaryLayout errorPage={false}>
-      {/*===============================
-  BANNER START
-    ===============================*/}
-      <section
-        className='banner'
-        style={{ background: "url(/images/banner_bg.png)" }}>
-        <div className='container'>
-          <div className='row'>
-            <div className='col-12'>
-              <div className='banner_text'>
-                <h4>{t("contact.subtitle")}</h4>
-                <h1 className='banner_title'>
-                  {t("contact.title")}{" "}
-                  <span>
-                    <b></b>
-                  </span>
-                </h1>
-                <p className='mt-4' style={{ color: '#fff', fontSize: '18px', maxWidth: '600px' }}>
-                  Get in touch with us. We&apos;re here to help and answer any questions you might have.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <ul className='d-flex flex-wrap'>
-          <li>
-            <span>{t("common.followUs")}</span>
-          </li>
-          <li>
-            <a href='https://www.linkedin.com/in/daali-mohammed-85736b271'>LK.</a>
-          </li>
-          <li>
-            <a href='https://github.com/mohammeddl'>GH.</a>
-          </li>
-        </ul>
-      </section>
-      {/*===============================
-  BANNER END
-    ===============================*/}
+
 
       {/*===============================
   CONTACT FORM START
