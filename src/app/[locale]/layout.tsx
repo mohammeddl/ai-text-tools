@@ -5,8 +5,11 @@ import { getMessages } from 'next-intl/server';
 const locales = ['en', 'ar'];
 
 export const metadata: Metadata = {
-  title: "AI Text Tools - Transform and Generate Text with AI Power",
-  description: "AI Text Tools allows users to transform and generate text quickly and efficiently with manual utilities and AI-powered features.",
+  title: "TextCrafter - Transform and Generate Text with AI Power",
+  description: "TextCrafter allows users to transform and generate text quickly and efficiently with manual utilities and AI-powered features.",
+  icons: {
+    icon: '/images/logo.png',
+  },
 };
 
 export default async function LocaleLayout({

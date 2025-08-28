@@ -1,9 +1,9 @@
 export const siteConfig = {
-  name: "AI Text Tools",
+  name: "TextCrafter",
   description: "Advanced AI-powered text processing tools for content creation, editing, and optimization.",
   url: process.env.NODE_ENV === 'production' ? 'https://textcrafter.com/' : 'http://localhost:3000',
-  ogImage: "/images/TextCrafterLogo.png",
-  creator: "AI Text Tools Team",
+  ogImage: "/images/logo.png",
+  creator: "TextCrafter Team",
   keywords: [
     "AI text tools",
     "text processing",

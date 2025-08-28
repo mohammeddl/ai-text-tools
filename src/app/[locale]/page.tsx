@@ -5,6 +5,7 @@ import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
+import About from "@/components/Test";
 
 const Page = () => {
   const params = useParams();
@@ -60,6 +61,7 @@ const Page = () => {
       {/*===============================
   BANNER END
     ===============================*/}
+    <About/>
       {/*===============================
   ABOUT START
     ===============================*/}
