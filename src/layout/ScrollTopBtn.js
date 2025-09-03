@@ -1,6 +1,7 @@
 "use client";
 import { fxotaryUtility } from "@/utility";
 import { useEffect } from "react";
+import { ArrowUp } from "lucide-react";
 
 const ScrollTopBtn = () => {
   useEffect(() => {
@@ -9,7 +10,7 @@ const ScrollTopBtn = () => {
 
   return (
     <div className="tf__scroll_btn" style={{ display: "none" }}>
-      <i className="fa-regular fa-arrow-up-long" />
+      <ArrowUp />
     </div>
   );
 };
