@@ -1,5 +1,5 @@
 "use client";
-import TextHoverAnimation from "@/components/TextHoverAnimation";
+import TextHoverAnimation from "@/components/ui/TextHoverAnimation";
 import Link from "next/link";
 import Image from "next/image";
 import { Fragment, useState } from "react";

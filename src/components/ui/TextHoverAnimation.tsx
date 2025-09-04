@@ -1,5 +1,10 @@
 import { Fragment } from "react";
-const TextHoverAnimation = ({ text }) => {
+
+interface TextHoverAnimationProps {
+  text: string;
+}
+
+const TextHoverAnimation = ({ text }: TextHoverAnimationProps) => {
   return (
     <Fragment>
       {text.split(" ").map((t, i) => (

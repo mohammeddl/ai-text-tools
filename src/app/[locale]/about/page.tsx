@@ -13,46 +13,6 @@ const AboutPage = () => {
   return (
     <FxotaryLayout errorPage={false}>
       {/*===============================
-  BANNER START
-    ===============================*/}
-      <section
-        className='banner'
-        style={{ background: "url(/images/banner_bg.png)" }}>
-        <div className='container'>
-          <div className='row'>
-            <div className='col-12'>
-              <div className='banner_text'>
-                <h4>{t("about.subtitle")}</h4>
-                <h1 className='banner_title'>
-                  {t("about.title")}{" "}
-                  <span>
-                    <b></b>
-                  </span>
-                </h1>
-                <p className='mt-4' style={{ color: '#fff', fontSize: '18px', maxWidth: '600px' }}>
-                  {t("about.description")}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <ul className='d-flex flex-wrap'>
-          <li>
-            <span>{t("common.followUs")}</span>
-          </li>
-          <li>
-            <a href='https://www.linkedin.com/in/daali-mohammed-85736b271'>LK.</a>
-          </li>
-          <li>
-            <a href='https://github.com/mohammeddl'>GH.</a>
-          </li>
-        </ul>
-      </section>
-      {/*===============================
-  BANNER END
-    ===============================*/}
-
-      {/*===============================
   ABOUT DETAILS START
     ===============================*/}
       <section className='about_us pt_120 xs_pt_70 pb_120 xs_pb_70'>
@@ -378,56 +338,7 @@ const AboutPage = () => {
           </div>
         </div>
       </section>
-      {/*===============================
-  TEAM VALUES END
-    ===============================*/}
 
-      {/*===============================
-  CTA SECTION START
-    ===============================*/}
-      <section className='pt_120 xs_pt_70 pb_120 xs_pb_70' style={{ 
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        color: 'white'
-      }}>
-        <div className='container'>
-          <div className='row justify-content-center text-center'>
-            <div className='col-lg-8'>
-              <h2 className='mb-4' style={{ color: 'white', fontWeight: '700' }}>
-                Ready to Transform Your Text Processing?
-              </h2>
-              <p className='mb-5' style={{ fontSize: '18px', opacity: '0.9' }}>
-                Join thousands of users who are already experiencing the power of AI-driven text tools.
-              </p>
-              <Link 
-                href={`/${locale}/tools`}
-                className='common_btn'
-                style={{ 
-                  background: 'white',
-                  color: '#667eea',
-                  padding: '15px 40px',
-                  borderRadius: '50px',
-                  fontWeight: '600',
-                  textDecoration: 'none',
-                  display: 'inline-block',
-                  transition: 'all 0.3s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 10px 25px rgba(0,0,0,0.2)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0px)';
-                  e.currentTarget.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
-                }}>
-                Get Started Now
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/*===============================
-  CTA SECTION END
-    ===============================*/}
     </FxotaryLayout>
   );
 };

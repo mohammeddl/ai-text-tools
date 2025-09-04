@@ -1,0 +1,291 @@
+/* Banner Responsive Styles */
+
+/* Override existing banner styles for better responsiveness */
+.banner.banner-responsive {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 60px 0 80px 0;
+  margin-top: 60px;
+}
+
+/* Reduce space between nav and banner subtitle */
+.banner-text-responsive {
+  padding-top: 0;
+  margin-top: 0;
+}
+
+/* Text Responsiveness */
+.banner-title-responsive {
+  font-size: clamp(2.5rem, 8vw, 7rem) !important;
+  line-height: 1.1 !important;
+  margin-bottom: 2rem;
+}
+
+.banner-title-span {
+  display: block !important;
+  padding-left: clamp(1rem, 20vw, 18rem) !important;
+}
+
+/* Special styling for AI Power text */
+.ai-power-text {
+  margin-left: clamp(2rem, 8vw, 8rem) !important;
+  position: relative;
+  display: inline-block !important;
+}
+
+.ai-power-text b {
+  position: relative;
+  z-index: 2;
+}
+
+.banner-subtitle {
+  font-size: clamp(1rem, 1.5vw, 1.5rem) !important;
+  margin-bottom: 1rem;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Image Responsiveness */
+.banner-img-responsive {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 1200px;
+  margin: 2rem auto 0 auto;
+  position: relative;
+}
+
+.banner-img-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.banner-main-image {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 600px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* Responsive Breakpoints */
+
+/* Large Desktop (iMac) */
+@media (min-width: 1400px) {
+  .banner.banner-responsive {
+    padding: 100px 0 100px 0;
+    margin-top: 60px;
+  }
+  
+  .banner-title-responsive {
+    font-size: 7rem !important;
+  }
+  
+  .banner-img-responsive {
+    max-width: 1400px;
+  }
+  
+  .banner-main-image {
+    max-height: 700px;
+  }
+  
+  .ai-power-text {
+    margin-left: 8rem !important;
+  }
+}
+
+/* Desktop/Laptop (1200px - 1399px) */
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .banner.banner-responsive {
+    padding: 80px 0 80px 0;
+    min-height: 90vh;
+    margin-top: 70px;
+  }
+  
+  .banner-title-responsive {
+    font-size: 5.5rem !important;
+  }
+  
+  .banner-img-responsive {
+    max-width: 1000px;
+  }
+  
+  .banner-main-image {
+    max-height: 500px;
+  }
+  
+  .ai-power-text {
+    margin-left: 6rem !important;
+  }
+}
+
+/* Medium Desktop/Laptop (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .banner.banner-responsive {
+    padding: 60px 0 60px 0;
+    min-height: 80vh;
+    margin-top: 60px;
+  }
+  
+  .banner-title-responsive {
+    font-size: 4.5rem !important;
+  }
+  
+  .banner-title-span {
+    padding-left: 12rem !important;
+  }
+  
+  .banner-img-responsive {
+    max-width: 900px;
+  }
+  
+  .banner-main-image {
+    max-height: 450px;
+  }
+  
+  .ai-power-text {
+    margin-left: 5rem !important;
+  }
+}
+
+/* Small Desktop/Large Tablet (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .banner.banner-responsive {
+    padding: 50px 0 50px 0;
+    min-height: 70vh;
+    margin-top: 50px;
+  }
+  
+  .banner-title-responsive {
+    font-size: 3.5rem !important;
+  }
+  
+  .banner-title-span {
+    padding-left: 8rem !important;
+  }
+  
+  .banner-img-responsive {
+    max-width: 700px;
+  }
+  
+  .banner-main-image {
+    max-height: 350px;
+  }
+  
+  .ai-power-text {
+    margin-left: 3rem !important;
+  }
+}
+
+/* Mobile (up to 767px) */
+@media (max-width: 767px) {
+  .banner.banner-responsive {
+    padding: 40px 0 40px 0;
+    min-height: 60vh;
+    margin-top: 30px;
+  }
+  
+  .banner-title-responsive {
+    font-size: 2.5rem !important;
+    text-align: center;
+  }
+  
+  .banner-title-span {
+    display: inline !important;
+    padding-left: 0 !important;
+  }
+  
+  .ai-power-text {
+    margin-left: 1rem !important;
+    display: inline !important;
+  }
+  
+  .banner-subtitle {
+    text-align: center;
+    font-size: 1rem !important;
+  }
+  
+  .banner-img-responsive {
+    margin-top: 1.5rem;
+  }
+  
+  .banner-main-image {
+    max-height: 250px;
+    border-radius: 10px;
+  }
+  
+  .banner-social {
+    display: none !important;
+  }
+}
+
+/* Ultra-wide screens */
+@media (min-width: 1920px) {
+  .banner.banner-responsive {
+    padding: 120px 0 120px 0;
+    margin-top: 50px;
+  }
+  
+  .banner-title-responsive {
+    font-size: 8rem !important;
+  }
+  
+  .banner-img-responsive {
+    max-width: 1600px;
+  }
+  
+  .banner-main-image {
+    max-height: 800px;
+  }
+}
+
+/* Additional fixes for specific laptop resolutions */
+
+/* MacBook Pro 16" (1512x982 effective) */
+@media (min-width: 1440px) and (max-width: 1600px) and (min-height: 900px) and (max-height: 1000px) {
+  .banner.banner-responsive {
+    min-height: 95vh;
+    padding: 90px 0 90px 0;
+    margin-top: 50px;
+  }
+  
+  .banner-title-responsive {
+    font-size: 6rem !important;
+  }
+  
+  .banner-img-responsive {
+    max-width: 1200px;
+  }
+  
+  .banner-main-image {
+    max-height: 550px;
+  }
+}
+
+/* Standard Desktop (1920x1080) */
+@media (min-width: 1900px) and (max-width: 1920px) {
+  .banner.banner-responsive {
+    padding: 110px 0 110px 0;
+    margin-top: 50px;
+  }
+  
+  .banner-title-responsive {
+    font-size: 7.5rem !important;
+  }
+  
+  .banner-img-responsive {
+    max-width: 1500px;
+  }
+  
+  .banner-main-image {
+    max-height: 750px;
+  }
+}
+
+/* Prevent text overflow on smaller laptops */
+@media (min-width: 1024px) and (max-width: 1366px) {
+  .banner-title-span {
+    padding-left: clamp(8rem, 15vw, 15rem) !important;
+  }
+}

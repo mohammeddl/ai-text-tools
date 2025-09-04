@@ -2,10 +2,16 @@
 import CountUp from "react-countup";
 import { useEffect, useRef, useState } from "react";
 
-const Counter = ({ end, decimals, extraClass }) => {
+interface CounterProps {
+  end: number;
+  decimals?: number;
+  extraClass?: string;
+}
+
+const Counter = ({ end, decimals, extraClass }: CounterProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
-  const ref = useRef(null);
+  const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(

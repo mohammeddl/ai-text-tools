@@ -1,8 +1,8 @@
 "use client";
 import { fxotaryUtility } from "@/utility";
 import { Fragment, useEffect } from "react";
-import Cursor from "./Cursor";
-import ScrollTopBtn from "./ScrollTopBtn";
+import Cursor from "@/components/ui/Cursor";
+import ScrollTopBtn from "@/components/ui/ScrollTopBtn";
 
 const ToolsLayout = ({ children }) => {
   useEffect(() => {

@@ -7,7 +7,7 @@ const LanguageToggle = () => {
   const pathname = usePathname();
   const params = useParams();
 
-  const currentLocale = params.locale;
+  const currentLocale = params.locale as string;
 
   const switchLanguage = () => {
     const newLocale = currentLocale === "en" ? "ar" : "en";

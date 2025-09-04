@@ -11,6 +11,8 @@ const ToolsPage = () => {
   const [translationLanguage, setTranslationLanguage] = useState("es");
   const [isTranslating, setIsTranslating] = useState(false);
   const [notifications, setNotifications] = useState<Array<{id: number, message: string, type: 'success' | 'error' | 'info'}>>([]);
+  const [showMoreTools, setShowMoreTools] = useState(false);
+  const [selectedMoreTool, setSelectedMoreTool] = useState<{id: string, icon: string, key: string, isNew?: boolean} | null>(null);
 
   const handleTextTransform = async (type: string) => {
     if (!inputText.trim() && type !== "wordcount") return;
@@ -358,7 +360,7 @@ const ToolsPage = () => {
       {/*===============================
   TOOLS SECTION START
     ===============================*/}
-      <section className='about_us pt_120 xs_pt_70 pb_120 xs_pb_70'>
+      <section className='about_us' style={{ paddingTop: '10px' }}>
         <div className='container'>
           <div className='row'>
             <div className='col-12'>
@@ -377,21 +379,42 @@ const ToolsPage = () => {
 
           {/* Tool Navigation Tabs */}
           <div className='row mb-5'>
-            <div className='col-12'>
+            <div className='col-12' style={{ marginBottom: '20px' }}>
               <div className='text-center'>
-                <div className='d-flex flex-wrap justify-content-center gap-3'>
+                {/* First Line - 4 Basic Tools */}
+                <div className='d-flex justify-content-center align-items-center gap-3 mb-3'>
                   {[
                     { id: "uppercase", icon: "🔠", key: "uppercase" },
                     { id: "lowercase", icon: "🔡", key: "lowercase" },
                     { id: "capitalize", icon: "🔤", key: "capitalize" },
-                    { id: "inverse", icon: "🔀", key: "inverse" },
+                    { id: "inverse", icon: "🔀", key: "inverse" }
+                  ].map((tool) => (
+                    <div key={tool.id} className="position-relative">
+                      <button
+                        type='button'
+                        className={`common_btn ${
+                          activeTab === tool.id ? 'active' : ''
+                        }`}
+                        onClick={() => setActiveTab(tool.id)}
+                        style={{
+                          backgroundColor: activeTab === tool.id ? '#ff6b6b' : 'transparent',
+                          color: activeTab === tool.id ? 'white' : '#919191',
+                          border: '2px solid #ff6b6b',
+                          minWidth: '180px',
+                          position: 'relative'
+                        }}>
+                        {tool.icon} {t(`tools.items.${tool.key}.title`)}
+                      </button>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Second Line - 5 Tools */}
+                <div className='d-flex justify-content-center align-items-center gap-3'>
+                  {[
                     { id: "sentence", icon: "📝", key: "sentence" },
                     { id: "spongebob", icon: "🧽", key: "spongebob", isNew: true },
-                    { id: "randomcase", icon: "🎲", key: "randomcase", isNew: true },
-                    { id: "mockingcase", icon: "😏", key: "mockingcase", isNew: true },
-                    { id: "leetspeak", icon: "💻", key: "leetspeak", isNew: true },
-                    { id: "wordcount", icon: "📊", key: "wordcount", isNew: true },
-                    { id: "translate", icon: "🌐", key: "translate", isNew: true }
+                    { id: "randomcase", icon: "🎲", key: "randomcase", isNew: true }
                   ].map((tool) => (
                     <div key={tool.id} className="position-relative">
                       <button
@@ -427,6 +450,178 @@ const ToolsPage = () => {
                       )}
                     </div>
                   ))}
+                  
+                  {/* Translator Tool */}
+                  <div className="position-relative">
+                    <button
+                      type='button'
+                      className={`common_btn ${
+                        activeTab === "translate" ? 'active' : ''
+                      }`}
+                      onClick={() => setActiveTab("translate")}
+                      style={{
+                        backgroundColor: activeTab === "translate" ? '#ff6b6b' : 'transparent',
+                        color: activeTab === "translate" ? 'white' : '#919191',
+                        border: '2px solid #ff6b6b',
+                        minWidth: '180px',
+                        position: 'relative'
+                      }}>
+                      🌐 Translator
+                    </button>
+                    <span style={{
+                      position: 'absolute',
+                      top: '-8px',
+                      right: '-8px',
+                      background: 'linear-gradient(45deg, #ff6b6b, #4ecdc4)',
+                      color: 'white',
+                      fontSize: '10px',
+                      padding: '2px 6px',
+                      borderRadius: '10px',
+                      fontWeight: 'bold',
+                      animation: 'pulse 2s infinite'
+                    }}>
+                      NEW
+                    </span>
+                  </div>
+                  
+                  {/* More Tools Dropdown */}
+                  <div className="position-relative">
+                    <button
+                      type='button'
+                      className={`common_btn position-relative ${
+                        selectedMoreTool && activeTab === selectedMoreTool.id ? 'active' : ''
+                      }`}
+                      onClick={() => setShowMoreTools(!showMoreTools)}
+                      style={{
+                        backgroundColor: (selectedMoreTool && activeTab === selectedMoreTool.id) ? '#ff6b6b' : 
+                                        showMoreTools ? '#667eea' : 'transparent',
+                        color: (selectedMoreTool && activeTab === selectedMoreTool.id) ? 'white' :
+                               showMoreTools ? 'white' : '#919191',
+                        border: (selectedMoreTool && activeTab === selectedMoreTool.id) ? '2px solid #ff6b6b' : '2px solid #667eea',
+                        minWidth: '180px'
+                      }}>
+                      {selectedMoreTool ? (
+                        <>
+                          {selectedMoreTool.icon} {t(`tools.items.${selectedMoreTool.key}.title`)}
+                          {selectedMoreTool.isNew && (
+                            <span style={{
+                              position: 'absolute',
+                              top: '-8px',
+                              right: '8px',
+                              background: 'linear-gradient(45deg, #ff6b6b, #4ecdc4)',
+                              color: 'white',
+                              fontSize: '10px',
+                              padding: '2px 6px',
+                              borderRadius: '10px',
+                              fontWeight: 'bold',
+                              animation: 'pulse 2s infinite'
+                            }}>
+                              NEW
+                            </span>
+                          )}
+                        </>
+                      ) : (
+                        '🔧 More Tools'
+                      )}
+                      <span style={{ 
+                        marginLeft: '8px', 
+                        transform: showMoreTools ? 'rotate(180deg)' : 'rotate(0deg)',
+                        display: 'inline-block',
+                        transition: 'transform 0.3s ease'
+                      }}>
+                        ▼
+                      </span>
+                    </button>
+                    
+                    {/* Dropdown Menu */}
+                    {showMoreTools && (
+                      <div style={{
+                        position: 'absolute',
+                        top: '100%',
+                        left: '0',
+                        right: '0',
+                        backgroundColor: 'white',
+                        border: '2px solid #667eea',
+                        borderTop: 'none',
+                        borderRadius: '0 0 8px 8px',
+                        boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                        zIndex: 1000,
+                        overflow: 'hidden'
+                      }}>
+                        {(() => {
+                          const moreToolsOptions = [
+                            { id: "mockingcase", icon: "😏", key: "mockingcase", isNew: true },
+                            { id: "leetspeak", icon: "💻", key: "leetspeak", isNew: true }
+                          ];
+                          
+                          // If a tool is selected, show it as "Reset to More Tools" option plus the other tools
+                          const availableOptions = selectedMoreTool 
+                            ? [
+                                { id: "reset", icon: "🔧", key: "reset", isNew: false, isReset: true },
+                                ...moreToolsOptions.filter(tool => tool.id !== selectedMoreTool.id)
+                              ]
+                            : moreToolsOptions;
+                          
+                          return availableOptions.map((tool, index) => (
+                            <button
+                              key={tool.id}
+                              type='button'
+                              className={`w-100 text-left position-relative ${
+                                activeTab === tool.id ? 'active' : ''
+                              }`}
+                              onClick={() => {
+                                if (tool.id === "reset") {
+                                  setSelectedMoreTool(null);
+                                  setActiveTab("uppercase"); // Reset to default tool
+                                } else {
+                                  setActiveTab(tool.id);
+                                  setSelectedMoreTool(tool);
+                                }
+                                setShowMoreTools(false);
+                              }}
+                            style={{
+                              backgroundColor: activeTab === tool.id ? '#667eea' : 'white',
+                              color: activeTab === tool.id ? 'white' : '#333',
+                              border: 'none',
+                              padding: '12px 15px',
+                              fontSize: '14px',
+                              borderBottom: index < 2 ? '1px solid #e0e0e0' : 'none',
+                              cursor: 'pointer',
+                              transition: 'all 0.3s ease'
+                            }}
+                            onMouseEnter={(e) => {
+                              if (activeTab !== tool.id) {
+                                e.currentTarget.style.backgroundColor = '#f8f9fa';
+                              }
+                            }}
+                            onMouseLeave={(e) => {
+                              if (activeTab !== tool.id) {
+                                e.currentTarget.style.backgroundColor = 'white';
+                              }
+                            }}>
+                            <div className="d-flex align-items-center justify-content-between">
+                              <span>
+                                {tool.icon} {tool.isReset ? 'More Tools' : t(`tools.items.${tool.key}.title`)}
+                              </span>
+                              {tool.isNew && (
+                                <span style={{
+                                  background: 'linear-gradient(45deg, #ff6b6b, #4ecdc4)',
+                                  color: 'white',
+                                  fontSize: '9px',
+                                  padding: '2px 5px',
+                                  borderRadius: '8px',
+                                  fontWeight: 'bold'
+                                }}>
+                                  NEW
+                                </span>
+                              )}
+                            </div>
+                          </button>
+                        ));
+                        })()}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>

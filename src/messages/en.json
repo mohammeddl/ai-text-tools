@@ -55,7 +55,7 @@
         "description": "Convert text to proper sentence case format. Only the first letter of each sentence is capitalized."
       },
       "spongebob": {
-        "title": "SpongeBob Mocking Case",
+        "title": "SpongeBob Case",
         "description": "Create the famous SpongeBob mocking text with random alternating uppercase and lowercase letters."
       },
       "randomcase": {
