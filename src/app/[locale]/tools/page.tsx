@@ -378,7 +378,7 @@ const ToolsPage = () => {
           </div>
 
           {/* Tool Navigation Tabs */}
-          <div className='row mb-5'>
+          <div className='row' style={{ marginBottom: '15px' }}>
             <div className='col-12' style={{ marginBottom: '20px' }}>
               <div className='text-center'>
                 {/* First Line - 4 Basic Tools */}
