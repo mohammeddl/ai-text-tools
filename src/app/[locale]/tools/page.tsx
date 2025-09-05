@@ -601,7 +601,7 @@ const ToolsPage = () => {
                             }}>
                             <div className="d-flex align-items-center justify-content-between">
                               <span>
-                                {tool.icon} {(tool as any).isReset ? 'More Tools' : t(`tools.items.${tool.key}.title`)}
+                                {tool.icon} {'isReset' in tool && tool.isReset ? 'More Tools' : t(`tools.items.${tool.key}.title`)}
                               </span>
                               {tool.isNew && (
                                 <span style={{

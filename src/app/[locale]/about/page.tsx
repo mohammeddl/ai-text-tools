@@ -1,13 +1,9 @@
 "use client";
 import FxotaryLayout from "@/layout/FxotaryLayout";
-import Link from "next/link";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { useParams } from "next/navigation";
 
 const AboutPage = () => {
-  const params = useParams();
-  const locale = params.locale as string;
   const t = useTranslations();
 
   return (
