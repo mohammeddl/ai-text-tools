@@ -2,7 +2,6 @@
 export { default as Counter } from './ui/Counter';
 export { default as LanguageToggle } from './ui/LanguageToggle';
 export { default as TextHoverAnimation } from './ui/TextHoverAnimation';
-export { default as AnimatedTitle } from './ui/AnimatedTitle';
 export { default as Cursor } from './ui/Cursor';
 export { default as ScrollTopBtn } from './ui/ScrollTopBtn';
 export { default as ProjectMarquee } from './ui/ProjectMarquee';

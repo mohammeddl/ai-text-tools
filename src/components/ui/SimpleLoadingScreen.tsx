@@ -12,7 +12,7 @@ const SimpleLoadingScreen = ({ onComplete, duration = 3000 }: SimpleLoadingScree
   const [isVisible, setIsVisible] = useState(true);
   const [isClient, setIsClient] = useState(false);
   const [particlePositions, setParticlePositions] = useState<Array<{left: string, duration: string}>>([]);
-  const intervalRef = useRef<NodeJS.Timeout>();
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Ensure client-side only rendering
   useEffect(() => {

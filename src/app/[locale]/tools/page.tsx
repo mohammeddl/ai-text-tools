@@ -12,7 +12,7 @@ const ToolsPage = () => {
   const [isTranslating, setIsTranslating] = useState(false);
   const [notifications, setNotifications] = useState<Array<{id: number, message: string, type: 'success' | 'error' | 'info'}>>([]);
   const [showMoreTools, setShowMoreTools] = useState(false);
-  const [selectedMoreTool, setSelectedMoreTool] = useState<{id: string, icon: string, key: string, isNew?: boolean} | null>(null);
+  const [selectedMoreTool, setSelectedMoreTool] = useState<{id: string, icon: string, key: string, isNew?: boolean, isReset?: boolean} | null>(null);
 
   const handleTextTransform = async (type: string) => {
     if (!inputText.trim() && type !== "wordcount") return;
@@ -601,7 +601,7 @@ const ToolsPage = () => {
                             }}>
                             <div className="d-flex align-items-center justify-content-between">
                               <span>
-                                {tool.icon} {tool.isReset ? 'More Tools' : t(`tools.items.${tool.key}.title`)}
+                                {tool.icon} {(tool as any).isReset ? 'More Tools' : t(`tools.items.${tool.key}.title`)}
                               </span>
                               {tool.isNew && (
                                 <span style={{
