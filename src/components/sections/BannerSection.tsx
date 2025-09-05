@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import "@/styles/banner-responsive.css";
+import TextType from "@/components/ui/TextType";
 
 const BannerSection = () => {
   const t = useTranslations();
@@ -16,10 +17,14 @@ const BannerSection = () => {
             <div className='banner_text banner-text-responsive'>
               <h4 className="banner-subtitle">{t("banner.subtitle")}</h4>
               <h1 className='banner_title banner-title-responsive'>
-                Transform Your Text with{" "}
-                <span className="banner-title-span ai-power-text">
-                  <b>AI Power</b>
-                </span>
+                <TextType 
+                  text={["Welcome to TextCrafter!", "Transform Text with\nAI Power"]}
+                  typingSpeed={75}
+                  pauseDuration={1500}
+                  showCursor={false}
+                  textColors={["#000000"]}
+                  loop={false}
+                />
               </h1>
             </div>
             <div className='banner_img banner-img-responsive'>

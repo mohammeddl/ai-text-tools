@@ -4,7 +4,11 @@
       "Bash(tree:*)",
       "Bash(npm run lint)",
       "Bash(npm run build:*)",
-      "Bash(powershell:*)"
+      "Bash(powershell:*)",
+      "WebFetch(domain:www.reactbits.dev)",
+      "WebSearch",
+      "Bash(npx tsc:*)",
+      "Bash(timeout 90 npm run build)"
     ],
     "deny": [],
     "ask": []

@@ -2113,7 +2113,7 @@ footer::after {
 .banner_2::after {
   position: absolute;
   content: "";
-  background: url(../images/banner_2_shapes.jpg);
+  /* background: url(../images/banner_2_shapes.jpg); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -2127,7 +2127,7 @@ footer::after {
 .banner_2::before {
   position: absolute;
   content: "";
-  background: url(../images/banner_2_shapes_2.jpg);
+  /* background: url(../images/banner_2_shapes_2.jpg); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -3119,7 +3119,7 @@ footer::after {
 .tf__blog_details_text .details_quot_text::after {
   position: absolute;
   content: "";
-  background: url(../images/quot_icon_1.png);
+  /* background: url(../images/quot_icon_1.png); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -3132,7 +3132,7 @@ footer::after {
 .tf__blog_details_text .details_quot_text::before {
   position: absolute;
   content: "";
-  background: url(../images/quot_icon_2.png);
+  /* background: url(../images/quot_icon_2.png); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

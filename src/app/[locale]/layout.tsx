@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import '../../../public/css/fxotary-icon.css';
+import '../../../public/css/responsive.css';
+import '../../../public/css/slick.css';
+import '../../../public/css/spacing.css';
+import '../../../public/css/style.css';
 
 const locales = ['en', 'ar'];
 
@@ -56,12 +61,6 @@ export default async function LocaleLayout({
           referrerPolicy='no-referrer'
         />
 
-        {/* Custom CSS files */}
-        <link rel='stylesheet' href='/css/fxotary-icon.css' />
-        <link rel='stylesheet' href='/css/responsive.css' />
-        <link rel='stylesheet' href='/css/slick.css' />
-        <link rel='stylesheet' href='/css/spacing.css' />
-        <link rel='stylesheet' href='/css/style.css' />
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>

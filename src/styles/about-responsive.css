@@ -154,12 +154,13 @@
 /* Large Desktop (iMac) */
 @media (min-width: 1400px) {
   .about-banner-responsive {
+    
     padding: 100px 0 100px 0;
     margin-top: 60px;
   }
   
   .about-banner-title-responsive {
-    font-size: 7rem !important;
+    font-size: 6rem !important;
   }
   
   .about-main-image {
