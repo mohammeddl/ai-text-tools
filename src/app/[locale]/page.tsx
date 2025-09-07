@@ -11,7 +11,7 @@ import InfiniteMenu from "@/components/sections/InfiniteMenu";
 
 const Page = () => {
   return (
-    <FxotaryLayout errorPage={false}>
+    <FxotaryLayout errorPage={false} showLoading={true} loadingType="advanced">
       <BannerSection />
       <InfiniteMenu/>
       <CircularGalleryWrapper />
