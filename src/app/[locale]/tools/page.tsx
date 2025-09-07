@@ -2,9 +2,12 @@
 import ToolsLayout from "@/layout/ToolsLayout";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+import { useRouter, useParams } from "next/navigation";
 
 const ToolsPage = () => {
   const t = useTranslations();
+  const router = useRouter();
+  const params = useParams();
   const [inputText, setInputText] = useState("");
   const [outputText, setOutputText] = useState("");
   const [activeTab, setActiveTab] = useState("uppercase");
@@ -177,6 +180,11 @@ const ToolsPage = () => {
     setTimeout(() => {
       setNotifications(prev => prev.filter(n => n.id !== id));
     }, 4000);
+  };
+
+  const goBackToHome = () => {
+    const locale = params.locale || 'en';
+    router.push(`/${locale}`);
   };
 
   return (
@@ -364,15 +372,51 @@ const ToolsPage = () => {
         <div className='container'>
           <div className='row'>
             <div className='col-12'>
-              <div className='section_heading text-center mb-5'>
-                <h2 data-text-animation='' data-split='word' data-duration={1} style={{ 
-                  color: '#fff',
-                  fontWeight: '700',
-                  marginBottom: '15px'
-                }}>
-                  {t("nav.tools")} Dashboard
-                </h2>
-                <p style={{ color: '#fff', fontSize: '16px' }}>{t("tools.description")}</p>
+              <div className='section_heading mb-5 position-relative'>
+                {/* Back to Home Button - positioned on the left */}
+                <button
+                  onClick={goBackToHome}
+                  className="d-flex align-items-center position-absolute"
+                  style={{
+                    background: 'transparent',
+                    border: '2px solid #ffffff',
+                    borderRadius: '25px',
+                    color: '#ffffff',
+                    padding: '8px 16px',
+                    fontSize: '14px',
+                    fontWeight: '500',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    textDecoration: 'none',
+                    left: '0',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    zIndex: '10'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = '#ffffff';
+                    e.currentTarget.style.color = '#333333';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                    e.currentTarget.style.color = '#ffffff';
+                  }}
+                >
+                  <span style={{ marginRight: '6px', fontSize: '16px' }}>←</span>
+                  Back to Home
+                </button>
+
+                {/* Centered Title */}
+                <div className="text-center">
+                  <h2 data-text-animation='' data-split='word' data-duration={1} style={{ 
+                    color: '#fff',
+                    fontWeight: '700',
+                    marginBottom: '15px'
+                  }}>
+                    {t("nav.tools")} Dashboard
+                  </h2>
+                  <p style={{ color: '#fff', fontSize: '16px' }}>{t("tools.description")}</p>
+                </div>
               </div>
             </div>
           </div>

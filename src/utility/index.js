@@ -686,10 +686,14 @@ export const fxotaryUtility = {
     var prevScrollpos = window.pageYOffset;
     window.onscroll = function () {
       var currentScrollpos = window.pageYOffset;
-      if (prevScrollpos > currentScrollpos) {
-        document.querySelector(".main_menu").style.top = "0";
-      } else {
-        document.querySelector(".main_menu").style.top = "-100px";
+      var mainMenu = document.querySelector(".main_menu");
+      
+      if (mainMenu) {
+        if (prevScrollpos > currentScrollpos) {
+          mainMenu.style.top = "0";
+        } else {
+          mainMenu.style.top = "-100px";
+        }
       }
 
       prevScrollpos = currentScrollpos;
@@ -707,11 +711,14 @@ export const fxotaryUtility = {
     }
     window.addEventListener("scroll", function () {
       var scrolling = window.pageYOffset || document.documentElement.scrollTop;
+      var scrollBtn = document.querySelector(".tf__scroll_btn");
 
-      if (scrolling > 500) {
-        document.querySelector(".tf__scroll_btn").style.display = "flex";
-      } else {
-        document.querySelector(".tf__scroll_btn").style.display = "none";
+      if (scrollBtn) {
+        if (scrolling > 500) {
+          scrollBtn.style.display = "flex";
+        } else {
+          scrollBtn.style.display = "none";
+        }
       }
     });
   },

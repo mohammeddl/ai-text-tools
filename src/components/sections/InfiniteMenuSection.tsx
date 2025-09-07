@@ -1,5 +1,6 @@
 import { FC, useRef, useState, useEffect, MutableRefObject } from "react";
 import { mat4, quat, vec2, vec3 } from "gl-matrix";
+import { useRouter } from "next/navigation";
 import "../../../public/css/InfiniteMenu.css";
 
 const discVertShaderSource = `#version 300 es
@@ -1243,6 +1244,7 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [] }) => {
   ) as MutableRefObject<HTMLCanvasElement | null>;
   const [activeItem, setActiveItem] = useState<MenuItem | null>(null);
   const [isMoving, setIsMoving] = useState<boolean>(false);
+  const router = useRouter();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -1283,7 +1285,8 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [] }) => {
     if (activeItem.link.startsWith("http")) {
       window.open(activeItem.link, "_blank");
     } else {
-      console.log("Internal route:", activeItem.link);
+      // Navigate to localized tools page
+      router.push("/en/tools");
     }
   };
 
