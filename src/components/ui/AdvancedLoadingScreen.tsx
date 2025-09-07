@@ -7,41 +7,36 @@ interface AdvancedLoadingScreenProps {
   duration?: number;
 }
 
-const AdvancedLoadingScreen = ({ onComplete, duration = 3500 }: AdvancedLoadingScreenProps) => {
+const AdvancedLoadingScreen = ({
+  onComplete,
+  duration = 3500,
+}: AdvancedLoadingScreenProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
-  const [loadingPhase, setLoadingPhase] = useState<'entering' | 'loading' | 'exiting'>('entering');
+  const [loadingPhase, setLoadingPhase] = useState<
+    "entering" | "loading" | "exiting"
+  >("entering");
   const [isClient, setIsClient] = useState(false);
-  const [particleConfig, setParticleConfig] = useState<Array<{
-    left: string;
-    top: string;
-    delay: string;
-    duration: string;
-    size: string;
-  }>>([]);
+  const [textRevealed, setTextRevealed] = useState(false);
 
   // Ensure client-side only rendering
   useEffect(() => {
     setIsClient(true);
-    // Generate particle configurations only on client
-    const configs = Array.from({ length: 25 }, (_, i) => ({
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      delay: `${i * 0.2}s`,
-      duration: `${3 + Math.random() * 4}s`,
-      size: `${2 + Math.random() * 4}px`
-    }));
-    setParticleConfig(configs);
   }, []);
 
   useEffect(() => {
     const startTime = Date.now();
     let animationFrame: number;
 
+    // Start text reveal animation
+    setTimeout(() => {
+      setTextRevealed(true);
+    }, 600);
+
     const animate = () => {
       const elapsed = Date.now() - startTime;
       const newProgress = Math.min((elapsed / duration) * 100, 100);
-      
+
       // Smooth easing for progress
       const easedProgress = easeOutCubic(newProgress / 100) * 100;
       setProgress(easedProgress);
@@ -49,7 +44,7 @@ const AdvancedLoadingScreen = ({ onComplete, duration = 3500 }: AdvancedLoadingS
       if (newProgress < 100) {
         animationFrame = requestAnimationFrame(animate);
       } else {
-        setLoadingPhase('exiting');
+        setLoadingPhase("exiting");
         setTimeout(() => {
           if (onComplete) onComplete();
         }, 1000);
@@ -58,9 +53,9 @@ const AdvancedLoadingScreen = ({ onComplete, duration = 3500 }: AdvancedLoadingS
 
     // Start loading after entrance animation
     setTimeout(() => {
-      setLoadingPhase('loading');
+      setLoadingPhase("loading");
       animationFrame = requestAnimationFrame(animate);
-    }, 800);
+    }, 1200);
 
     return () => {
       if (animationFrame) {
@@ -71,406 +66,353 @@ const AdvancedLoadingScreen = ({ onComplete, duration = 3500 }: AdvancedLoadingS
 
   const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
 
-  return (
-    <div 
-      ref={containerRef}
-      className={`advanced-loading-screen phase-${loadingPhase}`}
-    >
-      {/* Dynamic background with morphing shapes */}
-      <div className="morphing-background">
-        <div className="morph-shape morph-1"></div>
-        <div className="morph-shape morph-2"></div>
-        <div className="morph-shape morph-3"></div>
-        <div className="morph-shape morph-4"></div>
-      </div>
+  if (!isClient) {
+    return null; // Prevent SSR hydration issues
+  }
 
-      {/* Floating particles system */}
-      <div className="particles-system">
-        {isClient && particleConfig.map((particle, i) => (
-          <div 
-            key={i} 
-            className="advanced-particle"
+  return (
+    <div
+      ref={containerRef}
+      className={`neoleaf-loading-screen phase-${loadingPhase}`}>
+      {/* Dynamic background with animated gradient */}
+      <div className='animated-background'></div>
+
+      {/* Subtle particles overlay */}
+      <div className='particles-container'>
+        {Array.from({ length: 15 }, (_, i) => (
+          <div
+            key={i}
+            className='particle'
             style={{
-              '--delay': particle.delay,
-              '--duration': particle.duration,
-              '--size': particle.size,
-              left: particle.left,
-              top: particle.top
-            } as React.CSSProperties}
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${i * 0.3}s`,
+              animationDuration: `${4 + Math.random() * 3}s`,
+            }}
           />
         ))}
       </div>
 
       {/* Main content container */}
-      <div className="loading-main-content">
-        {/* Logo with advanced animations */}
-        <div className="advanced-logo-container">
-          <div className="logo-glow-ring"></div>
-          <div className="logo-wrapper">
+      <div className='content-container'>
+        {/* Logo with enhanced reveal */}
+        <div className='logo-section'>
+          <div className='logo-mask'>
             <Image
-              src="/images/TextCrafterLogoWhite.png"
-              alt="TextCrafter Logo"
-              width={220}
-              height={88}
+              src='/images/TextCrafterLogoWhite.png'
+              alt='TextCrafter Logo'
+              width={240}
+              height={96}
               priority
-              className="advanced-logo"
+              className='main-logo'
             />
           </div>
-          <div className="logo-pulse-ring"></div>
         </div>
 
-        {/* Animated loading text with typewriter effect */}
-        <div className="advanced-loading-text">
-          <span className="typewriter">
-            {loadingPhase === 'loading' ? 'Crafting Amazing Tools' : 'Welcome to TextCrafter'}
-          </span>
-          <div className="cursor-blink">|</div>
-        </div>
+        {/* Enhanced text reveal animation */}
+        <div className='text-reveal-container'>
+          <div className='main-text-wrapper'>
+            <div className={`main-text ${textRevealed ? "revealed" : ""}`}>
+              {"TextCrafter".split("").map((char, index) => (
+                <span
+                  key={index}
+                  className='reveal-char'
+                  style={
+                    {
+                      animationDelay: `${0.8 + index * 0.08}s`,
+                      "--char-index": index,
+                    } as React.CSSProperties
+                  }>
+                  {char}
+                </span>
+              ))}
+            </div>
+            <div className='text-underline'></div>
+          </div>
 
-        {/* Advanced progress system */}
-        <div className="advanced-progress-container">
-          <div className="progress-ring">
-            <svg className="progress-circle" width="120" height="120">
-              <circle
-                className="progress-circle-bg"
-                cx="60"
-                cy="60"
-                r="50"
-                fill="none"
-                stroke="rgba(255, 255, 255, 0.1)"
-                strokeWidth="3"
-              />
-              <circle
-                className="progress-circle-fill"
-                cx="60"
-                cy="60"
-                r="50"
-                fill="none"
-                stroke="url(#progressGradient)"
-                strokeWidth="3"
-                strokeLinecap="round"
-                style={{
-                  strokeDasharray: `${2 * Math.PI * 50}`,
-                  strokeDashoffset: `${2 * Math.PI * 50 * (1 - progress / 100)}`,
-                  transform: 'rotate(-90deg)',
-                  transformOrigin: '60px 60px'
-                }}
-              />
-              <defs>
-                <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#667eea" />
-                  <stop offset="50%" stopColor="#764ba2" />
-                  <stop offset="100%" stopColor="#f093fb" />
-                </linearGradient>
-              </defs>
-            </svg>
-            <div className="progress-percentage">
-              <span className="progress-number">{Math.round(progress)}</span>
-              <span className="progress-symbol">%</span>
+          <div className='loading-indicator'>
+            <span className='loading-text'>loading</span>
+            <div className='dots-container'>
+              <span className='dot dot-1'>.</span>
+              <span className='dot dot-2'>.</span>
+              <span className='dot dot-3'>.</span>
             </div>
           </div>
+        </div>
+      </div>
 
-          {/* Linear progress bar as backup */}
-          <div className="linear-progress">
-            <div 
-              className="linear-progress-fill"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
+      {/* Progress indicator with enhanced styling */}
+      <div className='progress-section'>
+        <div className='progress-percentage'>
+          <span className='percentage-number'>{Math.round(progress)}</span>
+          <span className='percentage-symbol'>%</span>
         </div>
 
-        {/* Loading stages indicator */}
-        <div className="loading-stages">
-          <div className={`stage ${progress > 20 ? 'completed' : progress > 0 ? 'active' : ''}`}>
-            Initializing
-          </div>
-          <div className={`stage ${progress > 60 ? 'completed' : progress > 20 ? 'active' : ''}`}>
-            Loading Assets
-          </div>
-          <div className={`stage ${progress > 90 ? 'completed' : progress > 60 ? 'active' : ''}`}>
-            Finalizing
+        <div className='progress-bar-container'>
+          <div className='progress-bar'>
+            <div className='progress-fill' style={{ width: `${progress}%` }} />
+            <div className='progress-glow' style={{ left: `${progress}%` }} />
           </div>
         </div>
       </div>
 
       <style jsx>{`
-        .advanced-loading-screen {
+        .neoleaf-loading-screen {
           position: fixed;
           top: 0;
           left: 0;
           width: 100vw;
           height: 100vh;
-          background: linear-gradient(135deg, #0f0c29 0%, #24243e 50%, #313862 100%);
+          background: #000000;
           display: flex;
+          flex-direction: column;
           align-items: center;
           justify-content: center;
           z-index: 9999;
           overflow: hidden;
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+          font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+            sans-serif;
+        }
+
+        .animated-background {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: radial-gradient(
+            circle at 50% 50%,
+            rgba(30, 30, 30, 0.8) 0%,
+            rgba(0, 0, 0, 1) 70%
+          );
+          animation: backgroundPulse 6s ease-in-out infinite alternate;
+        }
+
+        .particles-container {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          pointer-events: none;
+        }
+
+        .particle {
+          position: absolute;
+          width: 2px;
+          height: 2px;
+          background: rgba(255, 255, 255, 0.3);
+          border-radius: 50%;
+          animation: particleFloat 6s ease-in-out infinite;
+        }
+
+        .content-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          z-index: 10;
+          position: relative;
         }
 
         .phase-entering {
-          animation: screenEnter 0.8s ease-out;
+          opacity: 0;
+          animation: screenFadeIn 0.8s ease-out forwards;
         }
 
         .phase-exiting {
-          animation: screenExit 1s ease-in-out forwards;
+          animation: screenFadeOut 1s ease-in-out forwards;
         }
 
-        .morphing-background {
+        .logo-section {
+          margin-bottom: 3rem;
+          position: relative;
+        }
+
+        .logo-mask {
+          overflow: hidden;
+          position: relative;
+        }
+
+        .main-logo {
+          opacity: 0;
+          transform: translateY(50px) scale(0.8);
+          animation: logoReveal 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s
+            forwards;
+          filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.1));
+        }
+
+        .text-reveal-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+        }
+
+        .main-text-wrapper {
+          position: relative;
+          margin-bottom: 2rem;
+        }
+
+        .main-text {
+          display: flex;
+          font-size: 4rem;
+          font-weight: 100;
+          letter-spacing: 12px;
+          text-transform: uppercase;
+          color: #ffffff;
+          position: relative;
+        }
+
+        .reveal-char {
+          display: inline-block;
+          opacity: 0;
+          transform: translateY(100px) rotateX(90deg);
+          animation: charDramaticReveal 0.8s
+            cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+          transform-origin: bottom center;
+          position: relative;
+        }
+
+        .reveal-char::after {
+          content: "";
           position: absolute;
           top: 0;
           left: 0;
-          width: 100%;
-          height: 100%;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(
+            180deg,
+            transparent 0%,
+            #000 50%,
+            transparent 100%
+          );
+          opacity: 1;
+          animation: charMaskSlide 0.6s ease-out
+            calc(var(--char-index) * 0.08s + 1.2s) forwards;
         }
 
-        .morph-shape {
+        .text-underline {
           position: absolute;
-          border-radius: 50%;
-          filter: blur(100px);
-          opacity: 0.3;
+          bottom: -10px;
+          left: 0;
+          width: 0;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, #ffffff, transparent);
+          animation: underlineExpand 1.5s ease-out 2s forwards;
         }
 
-        .morph-1 {
-          width: 300px;
-          height: 300px;
-          background: linear-gradient(45deg, #667eea, #764ba2);
-          top: -150px;
-          left: -150px;
-          animation: morphFloat1 8s ease-in-out infinite;
+        .loading-indicator {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          opacity: 0;
+          animation: indicatorFadeIn 0.8s ease-out 2.2s forwards;
         }
 
-        .morph-2 {
-          width: 200px;
-          height: 200px;
-          background: linear-gradient(45deg, #f093fb, #f5576c);
-          top: 20%;
-          right: -100px;
-          animation: morphFloat2 6s ease-in-out infinite;
+        .loading-text {
+          color: rgba(255, 255, 255, 0.7);
+          font-size: 1.1rem;
+          font-weight: 200;
+          letter-spacing: 4px;
+          text-transform: lowercase;
         }
 
-        .morph-3 {
-          width: 250px;
-          height: 250px;
-          background: linear-gradient(45deg, #4facfe, #00f2fe);
-          bottom: -125px;
-          left: 50%;
-          animation: morphFloat3 10s ease-in-out infinite;
+        .dots-container {
+          display: flex;
+          gap: 2px;
         }
 
-        .morph-4 {
-          width: 180px;
-          height: 180px;
-          background: linear-gradient(45deg, #43e97b, #38f9d7);
-          top: 60%;
-          left: 10%;
-          animation: morphFloat4 7s ease-in-out infinite;
+        .dot {
+          color: rgba(255, 255, 255, 0.5);
+          font-size: 1.1rem;
+          animation: dotPulse 1.5s ease-in-out infinite;
         }
 
-        .particles-system {
+        .dot-1 {
+          animation-delay: 0s;
+        }
+        .dot-2 {
+          animation-delay: 0.3s;
+        }
+        .dot-3 {
+          animation-delay: 0.6s;
+        }
+
+        .progress-section {
           position: absolute;
-          width: 100%;
-          height: 100%;
-        }
-
-        .advanced-particle {
-          position: absolute;
-          width: var(--size);
-          height: var(--size);
-          background: linear-gradient(45deg, #667eea, #764ba2);
-          border-radius: 50%;
-          animation: advancedParticleFloat var(--duration) ease-in-out infinite;
-          animation-delay: var(--delay);
-        }
-
-        .loading-main-content {
+          bottom: 0;
+          left: 0;
+          right: 0;
           display: flex;
           flex-direction: column;
-          align-items: center;
+          align-items: flex-start;
+          padding: 2rem 3rem;
           z-index: 10;
-          text-align: center;
-        }
-
-        .advanced-logo-container {
-          position: relative;
-          margin-bottom: 3rem;
-          animation: logoScale 0.8s ease-out 0.3s both;
-        }
-
-        .logo-glow-ring {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          width: 280px;
-          height: 120px;
-          border: 2px solid transparent;
-          border-radius: 50px;
-          background: linear-gradient(45deg, #667eea, #764ba2, #f093fb) border-box;
-          -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-          -webkit-mask-composite: destination-out;
-          animation: ringPulse 2s ease-in-out infinite;
-        }
-
-        .logo-wrapper {
-          position: relative;
-          filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.4));
-        }
-
-        .advanced-logo {
-          width: auto;
-          height: auto;
-          max-width: 220px;
-          max-height: 88px;
-          animation: logoFloat 3s ease-in-out infinite 1s;
-        }
-
-        .logo-pulse-ring {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          width: 300px;
-          height: 130px;
-          border: 1px solid rgba(102, 126, 234, 0.3);
-          border-radius: 65px;
-          animation: pulseRing 3s ease-out infinite;
-        }
-
-        .advanced-loading-text {
-          display: flex;
-          align-items: center;
-          margin-bottom: 3rem;
-          animation: textFadeIn 0.8s ease-out 0.6s both;
-        }
-
-        .typewriter {
-          color: white;
-          font-size: 1.8rem;
-          font-weight: 600;
-          letter-spacing: 0.5px;
-          animation: textGlow 2s ease-in-out infinite alternate;
-        }
-
-        .cursor-blink {
-          color: #667eea;
-          font-size: 1.8rem;
-          font-weight: 300;
-          margin-left: 4px;
-          animation: blink 1s step-end infinite;
-        }
-
-        .advanced-progress-container {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          margin-bottom: 2rem;
-          animation: progressFadeIn 0.8s ease-out 0.9s both;
-        }
-
-        .progress-ring {
-          position: relative;
-          margin-bottom: 2rem;
-        }
-
-        .progress-circle {
-          transform: rotate(-90deg);
-          filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.5));
-        }
-
-        .progress-circle-fill {
-          transition: stroke-dashoffset 0.3s ease;
         }
 
         .progress-percentage {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
           display: flex;
           align-items: baseline;
+          margin-bottom: 1rem;
+          opacity: 0;
+          animation: progressFadeIn 0.8s ease-out 1.5s forwards;
         }
 
-        .progress-number {
-          color: white;
-          font-size: 2rem;
-          font-weight: 700;
+        .percentage-number {
+          font-size: 2.5rem;
+          font-weight: 100;
+          color: #ffffff;
           line-height: 1;
         }
 
-        .progress-symbol {
-          color: rgba(255, 255, 255, 0.7);
+        .percentage-symbol {
           font-size: 1.2rem;
-          font-weight: 400;
-          margin-left: 2px;
+          font-weight: 300;
+          color: rgba(255, 255, 255, 0.7);
+          margin-left: 0.2rem;
         }
 
-        .linear-progress {
-          width: 280px;
-          height: 3px;
-          background: rgba(255, 255, 255, 0.1);
-          border-radius: 1.5px;
+        .progress-bar-container {
+          width: 100%;
+          position: relative;
+        }
+
+        .progress-bar {
+          width: 100%;
+          height: 1px;
+          background: rgba(255, 255, 255, 0.15);
+          position: relative;
           overflow: hidden;
         }
 
-        .linear-progress-fill {
+        .progress-fill {
           height: 100%;
-          background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
-          border-radius: 1.5px;
-          transition: width 0.3s ease;
+          background: #ffffff;
+          transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           position: relative;
         }
 
-        .linear-progress-fill::after {
-          content: '';
+        .progress-glow {
           position: absolute;
-          top: 0;
-          left: 0;
-          height: 100%;
-          width: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-          animation: progressShimmer 1.5s ease-in-out infinite;
-        }
-
-        .loading-stages {
-          display: flex;
-          gap: 2rem;
-          animation: stagesFadeIn 0.8s ease-out 1.2s both;
-        }
-
-        .stage {
-          color: rgba(255, 255, 255, 0.4);
-          font-size: 0.9rem;
-          font-weight: 500;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          transition: all 0.3s ease;
-          position: relative;
-        }
-
-        .stage.active {
-          color: #667eea;
-          text-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
-        }
-
-        .stage.completed {
-          color: #43e97b;
-          text-shadow: 0 0 10px rgba(67, 233, 123, 0.5);
-        }
-
-        .stage.completed::after {
-          content: '✓';
-          position: absolute;
-          right: -15px;
-          top: 0;
+          top: -2px;
+          width: 4px;
+          height: 5px;
+          background: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.8) 0%,
+            transparent 70%
+          );
+          transform: translateX(-50%);
+          transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         /* Animations */
-        @keyframes screenEnter {
+        @keyframes screenFadeIn {
           from {
             opacity: 0;
-            transform: scale(1.1);
+            transform: scale(1.05);
           }
           to {
             opacity: 1;
@@ -478,140 +420,152 @@ const AdvancedLoadingScreen = ({ onComplete, duration = 3500 }: AdvancedLoadingS
           }
         }
 
-        @keyframes screenExit {
+        @keyframes screenFadeOut {
           to {
             opacity: 0;
             transform: scale(0.95);
           }
         }
 
-        @keyframes morphFloat1 {
-          0%, 100% { transform: translate(0, 0) rotate(0deg); }
-          25% { transform: translate(20px, -30px) rotate(90deg); }
-          50% { transform: translate(-10px, -20px) rotate(180deg); }
-          75% { transform: translate(-30px, 10px) rotate(270deg); }
+        @keyframes backgroundPulse {
+          0% {
+            transform: scale(1);
+          }
+          100% {
+            transform: scale(1.02);
+          }
         }
 
-        @keyframes morphFloat2 {
-          0%, 100% { transform: translate(0, 0) rotate(0deg); }
-          33% { transform: translate(-25px, 20px) rotate(120deg); }
-          66% { transform: translate(15px, -25px) rotate(240deg); }
-        }
-
-        @keyframes morphFloat3 {
-          0%, 100% { transform: translate(-50%, 0) rotate(0deg); }
-          50% { transform: translate(-50%, -20px) rotate(180deg); }
-        }
-
-        @keyframes morphFloat4 {
-          0%, 100% { transform: translate(0, 0) rotate(0deg); }
-          50% { transform: translate(25px, -15px) rotate(180deg); }
-        }
-
-        @keyframes advancedParticleFloat {
-          0%, 100% {
-            opacity: 0;
-            transform: translateY(0) scale(0);
+        @keyframes particleFloat {
+          0%,
+          100% {
+            transform: translateY(0) translateX(0);
+            opacity: 0.3;
           }
           50% {
-            opacity: 1;
-            transform: translateY(-30px) scale(1);
+            transform: translateY(-20px) translateX(10px);
+            opacity: 0.8;
           }
         }
 
-        @keyframes logoScale {
-          from {
+        @keyframes logoReveal {
+          0% {
             opacity: 0;
-            transform: scale(0.3) rotate(-180deg);
+            transform: translateY(50px) scale(0.8);
           }
-          to {
+          100% {
             opacity: 1;
-            transform: scale(1) rotate(0deg);
+            transform: translateY(0) scale(1);
           }
         }
 
-        @keyframes logoFloat {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-8px); }
+        @keyframes charDramaticReveal {
+          0% {
+            opacity: 0;
+            transform: translateY(100px) rotateX(90deg);
+          }
+          50% {
+            opacity: 0.8;
+            transform: translateY(-10px) rotateX(0deg);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0) rotateX(0deg);
+          }
         }
 
-        @keyframes ringPulse {
-          0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
-          50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
+        @keyframes charMaskSlide {
+          0% {
+            opacity: 1;
+          }
+          100% {
+            opacity: 0;
+          }
         }
 
-        @keyframes pulseRing {
-          0% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
-          50% { opacity: 0; transform: translate(-50%, -50%) scale(1.3); }
-          100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+        @keyframes underlineExpand {
+          0% {
+            width: 0;
+          }
+          100% {
+            width: 100%;
+          }
         }
 
-        @keyframes textFadeIn {
-          from {
+        @keyframes indicatorFadeIn {
+          0% {
             opacity: 0;
             transform: translateY(20px);
           }
-          to {
+          100% {
             opacity: 1;
             transform: translateY(0);
           }
         }
 
-        @keyframes textGlow {
-          from { text-shadow: 0 0 5px rgba(102, 126, 234, 0.5); }
-          to { text-shadow: 0 0 20px rgba(102, 126, 234, 0.9), 0 0 30px rgba(102, 126, 234, 0.5); }
-        }
-
-        @keyframes blink {
-          0%, 50% { opacity: 1; }
-          51%, 100% { opacity: 0; }
+        @keyframes dotPulse {
+          0%,
+          60%,
+          100% {
+            opacity: 0.3;
+            transform: scale(1);
+          }
+          30% {
+            opacity: 1;
+            transform: scale(1.2);
+          }
         }
 
         @keyframes progressFadeIn {
-          from {
+          0% {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateX(-20px);
           }
-          to {
+          100% {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateX(0);
           }
         }
 
-        @keyframes progressShimmer {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
-        }
-
-        @keyframes stagesFadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
+        /* Responsive Design */
         @media (max-width: 768px) {
-          .advanced-logo {
-            max-width: 180px;
-            max-height: 72px;
+          .main-logo {
+            width: 180px;
+            height: 72px;
           }
-          
-          .typewriter {
-            font-size: 1.4rem;
+
+          .main-text {
+            font-size: 2.8rem;
+            letter-spacing: 8px;
           }
-          
-          .loading-stages {
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
+
+          .loading-text {
+            font-size: 1rem;
+            letter-spacing: 3px;
           }
-          
-          .linear-progress {
-            width: 240px;
+
+          .percentage-number {
+            font-size: 2rem;
+          }
+
+          .progress-section {
+            padding: 1.5rem 2rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .main-text {
+            font-size: 2.2rem;
+            letter-spacing: 6px;
+          }
+
+          .logo-section {
+            margin-bottom: 2rem;
+          }
+
+          .main-logo {
+            width: 160px;
+            height: 64px;
           }
         }
       `}</style>
