@@ -4,27 +4,33 @@ import InfiniteMenuCore from './InfiniteMenuSection';
 const items = [
   {
     image: '/images/translate.png',
-    link: 'https://google.com/',
-    title: 'Tool 1 ',
-    description: 'AI Translation '
+    link: '/tools',
+    title: 'AI Translation',
+    description: 'Translate text between multiple languages instantly with advanced AI technology'
   },
   {
     image: '/images/reverse.png',
-    link: 'https://google.com/',
-    title: 'Tool 2',
-    description: 'Inverse Case'
+    link: '/tools',
+    title: 'Text Case Converter',
+    description: 'Transform text between uppercase, lowercase, and title case formats'
   },
   {
-    image: 'https://picsum.photos/500/500?grayscale',
-    link: 'https://google.com/',
-    title: 'Item 3',
-    description: 'This is pretty cool, right?'
+    image: '/images/grammar.png',
+    link: '/tools',
+    title: 'Grammar Checker',
+    description: 'Detect and fix grammar errors, improve writing style and clarity'
   },
   {
-    image: 'https://picsum.photos/600/600?grayscale',
-    link: 'https://google.com/',
-    title: 'Item 4',
-    description: 'This is pretty cool, right?'
+    image: '/images/textProcessing.png',
+    link: '/tools',
+    title: 'Text Processor',
+    description: 'Advanced text manipulation and formatting tools for all your needs'
+  },
+  {
+    image: '/images/UpperSmaller.png',
+    link: '/tools',
+    title: 'Case Transformer',
+    description: 'Intelligent text case conversion with multiple formatting options'
   }
 ];
 

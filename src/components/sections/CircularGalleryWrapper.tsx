@@ -7,27 +7,27 @@ const CircularGalleryWrapper = () => {
   // Gallery items using your existing project images
   const galleryItems = [
     {
-      image: "/images/project_img_1.png",
+      image: "/images/TransformationCirular.png",
       text: "Text Transformation",
     },
     {
-      image: "/images/project_img_2.png",
+      image: "/images/translatecirular.png",
       text: "AI Translation",
     },
     {
-      image: "/images/blog_1.png",
+      image: "/images/ContentCirular.png",
       text: "Content Generation",
     },
     {
-      image: "/images/blog_2.png",
+      image: "/images/TextCirular.png",
       text: "Text Analysis",
     },
     {
-      image: "/images/blog_3.png",
+      image: "/images/GrammarCirular.png",
       text: "Grammar Check",
     },
     {
-      image: "/images/about_img_1.png",
+      image: "/images/SummarizationCirular.png",
       text: "Summarization",
     },
   ];
