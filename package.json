@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "docker:build": "docker build -t ai-text-tools .",
+    "docker:run": "docker run -p 3000:3000 ai-text-tools",
+    "docker:dev": "docker-compose -f docker-compose.yml run --rm --service-ports dev"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
