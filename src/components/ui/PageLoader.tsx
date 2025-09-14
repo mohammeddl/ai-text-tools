@@ -9,18 +9,36 @@ const SimpleLoadingScreen = dynamic(() => import("@/components/ui/SimpleLoadingS
 const AdvancedLoadingScreen = dynamic(() => import("@/components/ui/AdvancedLoadingScreen"), {
   ssr: false
 });
+const ModernLoadingScreen = dynamic(() => import("@/components/ui/ModernLoadingScreen"), {
+  ssr: false
+});
+const StunningLoadingScreen = dynamic(() => import("@/components/ui/StunningLoadingScreen"), {
+  ssr: false
+});
+const InteractiveLoadingScreen = dynamic(() => import("@/components/ui/InteractiveLoadingScreen"), {
+  ssr: false
+});
+const MinimalLoadingScreen = dynamic(() => import("@/components/ui/MinimalLoadingScreen"), {
+  ssr: false
+});
+const ElegantLoadingScreen = dynamic(() => import("@/components/ui/ElegantLoadingScreen"), {
+  ssr: false
+});
+const AnimatedLoadingScreen = dynamic(() => import("@/components/ui/AnimatedLoadingScreen"), {
+  ssr: false
+});
 
 interface PageLoaderProps {
   children: ReactNode;
-  loadingType?: 'simple' | 'advanced';
+  loadingType?: 'simple' | 'advanced' | 'modern' | 'stunning' | 'interactive' | 'minimal' | 'elegant' | 'animated';
   duration?: number;
   enabled?: boolean;
 }
 
 const PageLoader = ({ 
   children, 
-  loadingType = 'advanced', 
-  duration = 3500,
+  loadingType = 'animated', 
+  duration = 4000,
   enabled = true 
 }: PageLoaderProps) => {
   const [isLoading, setIsLoading] = useState(enabled);
@@ -53,6 +71,36 @@ const PageLoader = ({
       {isLoading && (
         loadingType === 'simple' ? (
           <SimpleLoadingScreen 
+            onComplete={handleLoadingComplete}
+            duration={duration}
+          />
+        ) : loadingType === 'modern' ? (
+          <ModernLoadingScreen 
+            onComplete={handleLoadingComplete}
+            duration={duration}
+          />
+        ) : loadingType === 'stunning' ? (
+          <StunningLoadingScreen 
+            onComplete={handleLoadingComplete}
+            duration={duration}
+          />
+        ) : loadingType === 'interactive' ? (
+          <InteractiveLoadingScreen 
+            onComplete={handleLoadingComplete}
+            duration={duration}
+          />
+        ) : loadingType === 'minimal' ? (
+          <MinimalLoadingScreen 
+            onComplete={handleLoadingComplete}
+            duration={duration}
+          />
+        ) : loadingType === 'elegant' ? (
+          <ElegantLoadingScreen 
+            onComplete={handleLoadingComplete}
+            duration={duration}
+          />
+        ) : loadingType === 'animated' ? (
+          <AnimatedLoadingScreen 
             onComplete={handleLoadingComplete}
             duration={duration}
           />

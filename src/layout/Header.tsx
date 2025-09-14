@@ -61,53 +61,63 @@ const Header = () => {
           </div>
         </div>
         
-        {/* Rest of your header code... */}
-        <div className="mobile-menu d-xl-none main_menu d-flex">
-          <div className="container-fluid d-flex justify-content-between">
+        {/* Mobile Navigation */}
+        <div className="main_menu d-xl-none">
+          <div className="container-fluid">
             <div className="d-flex align-items-center justify-content-between w-100">
-              <div className="navbar-brand ms-3">
-                <Link href="index">
-                  <Image
-                    src="/images/logo.png"
-                    alt="Fxotary"
-                    width={120}
-                    height={40}
-                    className="img-fluid w-100"
-                  />
-                </Link>
-              </div>
-              <div className="text-end me-3">
-                <a
-                  className="menu-bar navbar-toggler"
-                  href="javascript:void(0)"
-                >
-                  <i className="fa-solid fa-bars" />
-                </a>
+              <Link href={`/${currentLocale}`} className="navbar-brand">
+                <Image
+                  src="/images/TextCrafterLogo.png"
+                  alt="TextCrafter"
+                  width={140}
+                  height={50}
+                  className="img-fluid"
+                />
+              </Link>
+              <button
+                className={`navbar-toggler ${toggle ? 'show' : ''}`}
+                type="button"
+                onClick={() => setToggle(!toggle)}
+                aria-expanded={toggle}
+                aria-label="Toggle navigation"
+              >
+                <i className={`menu_bar_icon fas ${toggle ? 'fa-times' : 'fa-bars'}`} />
+              </button>
+            </div>
+            
+            <div className={`collapse navbar-collapse ${toggle ? 'show' : ''}`} id="navbarNav">
+              <div className="main-menu-mobile">
+                <nav className="navbar-nav">
+                  <ul>
+                    <li className="nav-item">
+                      <Link href={`/${currentLocale}`} className="nav-link text_hover_animaiton" onClick={() => setToggle(false)}>
+                        <TextHoverAnimation text={t("nav.home")} />
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link href={`/${currentLocale}/tools`} className="nav-link text_hover_animaiton" onClick={() => setToggle(false)}>
+                        <TextHoverAnimation text={t("nav.tools")} />
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link href={`/${currentLocale}/about`} className="nav-link text_hover_animaiton" onClick={() => setToggle(false)}>
+                        <TextHoverAnimation text={t("nav.about")} />
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link href={`/${currentLocale}/contact`} className="nav-link text_hover_animaiton" onClick={() => setToggle(false)}>
+                        <TextHoverAnimation text={t("nav.contact")} />
+                      </Link>
+                    </li>
+                  </ul>
+                  <div className="right_menu">
+                    <Link href={`/${currentLocale}/tools`} className="common_btn" onClick={() => setToggle(false)}>
+                      Get Started Now
+                    </Link>
+                  </div>
+                </nav>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="mobile_menu_container">
-          <div className="mobile_menu_content">
-            <div className="d-flex align-items-center justify-content-between">
-              <div className="navbar-brand">
-                <Link href="index">
-                  <Image
-                    src="/images/logo.png"
-                    alt="Fxotary"
-                    width={120}
-                    height={40}
-                    className="img-fluid w-100"
-                  />
-                </Link>
-              </div>
-              <div className="close_btn">
-                <button>
-                  <i className="fal fa-times" />
-                </button>
-              </div>
-            </div>
-            <div className="main-menu-mobile" />
           </div>
         </div>
       </header>
