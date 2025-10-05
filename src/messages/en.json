@@ -81,6 +81,22 @@
       "download": {
         "title": "Download Text",
         "description": "Save your converted text as a file. Export to TXT, DOC, or other formats for easy sharing."
+      },
+      "qrcode": {
+        "title": "QR Code Generator",
+        "description": "Create beautiful customizable QR codes from any text or URL with multiple styles and colors."
+      },
+      "texttospeech": {
+        "title": "Text to Speech",
+        "description": "Convert your text to natural speech with adjustable speed and pitch. Listen to your content read aloud."
+      },
+      "summarizer": {
+        "title": "Text Summarizer",
+        "description": "Automatically summarize long text into key points. Extract the most important sentences from your content."
+      },
+      "regextester": {
+        "title": "Regex Tester",
+        "description": "Test regular expressions with live results. Find and match patterns in your text with regex flags support."
       }
     }
   },
@@ -239,5 +255,50 @@
   "cta": {
     "title": "Ready to Transform Your Text?",
     "button": "Get Started Now"
+  },
+  "qrGenerator": {
+    "title": "QR Code Generator",
+    "description": "Create beautiful QR codes instantly with custom styles and colors",
+    "inputSection": {
+      "title": "Enter Your Content",
+      "label": "Text or URL",
+      "placeholder": "Enter URL, text, or any content you want to convert to QR code..."
+    },
+    "styles": {
+      "title": "Choose QR Style",
+      "classic": "Classic",
+      "rounded": "Rounded",
+      "dots": "Dots"
+    },
+    "colors": {
+      "qrColor": "QR Color",
+      "bgColor": "Background"
+    },
+    "buttons": {
+      "generate": "Generate QR Code",
+      "reset": "Reset",
+      "download": "Download QR Code"
+    },
+    "preview": {
+      "title": "Your QR Code",
+      "empty": "No QR Code Yet",
+      "instruction": "Enter content and click Generate",
+      "style": "Style",
+      "content": "Content"
+    },
+    "features": {
+      "instant": {
+        "title": "Instant Generation",
+        "description": "Generate QR codes instantly without any delays or processing time"
+      },
+      "customizable": {
+        "title": "Fully Customizable",
+        "description": "Choose from 3 styles and customize colors to match your brand"
+      },
+      "secure": {
+        "title": "100% Secure",
+        "description": "All processing happens locally in your browser. No data is sent to servers"
+      }
+    }
   }
 }

@@ -1,8 +1,10 @@
 "use client";
 import ToolsLayout from "@/layout/ToolsLayout";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useRouter, useParams } from "next/navigation";
+import { QRCodeSVG } from "qrcode.react";
+import "@/styles/tools-mobile.css";
 
 const ToolsPage = () => {
   const t = useTranslations();
@@ -16,6 +18,22 @@ const ToolsPage = () => {
   const [notifications, setNotifications] = useState<Array<{id: number, message: string, type: 'success' | 'error' | 'info'}>>([]);
   const [showMoreTools, setShowMoreTools] = useState(false);
   const [selectedMoreTool, setSelectedMoreTool] = useState<{id: string, icon: string, key: string, isNew?: boolean, isReset?: boolean} | null>(null);
+
+  // QR Code states
+  const [qrStyle, setQRStyle] = useState<"classic" | "rounded" | "dots">("classic");
+  const [qrColor, setQRColor] = useState("#000000");
+  const [bgColor, setBgColor] = useState("#ffffff");
+  const qrRef = useRef<HTMLDivElement>(null);
+
+  // Text to Speech states
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [speechRate, setSpeechRate] = useState(1);
+  const [speechPitch, setSpeechPitch] = useState(1);
+
+  // Regex Tester states
+  const [regexPattern, setRegexPattern] = useState("");
+  const [regexFlags, setRegexFlags] = useState("g");
+  const [regexMatches, setRegexMatches] = useState<RegExpMatchArray | null>(null);
 
   const handleTextTransform = async (type: string) => {
     if (!inputText.trim() && type !== "wordcount") return;
@@ -135,6 +153,24 @@ const ToolsPage = () => {
           setIsTranslating(false);
         }
         break;
+      case "texttospeech":
+        // Text to Speech is handled separately
+        return;
+      case "regextester":
+        // Regex Tester is handled separately
+        return;
+      case "summarizer":
+        // Simple extractive summarization (first 3 sentences)
+        const textSentences = inputText.match(/[^.!?]+[.!?]+/g) || [];
+        if (textSentences.length <= 3) {
+          result = inputText;
+          showNotification('ℹ️ Text is already short enough!', 'info');
+        } else {
+          // Take first 3 sentences for summary
+          result = textSentences.slice(0, 3).join(' ').trim();
+          showNotification(`📝 Summarized from ${textSentences.length} to 3 sentences!`, 'success');
+        }
+        break;
       default:
         result = inputText;
     }
@@ -148,7 +184,7 @@ const ToolsPage = () => {
 
   const downloadText = () => {
     if (!outputText) return;
-    
+
     try {
       const blob = new Blob([outputText], { type: 'text/plain' });
       const url = URL.createObjectURL(blob);
@@ -162,6 +198,42 @@ const ToolsPage = () => {
       showNotification('💾 File downloaded successfully!', 'success');
     } catch {
       showNotification('❌ Failed to download file', 'error');
+    }
+  };
+
+  const downloadQRCode = () => {
+    const svg = qrRef.current?.querySelector("svg");
+    if (!svg) return;
+
+    const svgData = new XMLSerializer().serializeToString(svg);
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    const img = new Image();
+
+    img.onload = () => {
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx?.drawImage(img, 0, 0);
+      const pngFile = canvas.toDataURL("image/png");
+
+      const downloadLink = document.createElement("a");
+      downloadLink.download = `qr-code-${Date.now()}.png`;
+      downloadLink.href = pngFile;
+      downloadLink.click();
+      showNotification('💾 QR Code downloaded successfully!', 'success');
+    };
+
+    img.src = "data:image/svg+xml;base64," + btoa(svgData);
+  };
+
+  const getQRLevel = (style: "classic" | "rounded" | "dots"): "L" | "M" | "Q" | "H" => {
+    switch (style) {
+      case "dots":
+        return "H";
+      case "rounded":
+        return "Q";
+      default:
+        return "M";
     }
   };
 
@@ -185,6 +257,84 @@ const ToolsPage = () => {
   const goBackToHome = () => {
     const locale = params.locale || 'en';
     router.push(`/${locale}`);
+  };
+
+  const handleTextToSpeech = () => {
+    if (!inputText.trim()) {
+      showNotification('❌ Please enter some text to speak', 'error');
+      return;
+    }
+
+    if (isSpeaking) {
+      // Stop speaking
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+      showNotification('⏹️ Speech stopped', 'info');
+      return;
+    }
+
+    // Check if browser supports Speech Synthesis
+    if (!('speechSynthesis' in window)) {
+      showNotification('❌ Text-to-Speech is not supported in your browser', 'error');
+      return;
+    }
+
+    const utterance = new SpeechSynthesisUtterance(inputText);
+    utterance.rate = speechRate;
+    utterance.pitch = speechPitch;
+
+    utterance.onstart = () => {
+      setIsSpeaking(true);
+      showNotification('🔊 Speaking...', 'info');
+    };
+
+    utterance.onend = () => {
+      setIsSpeaking(false);
+      showNotification('✅ Speech completed!', 'success');
+    };
+
+    utterance.onerror = () => {
+      setIsSpeaking(false);
+      showNotification('❌ Speech error occurred', 'error');
+    };
+
+    window.speechSynthesis.speak(utterance);
+  };
+
+  const handleRegexTest = () => {
+    if (!inputText.trim()) {
+      showNotification('❌ Please enter some text to test', 'error');
+      setRegexMatches(null);
+      setOutputText('');
+      return;
+    }
+
+    if (!regexPattern.trim()) {
+      showNotification('❌ Please enter a regex pattern', 'error');
+      setRegexMatches(null);
+      setOutputText('');
+      return;
+    }
+
+    try {
+      const regex = new RegExp(regexPattern, regexFlags);
+      const matches = inputText.match(regex);
+
+      setRegexMatches(matches);
+
+      if (matches && matches.length > 0) {
+        const result = `✅ Found ${matches.length} match${matches.length > 1 ? 'es' : ''}:\n\n${matches.map((m, i) => `${i + 1}. "${m}"`).join('\n')}`;
+        setOutputText(result);
+        showNotification(`✅ Found ${matches.length} match${matches.length > 1 ? 'es' : ''}!`, 'success');
+      } else {
+        setOutputText('❌ No matches found');
+        showNotification('ℹ️ No matches found', 'info');
+      }
+    } catch (error) {
+      setRegexMatches(null);
+      setOutputText(`❌ Invalid regex pattern\n\nError: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      showNotification('❌ Invalid regex pattern', 'error');
+    }
   };
 
   return (
@@ -373,10 +523,10 @@ const ToolsPage = () => {
           <div className='row'>
             <div className='col-12'>
               <div className='section_heading mb-5 position-relative'>
-                {/* Back to Home Button - positioned on the left */}
+                {/* Back to Home Button - positioned on the left - Hidden on mobile */}
                 <button
                   onClick={goBackToHome}
-                  className="d-flex align-items-center position-absolute"
+                  className="back-home-btn d-flex align-items-center position-absolute d-none d-md-flex"
                   style={{
                     background: 'transparent',
                     border: '2px solid #ffffff',
@@ -429,8 +579,8 @@ const ToolsPage = () => {
                 <div className='d-flex justify-content-center align-items-center gap-3 mb-3'>
                   {[
                     { id: "uppercase", icon: "🔠", key: "uppercase" },
+                    { id: "qrcode", icon: "📱", key: "qrcode", isNew: true },
                     { id: "lowercase", icon: "🔡", key: "lowercase" },
-                    { id: "capitalize", icon: "🔤", key: "capitalize" },
                     { id: "inverse", icon: "🔀", key: "inverse" }
                   ].map((tool) => (
                     <div key={tool.id} className="position-relative">
@@ -449,6 +599,24 @@ const ToolsPage = () => {
                         }}>
                         {tool.icon} {t(`tools.items.${tool.key}.title`)}
                       </button>
+                      {tool.isNew && (
+                        <span style={{
+                          position: 'absolute',
+                          top: '-8px',
+                          right: '-8px',
+                          background: tool.id === 'qrcode'
+                            ? 'linear-gradient(45deg, #FFD700, #FFA500)'
+                            : 'linear-gradient(45deg, #ff6b6b, #4ecdc4)',
+                          color: 'white',
+                          fontSize: '10px',
+                          padding: '2px 6px',
+                          borderRadius: '10px',
+                          fontWeight: 'bold',
+                          animation: 'pulse 2s infinite'
+                        }}>
+                          {tool.id === 'qrcode' ? 'BEST' : 'NEW'}
+                        </span>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -594,8 +762,13 @@ const ToolsPage = () => {
                       }}>
                         {(() => {
                           const moreToolsOptions = [
+                            { id: "regextester", icon: "🔍", key: "regextester", isNew: true },
+                            { id: "texttospeech", icon: "🔊", key: "texttospeech", isNew: true },
+                            { id: "summarizer", icon: "📝", key: "summarizer", isNew: true },
+                            { id: "capitalize", icon: "🔤", key: "capitalize" },
                             { id: "mockingcase", icon: "😏", key: "mockingcase", isNew: true },
-                            { id: "leetspeak", icon: "💻", key: "leetspeak", isNew: true }
+                            { id: "leetspeak", icon: "💻", key: "leetspeak", isNew: true },
+                            { id: "wordcount", icon: "📊", key: "wordcount" }
                           ];
                           
                           // If a tool is selected, show it as "Reset to More Tools" option plus the other tools
@@ -629,7 +802,7 @@ const ToolsPage = () => {
                               border: 'none',
                               padding: '12px 15px',
                               fontSize: '14px',
-                              borderBottom: index < 2 ? '1px solid #e0e0e0' : 'none',
+                              borderBottom: index < availableOptions.length - 1 ? '1px solid #e0e0e0' : 'none',
                               cursor: 'pointer',
                               transition: 'all 0.3s ease'
                             }}
@@ -671,8 +844,183 @@ const ToolsPage = () => {
             </div>
           </div>
 
-          {/* Text Input/Output Area */}
-          <div className='row'>
+          {/* Text Input/Output Area or QR Code UI */}
+          {activeTab === 'qrcode' ? (
+            /* QR Code Generator UI */
+            <div className='row'>
+              <div className='col-lg-6 mb-4'>
+                <div className='card' style={{ border: '2px solid #f0f0f0', borderRadius: '10px', height: '100%' }}>
+                  <div className='card-header' style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #e9ecef' }}>
+                    <h5 className='mb-0'>📱 QR Code Settings</h5>
+                  </div>
+                  <div className='card-body'>
+                    {/* Text Input */}
+                    <div className='mb-3'>
+                      <label style={{ fontWeight: '600', marginBottom: '8px', display: 'block' }}>
+                        Enter Text or URL
+                      </label>
+                      <textarea
+                        className='form-control'
+                        placeholder="Enter URL, text, or any content to convert to QR code..."
+                        value={inputText}
+                        onChange={(e) => setInputText(e.target.value)}
+                        rows={3}
+                        style={{
+                          border: '1px solid #ddd',
+                          borderRadius: '8px',
+                          padding: '12px',
+                          fontSize: '14px'
+                        }}
+                      />
+                    </div>
+
+                    {/* Style Selection */}
+                    <div className='mb-3'>
+                      <label style={{ fontWeight: '600', marginBottom: '8px', display: 'block' }}>
+                        QR Code Style
+                      </label>
+                      <div className='d-flex gap-2'>
+                        {(["classic", "rounded", "dots"] as const).map((style) => (
+                          <button
+                            key={style}
+                            onClick={() => setQRStyle(style)}
+                            style={{
+                              flex: 1,
+                              padding: '10px',
+                              border: '2px solid',
+                              borderColor: qrStyle === style ? '#2c7365' : '#ddd',
+                              borderRadius: '8px',
+                              background: qrStyle === style ? '#2c7365' : 'white',
+                              color: qrStyle === style ? 'white' : '#333',
+                              fontWeight: '600',
+                              cursor: 'pointer',
+                              transition: 'all 0.3s'
+                            }}
+                          >
+                            {style.charAt(0).toUpperCase() + style.slice(1)}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Color Pickers */}
+                    <div className='row mb-3'>
+                      <div className='col-6'>
+                        <label style={{ fontWeight: '600', marginBottom: '8px', display: 'block' }}>
+                          QR Color
+                        </label>
+                        <div className='d-flex align-items-center gap-2'>
+                          <input
+                            type='color'
+                            value={qrColor}
+                            onChange={(e) => setQRColor(e.target.value)}
+                            style={{
+                              width: '50px',
+                              height: '40px',
+                              border: '2px solid #ddd',
+                              borderRadius: '8px',
+                              cursor: 'pointer'
+                            }}
+                          />
+                          <span style={{ fontSize: '13px', color: '#666' }}>{qrColor}</span>
+                        </div>
+                      </div>
+                      <div className='col-6'>
+                        <label style={{ fontWeight: '600', marginBottom: '8px', display: 'block' }}>
+                          Background
+                        </label>
+                        <div className='d-flex align-items-center gap-2'>
+                          <input
+                            type='color'
+                            value={bgColor}
+                            onChange={(e) => setBgColor(e.target.value)}
+                            style={{
+                              width: '50px',
+                              height: '40px',
+                              border: '2px solid #ddd',
+                              borderRadius: '8px',
+                              cursor: 'pointer'
+                            }}
+                          />
+                          <span style={{ fontSize: '13px', color: '#666' }}>{bgColor}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className='text-center mt-4'>
+                      <button
+                        className='common_btn input-output-btn'
+                        onClick={() => {
+                          if (inputText.trim()) {
+                            setOutputText(inputText);
+                            showNotification('✅ QR Code generated successfully!', 'success');
+                          }
+                        }}
+                        disabled={!inputText.trim()}
+                        style={{ width: '100%' }}
+                      >
+                        📱 Generate QR Code
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className='col-lg-6 mb-4'>
+                <div className='card' style={{ border: '2px solid #f0f0f0', borderRadius: '10px', height: '100%' }}>
+                  <div className='card-header' style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #e9ecef' }}>
+                    <h5 className='mb-0'>QR Code Preview</h5>
+                  </div>
+                  <div className='card-body d-flex flex-column align-items-center justify-content-center'>
+                    {outputText ? (
+                      <>
+                        <div
+                          ref={qrRef}
+                          className='mb-4'
+                          style={{
+                            padding: '20px',
+                            backgroundColor: bgColor,
+                            borderRadius: '12px',
+                            boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+                          }}
+                        >
+                          <QRCodeSVG
+                            value={outputText}
+                            size={256}
+                            level={getQRLevel(qrStyle)}
+                            fgColor={qrColor}
+                            bgColor={bgColor}
+                            includeMargin={true}
+                          />
+                        </div>
+                        <button
+                          className='common_btn input-output-btn'
+                          onClick={downloadQRCode}
+                          style={{ width: '80%' }}
+                        >
+                          💾 Download QR Code
+                        </button>
+                        <div className='mt-3 p-3' style={{ backgroundColor: '#f0f9ff', borderRadius: '8px', width: '100%' }}>
+                          <p style={{ margin: 0, fontSize: '13px', color: '#666' }}>
+                            <strong>Style:</strong> {qrStyle.charAt(0).toUpperCase() + qrStyle.slice(1)}<br />
+                            <strong>Content:</strong> {outputText.substring(0, 40)}{outputText.length > 40 ? '...' : ''}
+                          </p>
+                        </div>
+                      </>
+                    ) : (
+                      <div className='text-center' style={{ color: '#999' }}>
+                        <div style={{ fontSize: '80px', marginBottom: '20px' }}>📱</div>
+                        <p style={{ fontSize: '16px', fontWeight: '600' }}>No QR Code Yet</p>
+                        <p style={{ fontSize: '14px' }}>Enter content and click Generate</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            /* Regular Text Tools UI */
+            <div className='row'>
             <div className='col-lg-6 mb-4'>
               <div className='card' style={{ border: '2px solid #f0f0f0', borderRadius: '10px', height: '100%' }}>
                 <div className='card-header' style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #e9ecef' }}>
@@ -723,19 +1071,179 @@ const ToolsPage = () => {
                     }}
                   />
                   <div className='text-center mt-3'>
-                    <button
-                      className={`common_btn input-output-btn ${isTranslating ? 'btn-processing' : ''}`}
-                      onClick={() => handleTextTransform(activeTab)}
-                      disabled={!inputText.trim() && activeTab !== 'wordcount'}
-                      style={{
-                        pointerEvents: isTranslating ? 'none' : 'auto',
-                        transition: 'all 0.3s ease'
-                      }}>
-                      {isTranslating ? '🔄 Translating...' : 
-                       activeTab === 'wordcount' ? '📊 Analyze Text' :
-                       activeTab === 'translate' ? '🌐 Translate' :
-                       '🔄 Convert Text'}
-                    </button>
+                    {activeTab === 'texttospeech' ? (
+                      <>
+                        {/* Text to Speech Controls */}
+                        <div className='mb-3'>
+                          <div className='d-flex gap-2 mb-2'>
+                            <div style={{ flex: 1 }}>
+                              <label style={{ fontSize: '12px', fontWeight: '600', color: '#666' }}>Speed: {speechRate}x</label>
+                              <input
+                                type='range'
+                                min='0.5'
+                                max='2'
+                                step='0.1'
+                                value={speechRate}
+                                onChange={(e) => setSpeechRate(parseFloat(e.target.value))}
+                                style={{ width: '100%' }}
+                              />
+                            </div>
+                            <div style={{ flex: 1 }}>
+                              <label style={{ fontSize: '12px', fontWeight: '600', color: '#666' }}>Pitch: {speechPitch}</label>
+                              <input
+                                type='range'
+                                min='0.5'
+                                max='2'
+                                step='0.1'
+                                value={speechPitch}
+                                onChange={(e) => setSpeechPitch(parseFloat(e.target.value))}
+                                style={{ width: '100%' }}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <button
+                          className='common_btn input-output-btn'
+                          onClick={handleTextToSpeech}
+                          disabled={!inputText.trim()}
+                          style={{
+                            background: isSpeaking ? '#ff6b6b' : '#2c7365',
+                            transition: 'all 0.3s ease'
+                          }}>
+                          {isSpeaking ? '⏹️ Stop Speaking' : '🔊 Speak Text'}
+                        </button>
+                      </>
+                    ) : activeTab === 'regextester' ? (
+                      <>
+                        {/* Regex Tester Controls */}
+                        <div className='mb-3'>
+                          <div className='mb-2'>
+                            <label style={{ fontSize: '12px', fontWeight: '600', color: '#666', display: 'block', textAlign: 'left' }}>Pattern Templates:</label>
+                            <select
+                              onChange={(e) => {
+                                if (e.target.value) {
+                                  setRegexPattern(e.target.value);
+                                }
+                              }}
+                              style={{
+                                width: '100%',
+                                padding: '8px 12px',
+                                border: '1px solid #ddd',
+                                borderRadius: '6px',
+                                fontSize: '13px',
+                                marginBottom: '8px',
+                                cursor: 'pointer'
+                              }}
+                            >
+                              <option value="">Select a template...</option>
+                              <optgroup label="Common Patterns">
+                                <option value="\d+">Numbers - \d+</option>
+                                <option value="[A-Za-z]+">Letters - [A-Za-z]+</option>
+                                <option value="\w+">Words - \w+</option>
+                                <option value="\s+">Whitespace - \s+</option>
+                              </optgroup>
+                              <optgroup label="Email & Web">
+                                <option value="[\w.-]+@[\w.-]+\.\w+">Email - [\w.-]+@[\w.-]+\.\w+</option>
+                                <option value="https?://[^\s]+">URL - https?://[^\s]+</option>
+                                <option value="www\.[^\s]+">Website - www\.[^\s]+</option>
+                              </optgroup>
+                              <optgroup label="Phone & Numbers">
+                                <option value="\d{3}-\d{3}-\d{4}">Phone (xxx-xxx-xxxx) - \d{'{3}'}-\d{'{3}'}-\d{'{4}'}</option>
+                                <option value="\(\d{3}\)\s*\d{3}-\d{4}">Phone (xxx) xxx-xxxx - \(\d{'{3}'}\)\s*\d{'{3}'}-\d{'{4}'}</option>
+                                <option value="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}">IP Address - \d{'{1,3}'}\.\d{'{1,3}'}\.\d{'{1,3}'}\.\d{'{1,3}'}</option>
+                                <option value="\d{5}(-\d{4})?">ZIP Code - \d{'{5}'}(-\d{'{4}'})?</option>
+                              </optgroup>
+                              <optgroup label="Dates & Time">
+                                <option value="\d{2}/\d{2}/\d{4}">Date (MM/DD/YYYY) - \d{'{2}'}/\d{'{2}'}/\d{'{4}'}</option>
+                                <option value="\d{4}-\d{2}-\d{2}">Date (YYYY-MM-DD) - \d{'{4}'}-\d{'{2}'}-\d{'{2}'}</option>
+                                <option value="\d{1,2}:\d{2}(:\d{2})?">Time - \d{'{1,2}'}:\d{'{2}'}(:\d{'{2}'})?</option>
+                              </optgroup>
+                              <optgroup label="Special Formats">
+                                <option value="#[0-9A-Fa-f]{6}">Hex Color - #[0-9A-Fa-f]{'{6}'}</option>
+                                <option value="[A-Z]{2}\d{4,}">Uppercase + Numbers - [A-Z]{'{2}'}\d{'{4,'}</option>
+                                <option value="\b[A-Z][a-z]+\b">Capitalized Words - \b[A-Z][a-z]+\b</option>
+                              </optgroup>
+                              <optgroup label="Advanced">
+                                <option value="^.+$">Entire Line - ^.+$</option>
+                                <option value="(?<=\s)\w+(?=\s)">Words between spaces - (?{'<'}=\s)\w+(?=\s)</option>
+                                <option value="[^,]+">Everything except commas - [^,]+</option>
+                              </optgroup>
+                            </select>
+                          </div>
+                          <div className='mb-2'>
+                            <label style={{ fontSize: '12px', fontWeight: '600', color: '#666', display: 'block', textAlign: 'left' }}>Custom Pattern:</label>
+                            <input
+                              type='text'
+                              value={regexPattern}
+                              onChange={(e) => setRegexPattern(e.target.value)}
+                              placeholder='e.g., \d+, [A-Z]\w+, ^hello.*'
+                              style={{
+                                width: '100%',
+                                padding: '8px 12px',
+                                border: '1px solid #ddd',
+                                borderRadius: '6px',
+                                fontSize: '14px',
+                                fontFamily: 'monospace'
+                              }}
+                            />
+                          </div>
+                          <div className='mb-2'>
+                            <label style={{ fontSize: '12px', fontWeight: '600', color: '#666', display: 'block', textAlign: 'left' }}>Flags:</label>
+                            <div className='d-flex gap-2'>
+                              {(['g', 'i', 'm', 'gi', 'gm', 'gim'] as const).map((flag) => (
+                                <button
+                                  key={flag}
+                                  onClick={() => setRegexFlags(flag)}
+                                  style={{
+                                    flex: 1,
+                                    padding: '6px 8px',
+                                    border: '2px solid',
+                                    borderColor: regexFlags === flag ? '#667eea' : '#ddd',
+                                    borderRadius: '6px',
+                                    background: regexFlags === flag ? '#667eea' : 'white',
+                                    color: regexFlags === flag ? 'white' : '#333',
+                                    fontWeight: '600',
+                                    fontSize: '12px',
+                                    cursor: 'pointer',
+                                    transition: 'all 0.3s',
+                                    fontFamily: 'monospace'
+                                  }}
+                                >
+                                  {flag}
+                                </button>
+                              ))}
+                            </div>
+                            <small style={{ color: '#888', fontSize: '11px', display: 'block', marginTop: '4px', textAlign: 'left' }}>
+                              g: global | i: case-insensitive | m: multiline
+                            </small>
+                          </div>
+                        </div>
+                        <button
+                          className='common_btn input-output-btn'
+                          onClick={handleRegexTest}
+                          disabled={!inputText.trim() || !regexPattern.trim()}
+                          style={{
+                            transition: 'all 0.3s ease'
+                          }}>
+                          🔍 Test Regex
+                        </button>
+                      </>
+                    ) : (
+                      <button
+                        className={`common_btn input-output-btn ${isTranslating ? 'btn-processing' : ''}`}
+                        onClick={() => handleTextTransform(activeTab)}
+                        disabled={!inputText.trim() && activeTab !== 'wordcount'}
+                        style={{
+                          pointerEvents: isTranslating ? 'none' : 'auto',
+                          transition: 'all 0.3s ease'
+                        }}>
+                        {isTranslating ? '🔄 Translating...' :
+                         activeTab === 'wordcount' ? '📊 Analyze Text' :
+                         activeTab === 'translate' ? '🌐 Translate' :
+                         activeTab === 'summarizer' ? '📝 Summarize Text' :
+                         '🔄 Convert Text'}
+                      </button>
+                    )}
                     {activeTab === 'wordcount' && (
                       <div className='mt-2'>
                         <small style={{ color: '#666', fontSize: '12px' }}>
@@ -800,10 +1308,11 @@ const ToolsPage = () => {
               </div>
             </div>
           </div>
+          )}
 
           {/* Current Tool Info */}
-          <div className='row mt-5'>
-            <div className='col-12'>
+          <div className='row '>
+            <div className='col-12 mb-4'>
               <div className='text-center p-4' style={{ 
                 backgroundColor: '#f8f9fa', 
                 borderRadius: '15px',
@@ -877,6 +1386,30 @@ const ToolsPage = () => {
                       <li>📋 Paragraph and sentence analysis</li>
                       <li>⏱️ Estimated reading time</li>
                       <li>📈 Text complexity metrics</li>
+                    </ul>
+                  </div>
+                )}
+
+                {/* QR Code info */}
+                {activeTab === 'qrcode' && (
+                  <div style={{
+                    marginTop: '15px',
+                    padding: '15px',
+                    backgroundColor: '#f0fdf4',
+                    borderRadius: '10px',
+                    border: '1px solid #bbf7d0'
+                  }}>
+                    <div className="d-flex align-items-center gap-2 mb-2">
+                      <span style={{ fontSize: '16px' }}>📱</span>
+                      <strong style={{ color: '#166534' }}>QR Code Features:</strong>
+                    </div>
+                    <ul style={{ margin: '0', paddingLeft: '20px', color: '#166534' }}>
+                      <li>✨ Instant QR code generation</li>
+                      <li>🎨 3 different styles: Classic, Rounded, Dots</li>
+                      <li>🌈 Customizable colors for QR and background</li>
+                      <li>💾 Download as high-quality PNG image</li>
+                      <li>🔒 100% secure - all processing is local</li>
+                      <li>📲 Works with URLs, text, WiFi, contacts, and more</li>
                     </ul>
                   </div>
                 )}

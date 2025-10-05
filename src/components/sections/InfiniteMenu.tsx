@@ -17,8 +17,8 @@ const items = [
   {
     image: '/images/grammar.png',
     link: '/tools',
-    title: 'Grammar Checker',
-    description: 'Detect and fix grammar errors, improve writing style and clarity'
+    title: 'QR Code Generator',
+    description: 'Create beautiful customizable QR codes instantly with multiple styles and colors'
   },
   {
     image: '/images/textProcessing.png',

@@ -23,6 +23,11 @@ export const fxotaryUtility = {
     var active = false;
     var ball = document.getElementById("ball");
 
+    // Exit if ball element doesn't exist
+    if (!ball) {
+      return;
+    }
+
     /** default */
     const defaultValue = {
       duration: 0.3,

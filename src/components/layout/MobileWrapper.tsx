@@ -40,16 +40,16 @@ const MobileWrapper: React.FC<MobileWrapperProps> = ({ children }) => {
     );
   }
 
-  // Show mobile coming soon page for mobile devices (unless forced to desktop)
-  if (showMobileView) {
-    return <MobileComingSoon />;
-  }
+  // Disabled: Mobile coming soon page - now showing normal content on mobile
+  // if (showMobileView) {
+  //   return <MobileComingSoon />;
+  // }
 
-  // Show normal desktop content for desktop devices or forced desktop on mobile
+  // Show normal content for all devices
   return (
     <>
       {children}
-      <MobileToggle />
+      {/* Removed MobileToggle as it's no longer needed */}
     </>
   );
 };
