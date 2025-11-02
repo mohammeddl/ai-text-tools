@@ -3,7 +3,7 @@ import { useGSAP } from "@gsap/react"
 
 const Jason = () => {
   useGSAP(() => {
-    gsap.set('.jason', { marginTop: '-80vh' });
+    gsap.set('.jason', { marginTop: '-30vh' });
 
     gsap.timeline({
       scrollTrigger: {
@@ -32,16 +32,16 @@ const Jason = () => {
         <p>Our platform is designed to be simple, fast, and accessible for everyone. Whether you need basic text transformations or advanced AI-powered features, we've got you covered.</p>
 
         <div className="jason-2">
-          <img src="/images/jason-3-2.webp" />
+          <img src="/images/gsap-images/images/jason-3-2.webp" />
         </div>
       </div>
 
       <div className="space-y-5 mt-96 img-box">
         <div className="jason-1">
-          <img src="/images/jason-3-1.webp" />
+          <img src="/images/gsap-images/images/jason-3-1.webp" />
         </div>
         <div className="jason-3">
-          <img src="/images/jason-3-3.webp" />
+          <img src="/images/gsap-images/images/jason-3-3.webp" />
         </div>
       </div>
     </section>
