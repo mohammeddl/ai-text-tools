@@ -1,8 +1,13 @@
+"use client";
+
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import { useMaskSettings } from '../../constants';
+import { useMaskSettings } from '../../../../public/constants';
 import ComingSoon from "./ComingSoon"
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   const { initialMaskPos, initialMaskSize, maskPos, maskSize } = useMaskSettings();
@@ -41,20 +46,20 @@ const Hero = () => {
   return (
     <section className="hero-section">
       <div className="size-full mask-wrapper">
-        <img src="/images/hero-bg2.webp" alt="background" className="scale-out" />
-        <img src="/images/hero-text1.webp" alt="hero-logo" className="title-logo fade-out" />
-        <img  src="/images/watch-trailer.png" alt="trailer" className="trailer-logo fade-out" />
+        <img src="/images/gsap-images/images/hero-bg2.webp" alt="background" className="scale-out" />
+        <img src="/images/gsap-images/images/hero-text1.webp" alt="hero-logo" className="title-logo fade-out" />
+        <img  src="/images/gsap-images/images/watch-trailer.png" alt="trailer" className="trailer-logo fade-out" />
         <div className="play-img fade-out">
-          <img src="/images/play.png" alt="play" className="w-7 ml-1" />
+          <img src="/images/gsap-images/images/play.png" alt="play" className="w-7 ml-1" />
         </div>
       </div>
 
       <div>
-        <img src="/images/big-hero-text-1 2.svg" alt="logo" className="size-full object-cover mask-logo" />
+        <img src="/images/gsap-images/images/big-hero-text-1 2.svg" alt="logo" className="size-full object-cover mask-logo" />
       </div>
 
       <div className="fake-logo-wrapper">
-        <img src="/images/big-hero-text-1 2.svg" className="overlay-logo" />
+        <img src="/images/gsap-images/images/big-hero-text-1 2.svg" className="overlay-logo" />
       </div>
 
       <ComingSoon />

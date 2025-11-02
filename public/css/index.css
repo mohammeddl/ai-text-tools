@@ -237,7 +237,7 @@ main {
 }
 
 .mask-wrapper {
-  mask-image: url("/images/big-hero-text-1 2.svg");
+  mask-image: url("/images/gsap-images/images/big-hero-text-1 2.svg");
   mask-repeat: no-repeat;
   mask-size: cover;
   mask-position: center center;
