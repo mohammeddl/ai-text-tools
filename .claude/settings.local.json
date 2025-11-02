@@ -15,7 +15,12 @@
       "Bash(timeout 600 npm run build)",
       "Bash(NODE_OPTIONS='--max-old-space-size=4096' npm run build)",
       "Bash(export NODE_OPTIONS=\"--max-old-space-size=4096\")",
-      "Bash(timeout 180 npm run build)"
+      "Bash(timeout 180 npm run build)",
+      "Bash(cat:*)",
+      "Bash(git checkout:*)",
+      "Bash(next dev)",
+      "Bash(npx next dev)",
+      "Bash(taskkill:*)"
     ],
     "deny": [],
     "ask": []

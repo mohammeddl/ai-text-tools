@@ -1,17 +1,13 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
-import '../../../public/css/fxotary-icon.css';
-import '../../../public/css/responsive.css';
-import '../../../public/css/slick.css';
-import '../../../public/css/spacing.css';
-import '../../../public/css/style.css';
+import '../globals.css';
 
 const locales = ['en', 'ar'];
 
 export const metadata: Metadata = {
-  title: "TextCrafter - Transform and Generate Text with AI Power",
-  description: "TextCrafter allows users to transform and generate text quickly and efficiently with manual utilities and AI-powered features.",
+  title: "TextCrafter - AI Text Tools",
+  description: "Transform and generate text with AI-powered tools.",
   icons: {
     icon: '/images/logo.png',
   },
@@ -44,36 +40,12 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       <head>
-        {/* Bootstrap CSS */}
-        <link
-          href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css'
-          rel='stylesheet'
-          integrity='sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM'
-          crossOrigin='anonymous'
-        />
-
-        {/* Font Awesome */}
-        <link
-          rel='stylesheet'
-          href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
-          integrity='sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=='
-          crossOrigin='anonymous'
-          referrerPolicy='no-referrer'
-        />
-
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
-
-        {/* Bootstrap JavaScript */}
-        <script
-          src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js'
-          integrity='sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz'
-          crossOrigin='anonymous'
-          async
-        />
       </body>
     </html>
   );
