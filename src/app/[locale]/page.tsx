@@ -6,10 +6,30 @@ import Hero from '@/components/sections/home/Hero'
 import Jason from '@/components/sections/home/Jason'
 import FirstVideo from '@/components/sections/home/FirstVideo'
 import Info from '@/components/sections/home/Info'
+import Preloader from '@/components/perloader/Preloader'
+
+import { useEffect } from 'react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
 
 function page() {
+
+  useEffect(() => {
+    const rafId = requestAnimationFrame(() => {
+      ScrollTrigger.refresh(true);
+    });
+
+    const onLoad = () => ScrollTrigger.refresh(true);
+    window.addEventListener("load", onLoad, { passive: true });
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("load", onLoad);
+    };
+  }, []);
   return (
     <>
+    <Preloader/>
     <NavBar/>
     <Hero/>
     <FirstVideo/>
