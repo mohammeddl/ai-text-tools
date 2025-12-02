@@ -1,5 +1,6 @@
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
+import Copy from "../tools/Copy";
 
 const Jason = () => {
   useGSAP(() => {
@@ -27,9 +28,14 @@ const Jason = () => {
   return (
     <section className="jason">
       <div className="max-w-lg jason-content">
+        <Copy blockColor="#fff9cb">
+
+       
         <h1>Text Crafter</h1>
         <h2>Our mission to simplify writing </h2>
         <p>Our platform is designed to be simple, fast, and accessible for everyone. Whether you need basic text transformations or advanced AI-powered features, we've got you covered.</p>
+
+        </Copy>
 
         <div className="jason-2">
           <img src="/images/gsap-images/images/jason-3-2.webp" />

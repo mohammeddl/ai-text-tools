@@ -254,3 +254,20 @@ main {
 .lucia-life-content {
   background: radial-gradient(ellipse, #111117 20%, transparent 70%);
 }
+
+/* Copy component block reveal animation styles */
+.block-line-wrapper {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.block-revealer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
