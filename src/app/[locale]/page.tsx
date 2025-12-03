@@ -7,10 +7,10 @@ import Jason from '@/components/sections/home/Jason'
 import FirstVideo from '@/components/sections/home/FirstVideo'
 import Info from '@/components/sections/home/Info'
 import Preloader from '@/components/perloader/Preloader'
-
+import Footer from '@/components/Footer/Footer'
 import { useEffect } from 'react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
+import Spotlight from '@/components/Spotlight/Spotlight'  
 
 function page() {
 
@@ -34,7 +34,9 @@ function page() {
     <Hero/>
     <FirstVideo/>
     <Jason/>
-    <Info/>
+    {/* <Info/> */}
+    <Spotlight />
+    <Footer/>
     </>
   )
 }
