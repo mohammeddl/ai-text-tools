@@ -11,6 +11,7 @@ import Footer from '@/components/Footer/Footer'
 import { useEffect } from 'react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Spotlight from '@/components/Spotlight/Spotlight'  
+import TeamCards from '@/components/TeamCards/TeamCards'
 
 function page() {
 
@@ -34,6 +35,7 @@ function page() {
     <Hero/>
     <FirstVideo/>
     <Jason/>
+    <TeamCards />
     {/* <Info/> */}
     <Spotlight />
     <Footer/>
