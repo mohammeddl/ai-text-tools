@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-
+import { ViewTransitions } from "next-view-transitions";
+import ClientLayout from "../client-layout";
 export const metadata: Metadata = {
   title: "AI Text Tools - Transform and Generate Text with AI Power",
   description:
@@ -12,5 +13,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  return (
+    <ViewTransitions>
+      <ClientLayout>{children}</ClientLayout>
+    </ViewTransitions>
+  );
 }
