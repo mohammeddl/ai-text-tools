@@ -199,29 +199,29 @@ const Page = () => {
       <div className="contact-copy">
         <div className="contact-col">
           <Copy delay={0.8}>
-            <h2 className="text-[4rem] md:text-[6rem] uppercase ">Things in motion stay interesting</h2>
+            <h2 className="text-[4rem] md:text-[6rem] font-bold uppercase ">Transform Your Text, Elevate Your Content</h2>
           </Copy>
         </div>
 
        <div className="contact-col">
           <div className="contact-group">
             <Copy delay={0.8}>
-              <p className="sm">Focus</p>
-              <p>Motion Worlds</p>
-              <p>Dream Engineering</p>
-              <p>Strange Branding</p>
+              <p className="sm">Services</p>
+              <p>Text Transformation</p>
+              <p>QR Code Generation</p>
+              <p>Language Translation</p>
             </Copy>
           </div>
 
           <div className="contact-group">
             <Copy delay={1.2}>
-              <p className="sm">Base</p>
-              <p>Old Harbour District, Oslo</p>
+              <p className="sm">Location</p>
+              <p>Rabat, Morocco</p>
             </Copy>
           </div>
 
           <div className="contact-mail">
-            <Button delay={1.3} href="/">
+            <Button delay={1.3} href="mailto:daali.22.ss@gmail.com">
               daali.22.ss@gmail.com
             </Button>
           </div>
@@ -239,7 +239,7 @@ const Page = () => {
       <div className="contact-footer">
         <div className="container">
           <Copy delay={1.6} animateOnScroll={false}>
-            <p className="sm">Made in Motion</p>
+            <p className="sm">Powered by daali mohammed</p>
           </Copy>
 
           <div className="contact-socials">

@@ -199,7 +199,7 @@ export default function TeamCards() {
       {/* desktop animated section */}
       <section className="sticky team-desktop bg-black! " ref={stickyRef}>
         <div className="sticky-header" ref={headerRef}>
-          <h1 className="text-white!">Text Craft</h1>
+          <h1 className="text-white!">Text Crafter</h1>
         </div>
         {teamMembers.map((m, idx) => (
           <div
@@ -212,7 +212,7 @@ export default function TeamCards() {
               <img src={m.img} alt={m.alt} />
             </div>
             <div className="card-content">
-              <div className="card-title">
+              <div className="card-title font-bold">
                 <h2>{m.name}</h2>
               </div>
               <div className="card-description">

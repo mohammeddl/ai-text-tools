@@ -1,15 +1,15 @@
 export const teamMembers = [
   {
     id: "card-1",
-    name: "Text Transformer",
+    name: "Transformer",
     img: "/images/team-cards/team-member-1.jpg",
-    alt: "Text Transformer",
+    alt: "Transformer",
     description:
       "Master of text manipulation. Converts your text to uppercase, lowercase, sentence case, or capitalize with precision. The foundation of all text transformations.",
   },
   {
     id: "card-2",
-    name: "QR Code Generator",
+    name: "QR Code ",
     img: "/images/team-cards/team-member-2.jpg",
     alt: "QR Code Generator",
     description:
@@ -17,7 +17,7 @@ export const teamMembers = [
   },
   {
     id: "card-3",
-    name: "Language Translator",
+    name: " Translator",
     img: "/images/team-cards/team-member-3.jpg",
     alt: "Language Translator",
     description:
@@ -25,7 +25,7 @@ export const teamMembers = [
   },
   {
     id: "card-4",
-    name: "Word Counter",
+    name: "Counter",
     img: "/images/team-cards/team-member-4.jpg",
     alt: "Word Counter",
     description:
@@ -33,7 +33,7 @@ export const teamMembers = [
   },
   {
     id: "card-5",
-    name: "Creative Converter",
+    name: " Converter",
     img: "/images/team-cards/team-member-5.jpg",
     alt: "Creative Converter",
     description:
