@@ -95,19 +95,19 @@ const Spotlight = () => {
         <div className="marquee-container" id="marquee-1">
           <div className="marquee">
             <div className="marquee-img-item">
-              <img src="/images/spotlight/spotlight-1.jpg" alt="" />
+              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&h=600&fit=crop&q=80" alt="Typography Design" />
             </div>
             <div className="marquee-img-item marquee-text-item">
-              <h1>Hyperreal</h1>
+              <h1>Transform</h1>
             </div>
             <div className="marquee-img-item">
-              <img src="/images/spotlight/spotlight-2.jpg" alt="" />
+              <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&h=600&fit=crop&q=80" alt="Text Technology" />
             </div>
             <div className="marquee-img-item">
-              <img src="/images/spotlight/spotlight-3.jpg" alt="" />
+              <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=600&fit=crop&q=80" alt="AI Abstract" />
             </div>
             <div className="marquee-img-item">
-              <img src="/images/spotlight/spotlight-4.jpg" alt="" />
+              <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=600&fit=crop&q=80" alt="Digital Art" />
             </div>
           </div>
         </div>
@@ -115,19 +115,19 @@ const Spotlight = () => {
         <div className="marquee-container" id="marquee-2">
           <div className="marquee">
             <div className="marquee-img-item">
-              <img src="/images/spotlight/spotlight-5.jpg" alt="" />
+              <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&h=600&fit=crop&q=80" alt="Global Technology" />
             </div>
             <div className="marquee-img-item">
-              <img src="/images/spotlight/spotlight-6.jpg" alt="" />
+              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop&q=80" alt="World Connection" />
             </div>
             <div className="marquee-img-item">
-              <img src="/images/spotlight/spotlight-7.jpg" alt="" />
+              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop&q=80" alt="Language Abstract" />
             </div>
             <div className="marquee-img-item marquee-text-item">
-              <h1>Fragmented</h1>
+              <h1>Translate</h1>
             </div>
             <div className="marquee-img-item">
-              <img src="/images/spotlight/spotlight-8.jpg" alt="" />
+              <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=600&fit=crop&q=80" alt="Communication" />
             </div>
           </div>
         </div>
@@ -135,19 +135,19 @@ const Spotlight = () => {
         <div className="marquee-container" id="marquee-3">
           <div className="marquee">
             <div className="marquee-img-item">
-              <img src="/images/spotlight/spotlight-9.jpg" alt="" />
+              <img src="https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=800&h=600&fit=crop&q=80" alt="QR Code Tech" />
             </div>
             <div className="marquee-img-item marquee-text-item">
-              <h1>Softcore</h1>
+              <h1>Generate</h1>
             </div>
             <div className="marquee-img-item">
-              <img src="/images/spotlight/spotlight-10.jpg" alt="" />
+              <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?w=800&h=600&fit=crop&q=80" alt="Digital Code" />
             </div>
             <div className="marquee-img-item">
-              <img src="/images/spotlight/spotlight-11.jpg" alt="" />
+              <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop&q=80" alt="Tech Innovation" />
             </div>
             <div className="marquee-img-item">
-              <img src="/images/spotlight/spotlight-12.jpg" alt="" />
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop&q=80" alt="Technology Abstract" />
             </div>
           </div>
         </div>
@@ -155,19 +155,19 @@ const Spotlight = () => {
         <div className="marquee-container" id="marquee-4">
           <div className="marquee">
             <div className="marquee-img-item">
-              <img src="/images/spotlight/spotlight-13.jpg" alt="" />
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80" alt="Data Analytics" />
             </div>
             <div className="marquee-img-item">
-              <img src="/images/spotlight/spotlight-14.jpg" alt="" />
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&q=80" alt="Statistics Dashboard" />
             </div>
             <div className="marquee-img-item">
-              <img src="/images/spotlight/spotlight-15.jpg" alt="" />
+              <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=600&fit=crop&q=80" alt="Text Analysis" />
             </div>
             <div className="marquee-img-item marquee-text-item">
-              <h1>Motion</h1>
+              <h1>Analyze</h1>
             </div>
             <div className="marquee-img-item">
-              <img src="/images/spotlight/spotlight-16.jpg" alt="" />
+              <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800&h=600&fit=crop&q=80" alt="Colorful Data" />
             </div>
           </div>
         </div>
