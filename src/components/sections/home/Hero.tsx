@@ -47,7 +47,7 @@ const Hero = () => {
     <section className="hero-section">
       <div className="size-full mask-wrapper">
         <img src="/images/gsap-images/images/hero-bg2.webp" alt="background" className="scale-out" />
-        <img src="/images/gsap-images/images/hero-text1.webp" alt="hero-logo" className="title-logo fade-out" />
+        <img src="/images/gsap-images/images/hero-text.webp" alt="hero-logo" className="title-logo fade-out" />
         <img  src="/images/gsap-images/images/watch-trailer.png" alt="trailer" className="trailer-logo fade-out" />
         <div className="play-img fade-out">
           <img src="/images/gsap-images/images/play.png" alt="play" className="w-7 ml-1" />

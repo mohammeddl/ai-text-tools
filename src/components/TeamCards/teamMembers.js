@@ -1,42 +1,42 @@
 export const teamMembers = [
   {
     id: "card-1",
-    name: "Lina Duarte",
-    img: "/team-cards/team-member-1.jpg",
-    alt: "Lina Duarte",
+    name: "Text Transformer",
+    img: "/images/team-cards/team-member-1.jpg",
+    alt: "Text Transformer",
     description:
-      "Visual designer and chaos theorist. Loves asymmetry, strong coffee, and turning color palettes into emotional damage.",
+      "Master of text manipulation. Converts your text to uppercase, lowercase, sentence case, or capitalize with precision. The foundation of all text transformations.",
   },
   {
     id: "card-2",
-    name: "Kenji Mori",
-    img: "/team-cards/team-member-2.jpg",
-    alt: "Kenji Mori",
+    name: "QR Code Generator",
+    img: "/images/team-cards/team-member-2.jpg",
+    alt: "QR Code Generator",
     description:
-      "3D artist, lighting whisperer, and part-time philosopher. Spends half his life rendering and the other half pretending it is done.",
+      "Digital bridge builder. Transforms any text or URL into scannable QR codes instantly. Connect the physical and digital worlds seamlessly.",
   },
   {
     id: "card-3",
-    name: "Amara Singh",
-    img: "/team-cards/team-member-3.jpg",
-    alt: "Amara Singh",
+    name: "Language Translator",
+    img: "/images/team-cards/team-member-3.jpg",
+    alt: "Language Translator",
     description:
-      "Motion director and timing addict. Can make anything feel cinematic — even an error message.",
+      "Breaking language barriers worldwide. Translates your text into multiple languages with AI-powered accuracy. Communication made universal.",
   },
   {
     id: "card-4",
-    name: "Felix Turner",
-    img: "/team-cards/team-member-4.jpg",
-    alt: "Felix Turner",
+    name: "Word Counter",
+    img: "/images/team-cards/team-member-4.jpg",
+    alt: "Word Counter",
     description:
-      "Creative technologist who codes feelings. Loves shaders, hates meetings, lives somewhere between HTML and heartbreak.",
+      "Analytics expert for your content. Counts words, characters, sentences, and paragraphs. Provides detailed statistics to perfect your writing.",
   },
   {
     id: "card-5",
-    name: "Isolde Rey",
-    img: "/team-cards/team-member-5.jpg",
-    alt: "Isolde Rey",
+    name: "Creative Converter",
+    img: "/images/team-cards/team-member-5.jpg",
+    alt: "Creative Converter",
     description:
-      "Producer and chaos organizer. Keeps everyone alive, on schedule, and slightly over-caffeinated. Probably the only adult here.",
+      "Fun text stylist. Transforms text into SpongeBob case, leet speak, random case, and more. Add personality and creativity to your messages.",
   },
 ];

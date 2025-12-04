@@ -6,8 +6,8 @@ import '../globals.css';
 const locales = ['en', 'ar'];
 
 export const metadata: Metadata = {
-  title: "TextCrafter - AI Text Tools",
-  description: "Transform and generate text with AI-powered tools.",
+  title: "TextCrafter - Text Tools",
+  description: "Transform and generate text with text tools.",
   icons: {
     icon: '/images/logo.png',
   },
