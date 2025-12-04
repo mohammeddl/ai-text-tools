@@ -212,7 +212,7 @@ const Footer = () => {
               delay={0.5}
               variant="light"
               icon={IoMail}
-              href="/contact"
+              href="mailto:daali.22.ss@gmail.com"
             >
               Say Hello
             </Button>

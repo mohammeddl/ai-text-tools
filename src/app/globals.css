@@ -14,11 +14,11 @@
 }
 
 :root {
-  --base-100: #e3e3db;
-  --base-200: #ccccc4;
-  --base-300: #8c7e77;
+  --base-100: #ffffff;
+  --base-200: #ffffff;
+  --base-300: #fff9cb;
   --base-400: #000000;
-  --base-500: #ff6e14;
+  --base-500: #fff9cb;
 
   --accent-1: #3d2fa9;
   --accent-2: #a92f78;

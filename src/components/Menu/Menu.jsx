@@ -473,8 +473,8 @@ const Menu = ({ pageRef }) => {
         </div>
 
         <div className="nav-toggle" ref={navToggleRef} onClick={toggleMenu}>
-          <div className="nav-toggle-wrapper">
-            <p ref={openLabelRef} className="open-label">
+          <div className="nav-toggle-wrapper ">
+            <p ref={openLabelRef} className="open-label pb-7 ">
               Menu
             </p>
 
@@ -546,7 +546,7 @@ const Menu = ({ pageRef }) => {
         </div>
 
         <div className="menu-img">
-          <img ref={menuImageRef} src="/menu/menu_img.jpg" alt="" />
+          <img ref={menuImageRef} src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=1920&h=1080&fit=crop&q=85" alt="Tech Workspace" />
         </div>
 
         <div className="menu-links-wrapper" ref={menuLinksWrapperRef}>

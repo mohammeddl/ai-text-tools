@@ -184,19 +184,18 @@ const Preloader = () => {
     <>
       <div className="preloader" ref={preloaderRef}>
         <div className="progress-bar"></div>
-
         <div className="preloader-images">
           <div className="img">
-            <img src="/images/gsap-images/images/hero-bg.webp" alt="" />
+            <img src="https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=1200&h=800&fit=crop&q=90" alt="AI Neural Network" />
           </div>
           <div className="img">
-            <img src="/images/gsap-images/images/hero-bg1.webp" alt="" />
+            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&h=800&fit=crop&q=90" alt="Digital Innovation" />
           </div>
           <div className="img">
-            <img src="/images/gsap-images/images/hero-bg2.webp" alt="" />
+            <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1200&h=800&fit=crop&q=90" alt="Colorful Tech" />
           </div>
           <div className="img">
-            <img src="/images/gsap-images/images/jason-3-1.webp" alt="" />
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=800&fit=crop&q=90" alt="Digital Matrix" />
           </div>
         </div>
       </div>
