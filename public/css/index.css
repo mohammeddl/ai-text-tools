@@ -67,7 +67,26 @@ main {
     @apply fixed top-0 left-0 w-full flex justify-between items-center md:p-16 p-5 z-[100];
   }
   .gradient-title {
-    @apply md:text-[6rem] text-[4rem] font-round-bold !font-extrabold uppercase md:leading-[5rem] leading-[2.9rem] text-center bg-gradient-to-r from-green-400 via-green-400 to-[#2c7465] bg-clip-text text-transparent;
+    @apply font-round-bold !font-extrabold uppercase text-center bg-gradient-to-r from-green-400 via-green-400 to-[#2c7465] bg-clip-text text-transparent;
+    /* Mobile - default */
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+  }
+  
+  /* Tablet */
+  @media (min-width: 640px) {
+    .gradient-title {
+      font-size: 3.5rem;
+      line-height: 3.2rem;
+    }
+  }
+  
+  /* Desktop */
+  @media (min-width: 768px) {
+    .gradient-title {
+      font-size: 6rem;
+      line-height: 5rem;
+    }
   }
   .hero-section {
     @apply w-dvw h-dvh relative overflow-hidden;
@@ -270,4 +289,5 @@ main {
   height: 100%;
   z-index: 1;
 }
+
 
