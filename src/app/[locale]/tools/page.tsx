@@ -3,6 +3,7 @@ import { useState } from "react";
 import ToolsHeader from "@/components/sections/tools/ToolsHeader";
 import ToolNavigation from "@/components/sections/tools/ToolNavigation";
 import ToolWorkspace from "@/components/sections/tools/ToolWorkspace";
+import Footer from "@/components/Footer/Footer";
 
 interface Notification {
   id: number;
@@ -209,7 +210,7 @@ export default function ToolsPage() {
       </div>
 
       {/* Main Section */}
-      <section className="min-h-screen bg-black pt-2 pb-20">
+      <section className="min-h-[30dvh] bg-black pt-2 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ToolsHeader />
 
@@ -235,7 +236,9 @@ export default function ToolsPage() {
             downloadText={downloadText}
           />
         </div>
+        
       </section>
+      <Footer/>
     </>
   );
 }

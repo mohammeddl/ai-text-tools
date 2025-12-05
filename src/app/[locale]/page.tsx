@@ -31,7 +31,6 @@ function page() {
   return (
     <>
     <Preloader/>
-    {/* <NavBar/> */}
     <Hero/>
     <FirstVideo/>
     <Jason/>

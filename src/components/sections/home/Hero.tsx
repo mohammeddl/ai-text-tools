@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,6 +12,20 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   const { initialMaskPos, initialMaskSize, maskPos, maskSize } = useMaskSettings();
+  const [showScrollIndicator, setShowScrollIndicator] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setShowScrollIndicator(false);
+      } else {
+        setShowScrollIndicator(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useGSAP(() => {
     gsap.set('.mask-wrapper', {
@@ -48,18 +63,29 @@ const Hero = () => {
       <div className="size-full mask-wrapper">
         <img src="/images/gsap-images/images/hero-bg2.webp" alt="background" className="scale-out" />
         <img src="/images/gsap-images/images/hero-text1.webp" alt="hero-logo" className="title-logo fade-out" />
-        <img  src="/images/gsap-images/images/watch-trailer.png" alt="trailer" className="trailer-logo fade-out" />
-        <div className="play-img fade-out">
+        {/* <img  src="/images/gsap-images/images/watch-trailer.png" alt="trailer" className="trailer-logo fade-out" /> */}
+        {/* <div className="play-img fade-out">
           <img src="/images/gsap-images/images/play.png" alt="play" className="w-7 ml-1" />
-        </div>
+        </div> */}
       </div>
 
       <div>
         <img src="/images/gsap-images/images/big-hero-text-1 2.svg" alt="logo" className="size-full object-cover mask-logo" />
       </div>
 
-      <div className="fake-logo-wrapper">
-        <img src="/images/gsap-images/images/big-hero-text-1 2.svg" className="overlay-logo" />
+      {/* Animated Scroll Indicator */}
+      <div 
+        className="scroll-indicator-wrapper"
+        style={{
+          opacity: showScrollIndicator ? 1 : 0,
+          transition: 'opacity 0.5s ease-in-out',
+          pointerEvents: showScrollIndicator ? 'auto' : 'none'
+        }}
+      >
+        <div className="scroll-mouse-icon">
+          <div className="scroll-wheel"></div>
+        </div>
+        <p className="scroll-text">Scroll</p>
       </div>
 
       <ComingSoon />

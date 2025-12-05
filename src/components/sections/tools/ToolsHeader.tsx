@@ -27,10 +27,10 @@ export default function ToolsHeader() {
 
       {/* Title */}
       <div className="text-center">
-        <h1 className="text-white font-bold text-7xl mb-2">
+        <h1 className="text-white font-bold text-4xl md:text-7xl mb-2">
           Tools Dashboard
         </h1>
-        <p className="text-gray-400 text-lg max-w-4xl mx-auto">
+        <p className="text-gray-400 text-sm md:text-lg max-w-4xl mx-auto px-4">
           Powerful text processing tools designed to make text formatting tasks easy and efficient.
         </p>
       </div>

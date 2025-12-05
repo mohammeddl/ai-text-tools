@@ -110,6 +110,59 @@ main {
       @apply size-full object-cover opacity-0 w-60 md:w-60 2xl:w-72 3xl:w-80;
     }
   }
+  
+  /* Scroll Indicator Styles */
+  .scroll-indicator-wrapper {
+    @apply absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-50;
+  }
+  
+  .scroll-mouse-icon {
+    @apply w-7 h-11 border-2 border-white rounded-full relative;
+    animation: mouseBounce 2s ease-in-out infinite;
+  }
+  
+  .scroll-wheel {
+    @apply w-1 h-2.5 bg-white rounded-full absolute top-2 left-1/2 -translate-x-1/2;
+    animation: wheelScroll 2s ease-in-out infinite;
+  }
+  
+  .scroll-text {
+    @apply text-white text-xs font-medium uppercase tracking-widest;
+    animation: textFade 2s ease-in-out infinite;
+  }
+  
+  @keyframes mouseBounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+  
+  @keyframes wheelScroll {
+    0% {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+    50% {
+      transform: translate(-50%, 10px);
+      opacity: 0;
+    }
+    100% {
+      transform: translate(-50%, 0);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes textFade {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
   .first-vd-wrapper {
     .first-vd {
       @apply size-full object-cover md:[object-position:50%_center] [object-position:75%_center];

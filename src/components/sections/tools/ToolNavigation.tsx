@@ -25,11 +25,12 @@ export default function ToolNavigation({
     { id: "qrcode", icon: "📱", key: "qrcode", isBest: true },
     { id: "lowercase", icon: "🔡", key: "lowercase" },
     { id: "inverse", icon: "🔀", key: "inverse" },
+    { id: "sentence", icon: "📝", key: "sentence" },
+    { id: "spongebob", icon: "🧽", key: "spongebob", isNew: true },
+    { id: "capitalize", icon: "🔤", key: "capitalize" },
   ];
 
   const secondRowTools = [
-    { id: "sentence", icon: "📝", key: "sentence" },
-    { id: "spongebob", icon: "🧽", key: "spongebob", isNew: true },
     { id: "randomcase", icon: "🎲", key: "randomcase", isNew: true },
     { id: "translate", icon: "🌐", key: "translate", isNew: true },
   ];
@@ -38,7 +39,6 @@ export default function ToolNavigation({
     { id: "regextester", icon: "🔍", key: "regextester", isNew: true },
     { id: "texttospeech", icon: "🔊", key: "texttospeech", isNew: true },
     { id: "summarizer", icon: "📝", key: "summarizer", isNew: true },
-    { id: "capitalize", icon: "🔤", key: "capitalize" },
     { id: "mockingcase", icon: "😏", key: "mockingcase", isNew: true },
     { id: "leetspeak", icon: "💻", key: "leetspeak", isNew: true },
     { id: "wordcount", icon: "📊", key: "wordcount" },
@@ -46,22 +46,22 @@ export default function ToolNavigation({
 
   return (
     <div className="mb-12 max-w-7xl mx-auto px-4">
-      {/* First Row */}
-      <div className="flex flex-wrap gap-3 justify-center mb-3">
+      {/* All buttons in one grid: 3 columns on mobile, flex on desktop */}
+      <div className="grid grid-cols-3 md:flex md:flex-wrap gap-2 md:gap-3 md:justify-center">
+        {/* Main Tools */}
         {mainTools.map((tool) => (
           <div key={tool.id} className="relative">
             <button
               type="button"
               onClick={() => setActiveTab(tool.id)}
-              className={`relative px-x py-2 rounded-lg font-medium text-sm transition-all duration-300 flex items-center gap-2 ${
+              className={`w-full relative px-3 py-2 md:px-5 md:py-3 rounded-lg md:rounded-xl font-semibold text-xs md:text-sm transition-all duration-300 flex items-center justify-center gap-1.5 md:gap-2.5 shadow-md md:shadow-lg hover:shadow-lg md:hover:shadow-xl hover:scale-105 ${
                 activeTab === tool.id
-                  ? "bg-red-400 text-white"
-                  : "bg-black text-gray-300 border border-cyan-500 hover:border-cyan-400"
+                  ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-cyan-500/50"
+                  : "bg-gray-900 text-gray-300 border-2 border-cyan-500/30 hover:border-cyan-400 hover:bg-gray-800"
               }`}
             >
-              <span className="text-base ">{tool.icon}</span>
-              <span>{t(`tools.items.${tool.key}.title`)}</span>
-              <span className="text-base">✕</span>
+              <span className="text-base md:text-lg">{tool.icon}</span>
+              <span className="whitespace-nowrap hidden md:inline">{t(`tools.items.${tool.key}.title`)}</span>
             </button>
             {tool.isBest && (
               <span className="absolute -top-2 -right-2 px-2 py-0.5 rounded text-xs font-bold bg-yellow-400 text-black">
@@ -70,24 +70,21 @@ export default function ToolNavigation({
             )}
           </div>
         ))}
-      </div>
 
-      {/* Second Row */}
-      <div className="flex flex-wrap gap-3 justify-center">
+        {/* Second Row Tools */}
         {secondRowTools.map((tool) => (
           <div key={tool.id} className="relative">
             <button
               type="button"
               onClick={() => setActiveTab(tool.id)}
-              className={`relative px-4 py-2.5 rounded-lg font-medium text-sm transition-all duration-300 flex items-center gap-2 ${
+              className={`w-full relative px-3 py-2 md:px-5 md:py-3 rounded-lg md:rounded-xl font-semibold text-xs md:text-sm transition-all duration-300 flex items-center justify-center gap-1.5 md:gap-2.5 shadow-md md:shadow-lg hover:shadow-lg md:hover:shadow-xl hover:scale-105 ${
                 activeTab === tool.id
-                  ? "bg-red-400 text-white"
-                  : "bg-black text-gray-300 border border-red-500 hover:border-red-400"
+                  ? "bg-gradient-to-r from-red-500 to-pink-500 text-white shadow-red-500/50"
+                  : "bg-gray-900 text-gray-300 border-2 border-red-500/30 hover:border-red-400 hover:bg-gray-800"
               }`}
             >
-              <span className="text-base">{tool.icon}</span>
-              <span>{tool.id === "translate" ? "Translator" : t(`tools.items.${tool.key}.title`)}</span>
-              <span className="text-base">✕</span>
+              <span className="text-base md:text-lg">{tool.icon}</span>
+              <span className="whitespace-nowrap hidden md:inline">{tool.id === "translate" ? "Translator" : t(`tools.items.${tool.key}.title`)}</span>
             </button>
             {tool.isNew && (
               <span className="absolute -top-2 -right-2 px-2 py-0.5 rounded text-xs font-bold bg-red-500 text-white">
@@ -97,32 +94,31 @@ export default function ToolNavigation({
           </div>
         ))}
 
-        {/* More Tools Dropdown */}
-        <div className="relative">
+        {/* More Tools Dropdown - spans 3 columns on mobile */}
+        <div className="relative col-span-3 md:col-span-1">
           <button
             type="button"
             onClick={() => setShowMoreTools(!showMoreTools)}
-            className={`relative px-4 py-2.5 rounded-lg font-medium text-sm transition-all duration-300 flex items-center gap-2 ${
+            className={`w-full relative px-3 py-2 md:px-5 md:py-3 rounded-lg md:rounded-xl font-semibold text-xs md:text-sm transition-all duration-300 flex items-center justify-center gap-1.5 md:gap-2.5 shadow-md md:shadow-lg hover:shadow-lg md:hover:shadow-xl hover:scale-105 ${
               selectedMoreTool && activeTab === selectedMoreTool.id
-                ? "bg-red-400 text-white"
-                : "bg-black text-gray-300 border border-blue-600 hover:border-blue-500"
+                ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-blue-500/50"
+                : "bg-gray-900 text-gray-300 border-2 border-blue-600/30 hover:border-blue-500 hover:bg-gray-800"
             }`}
           >
             {selectedMoreTool ? (
               <>
-                <span className="text-base">{selectedMoreTool.icon}</span>
-                <span>{t(`tools.items.${selectedMoreTool.key}.title`)}</span>
+                <span className="text-base md:text-lg">{selectedMoreTool.icon}</span>
+                <span className="whitespace-nowrap hidden md:inline">{t(`tools.items.${selectedMoreTool.key}.title`)}</span>
               </>
             ) : (
               <>
-                <span className="text-base">🔧</span>
-                <span>More Tools</span>
+                <span className="text-base md:text-lg">🔧</span>
+                <span className="whitespace-nowrap">More Tools</span>
               </>
             )}
-            <span className={`text-sm transition-transform duration-300 ${showMoreTools ? "rotate-180" : ""}`}>
+            <span className={`text-xs md:text-sm transition-transform duration-300 ${showMoreTools ? "rotate-180" : ""}`}>
               ▼
             </span>
-            <span className="text-base ml-1">✕</span>
           </button>
 
           {/* Dropdown Menu */}
