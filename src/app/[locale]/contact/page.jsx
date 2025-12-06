@@ -199,7 +199,7 @@ const Page = () => {
       <div className="contact-copy">
         <div className="contact-col">
           <Copy delay={0.8}>
-            <h2 className="text-[4rem] md:text-[6rem] font-bold uppercase ">Transform Your Text, Elevate Your Content</h2>
+            <h2 className="text-[4rem] md:text-[3rem] lg:text-[4rem] xl:text-[3rem] font-bold uppercase ">Transform Your Text, Elevate Your Content</h2>
           </Copy>
         </div>
 
