@@ -54,17 +54,16 @@ export default function ToolNavigation({
             <button
               type="button"
               onClick={() => setActiveTab(tool.id)}
-              className={`w-full relative px-3 py-2 md:px-5 md:py-3 rounded-lg md:rounded-xl font-semibold text-xs md:text-sm transition-all duration-300 flex items-center justify-center gap-1.5 md:gap-2.5 shadow-md md:shadow-lg hover:shadow-lg md:hover:shadow-xl hover:scale-105 ${
-                activeTab === tool.id
-                  ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-cyan-500/50"
-                  : "bg-gray-900 text-gray-300 border-2 border-cyan-500/30 hover:border-cyan-400 hover:bg-gray-800"
-              }`}
+              className={`w-full relative px-3 py-2 md:px-5 md:py-3 font-semibold text-xs md:text-sm transition-all duration-300 flex items-center justify-center gap-1.5 md:gap-2.5 hover:scale-105 border-2 ${activeTab === tool.id
+                  ? "bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-lg shadow-pink-500/50 border-pink-500"
+                  : "bg-black text-gray-300 border-pink-500 hover:border-pink-400 hover:bg-gray-900"
+                }`}
             >
               <span className="text-base md:text-lg">{tool.icon}</span>
               <span className="whitespace-nowrap hidden md:inline">{t(`tools.items.${tool.key}.title`)}</span>
             </button>
             {tool.isBest && (
-              <span className="absolute -top-2 -right-2 px-2 py-0.5 rounded text-xs font-bold bg-yellow-400 text-black">
+              <span className="absolute -top-2 -right-2 px-2 py-0.5 rounded-none text-xs font-bold bg-yellow-400 text-black">
                 BEST
               </span>
             )}
@@ -77,17 +76,16 @@ export default function ToolNavigation({
             <button
               type="button"
               onClick={() => setActiveTab(tool.id)}
-              className={`w-full relative px-3 py-2 md:px-5 md:py-3 rounded-lg md:rounded-xl font-semibold text-xs md:text-sm transition-all duration-300 flex items-center justify-center gap-1.5 md:gap-2.5 shadow-md md:shadow-lg hover:shadow-lg md:hover:shadow-xl hover:scale-105 ${
-                activeTab === tool.id
-                  ? "bg-gradient-to-r from-red-500 to-pink-500 text-white shadow-red-500/50"
-                  : "bg-gray-900 text-gray-300 border-2 border-red-500/30 hover:border-red-400 hover:bg-gray-800"
-              }`}
+              className={`w-full relative px-3 py-2 md:px-5 md:py-3 font-semibold text-xs md:text-sm transition-all duration-300 flex items-center justify-center gap-1.5 md:gap-2.5 hover:scale-105 border-2 ${activeTab === tool.id
+                  ? "bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-lg shadow-pink-500/50 border-pink-500"
+                  : "bg-black text-gray-300 border-pink-500 hover:border-pink-400 hover:bg-gray-900"
+                }`}
             >
               <span className="text-base md:text-lg">{tool.icon}</span>
               <span className="whitespace-nowrap hidden md:inline">{tool.id === "translate" ? "Translator" : t(`tools.items.${tool.key}.title`)}</span>
             </button>
             {tool.isNew && (
-              <span className="absolute -top-2 -right-2 px-2 py-0.5 rounded text-xs font-bold bg-red-500 text-white">
+              <span className="absolute -top-2 -right-2 px-2 py-0.5 rounded-none text-xs font-bold bg-gray-600 text-white border border-pink-500">
                 NEW
               </span>
             )}
@@ -99,11 +97,10 @@ export default function ToolNavigation({
           <button
             type="button"
             onClick={() => setShowMoreTools(!showMoreTools)}
-            className={`w-full relative px-3 py-2 md:px-5 md:py-3 rounded-lg md:rounded-xl font-semibold text-xs md:text-sm transition-all duration-300 flex items-center justify-center gap-1.5 md:gap-2.5 shadow-md md:shadow-lg hover:shadow-lg md:hover:shadow-xl hover:scale-105 ${
-              selectedMoreTool && activeTab === selectedMoreTool.id
-                ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-blue-500/50"
-                : "bg-gray-900 text-gray-300 border-2 border-blue-600/30 hover:border-blue-500 hover:bg-gray-800"
-            }`}
+            className={`w-full relative px-3 py-2 md:px-5 md:py-3 font-semibold text-xs md:text-sm transition-all duration-300 flex items-center justify-center gap-1.5 md:gap-2.5 hover:scale-105 border-2 ${selectedMoreTool && activeTab === selectedMoreTool.id
+                ? "bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg shadow-blue-500/50 border-blue-500"
+                : "bg-black text-gray-300 border-blue-500 hover:border-blue-400 hover:bg-gray-900"
+              }`}
           >
             {selectedMoreTool ? (
               <>
@@ -123,12 +120,12 @@ export default function ToolNavigation({
 
           {/* Dropdown Menu */}
           {showMoreTools && (
-            <div className="absolute top-full mt-2 left-0 w-full bg-gray-900 border-2 border-gray-700 rounded-lg shadow-2xl z-50 overflow-hidden">
+            <div className="absolute top-full mt-2 left-0 w-full bg-black border-2 border-blue-500 shadow-2xl z-50 overflow-hidden">
               {(selectedMoreTool
                 ? [
-                    { id: "reset", icon: "🔧", key: "reset", isReset: true },
-                    ...moreToolsOptions.filter((tool) => tool.id !== selectedMoreTool.id),
-                  ]
+                  { id: "reset", icon: "🔧", key: "reset", isReset: true },
+                  ...moreToolsOptions.filter((tool) => tool.id !== selectedMoreTool.id),
+                ]
                 : moreToolsOptions
               ).map((tool) => (
                 <button
@@ -144,11 +141,10 @@ export default function ToolNavigation({
                     }
                     setShowMoreTools(false);
                   }}
-                  className={`w-full text-left px-4 py-3 flex items-center gap-3 transition-colors border-b border-gray-800 last:border-b-0 ${
-                    activeTab === tool.id
-                      ? "bg-blue-900 text-white"
-                      : "bg-gray-900 hover:bg-gray-800 text-gray-300"
-                  }`}
+                  className={`w-full text-left px-4 py-3 flex items-center gap-3 transition-colors border-b border-gray-800 last:border-b-0 ${activeTab === tool.id
+                      ? "bg-blue-600 text-white"
+                      : "bg-black hover:bg-gray-900 text-gray-300 hover:text-white"
+                    }`}
                 >
                   <span className="text-lg">{tool.icon}</span>
                   <span className="flex-1">
@@ -157,7 +153,7 @@ export default function ToolNavigation({
                       : t(`tools.items.${tool.key}.title`)}
                   </span>
                   {"isNew" in tool && tool.isNew && (
-                    <span className="px-2 py-0.5 rounded text-xs font-bold bg-red-400 text-white">
+                    <span className="px-2 py-0.5 rounded-none text-xs font-bold bg-pink-500 text-white">
                       NEW
                     </span>
                   )}

@@ -3,6 +3,7 @@ import { useState } from "react";
 import ToolsHeader from "@/components/sections/tools/ToolsHeader";
 import ToolNavigation from "@/components/sections/tools/ToolNavigation";
 import ToolWorkspace from "@/components/sections/tools/ToolWorkspace";
+import QRCodeWorkspace from "@/components/sections/tools/QRCodeWorkspace";
 import Footer from "@/components/Footer/Footer";
 
 interface Notification {
@@ -198,11 +199,9 @@ export default function ToolsPage() {
         {notifications.map((notification) => (
           <div
             key={notification.id}
-            className={`bg-white rounded-xl p-4 mb-2.5 shadow-lg border-l-4 animate-slide-in-right pointer-events-auto max-w-[320px] wrap-break-word ${
-              notification.type === "success" ? "border-l-emerald-500" : ""
-            } ${notification.type === "error" ? "border-l-red-500" : ""} ${
-              notification.type === "info" ? "border-l-blue-500" : ""
-            }`}
+            className={`bg-white rounded-xl p-4 mb-2.5 shadow-lg border-l-4 animate-slide-in-right pointer-events-auto max-w-[320px] wrap-break-word ${notification.type === "success" ? "border-l-emerald-500" : ""
+              } ${notification.type === "error" ? "border-l-red-500" : ""} ${notification.type === "info" ? "border-l-blue-500" : ""
+              }`}
           >
             <div className="text-sm font-medium text-gray-800">{notification.message}</div>
           </div>
@@ -223,22 +222,27 @@ export default function ToolsPage() {
             setSelectedMoreTool={setSelectedMoreTool}
           />
 
-          <ToolWorkspace
-            activeTab={activeTab}
-            inputText={inputText}
-            setInputText={setInputText}
-            outputText={outputText}
-            translationLanguage={translationLanguage}
-            setTranslationLanguage={setTranslationLanguage}
-            isTranslating={isTranslating}
-            handleTextTransform={handleTextTransform}
-            copyToClipboard={copyToClipboard}
-            downloadText={downloadText}
-          />
+
+          {activeTab === "qrcode" ? (
+            <QRCodeWorkspace />
+          ) : (
+            <ToolWorkspace
+              activeTab={activeTab}
+              inputText={inputText}
+              setInputText={setInputText}
+              outputText={outputText}
+              translationLanguage={translationLanguage}
+              setTranslationLanguage={setTranslationLanguage}
+              isTranslating={isTranslating}
+              handleTextTransform={handleTextTransform}
+              copyToClipboard={copyToClipboard}
+              downloadText={downloadText}
+            />
+          )}
         </div>
-        
+
       </section>
-      <Footer/>
+      <Footer />
     </>
   );
 }
