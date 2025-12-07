@@ -55,8 +55,8 @@ export default function ToolNavigation({
               type="button"
               onClick={() => setActiveTab(tool.id)}
               className={`w-full relative px-3 py-2 md:px-5 md:py-3 font-semibold text-xs md:text-sm transition-all duration-300 flex items-center justify-center gap-1.5 md:gap-2.5 hover:scale-105 border-2 ${activeTab === tool.id
-                  ? "bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-lg shadow-pink-500/50 border-pink-500"
-                  : "bg-black text-gray-300 border-pink-500 hover:border-pink-400 hover:bg-gray-900"
+                  ? "bg-[#fff9cb] text-black shadow-lg shadow-[#fff9cb]/50 border-[#fff9cb]"
+                  : "bg-black text-gray-300 border-[#fff9cb] hover:border-[#fff9cb]/80 hover:bg-gray-900"
                 }`}
             >
               <span className="text-base md:text-lg">{tool.icon}</span>
@@ -77,15 +77,15 @@ export default function ToolNavigation({
               type="button"
               onClick={() => setActiveTab(tool.id)}
               className={`w-full relative px-3 py-2 md:px-5 md:py-3 font-semibold text-xs md:text-sm transition-all duration-300 flex items-center justify-center gap-1.5 md:gap-2.5 hover:scale-105 border-2 ${activeTab === tool.id
-                  ? "bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-lg shadow-pink-500/50 border-pink-500"
-                  : "bg-black text-gray-300 border-pink-500 hover:border-pink-400 hover:bg-gray-900"
+                  ? "bg-[#fff9cb] text-black shadow-lg shadow-[#fff9cb]/50 border-[#fff9cb]"
+                  : "bg-black text-gray-300 border-[#fff9cb] hover:border-[#fff9cb]/80 hover:bg-gray-900"
                 }`}
             >
               <span className="text-base md:text-lg">{tool.icon}</span>
               <span className="whitespace-nowrap hidden md:inline">{tool.id === "translate" ? "Translator" : t(`tools.items.${tool.key}.title`)}</span>
             </button>
             {tool.isNew && (
-              <span className="absolute -top-2 -right-2 px-2 py-0.5 rounded-none text-xs font-bold bg-gray-600 text-white border border-pink-500">
+              <span className="absolute -top-2 -right-2 px-2 py-0.5 rounded-none text-xs font-bold bg-red-500 text-white">
                 NEW
               </span>
             )}
@@ -153,7 +153,7 @@ export default function ToolNavigation({
                       : t(`tools.items.${tool.key}.title`)}
                   </span>
                   {"isNew" in tool && tool.isNew && (
-                    <span className="px-2 py-0.5 rounded-none text-xs font-bold bg-pink-500 text-white">
+                    <span className="px-2 py-0.5 rounded-none text-xs font-bold bg-[#fff9cb] text-black border border-[#fff9cb]">
                       NEW
                     </span>
                   )}
