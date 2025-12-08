@@ -8,6 +8,15 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
+interface CopyProps {
+  children: React.ReactNode;
+  animateOnScroll?: boolean;
+  delay?: number;
+  blockColor?: string;
+  stagger?: number;
+  duration?: number;
+}
+
 export default function Copy({
   children,
   animateOnScroll = true,
@@ -15,11 +24,11 @@ export default function Copy({
   blockColor = "#000",
   stagger = 0.15,
   duration = 0.75,
-}) {
-  const containerRef = useRef(null);
-  const splitRefs = useRef([]);
-  const lines = useRef([]);
-  const blocks = useRef([]);
+}: CopyProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const splitRefs = useRef<SplitText[]>([]);
+  const lines = useRef<HTMLElement[]>([]);
+  const blocks = useRef<HTMLDivElement[]>([]);
 
   useGSAP(
     () => {
@@ -29,9 +38,9 @@ export default function Copy({
       lines.current = [];
       blocks.current = [];
 
-      let elements = [];
+      let elements: HTMLElement[] = [];
       if (containerRef.current.hasAttribute("data-copy-wrapper")) {
-        elements = Array.from(containerRef.current.children);
+        elements = Array.from(containerRef.current.children) as HTMLElement[];
       } else {
         elements = [containerRef.current];
       }
@@ -48,15 +57,15 @@ export default function Copy({
         split.lines.forEach((line) => {
           const wrapper = document.createElement("div");
           wrapper.className = "block-line-wrapper";
-          line.parentNode.insertBefore(wrapper, line);
-          wrapper.appendChild(line);
+          (line as HTMLElement).parentNode!.insertBefore(wrapper, line as HTMLElement);
+          wrapper.appendChild(line as HTMLElement);
 
           const block = document.createElement("div");
           block.className = "block-revealer";
           block.style.backgroundColor = blockColor;
           wrapper.appendChild(block);
 
-          lines.current.push(line);
+          lines.current.push(line as HTMLElement);
           blocks.current.push(block);
         });
       });
@@ -64,7 +73,7 @@ export default function Copy({
       gsap.set(lines.current, { opacity: 0 });
       gsap.set(blocks.current, { scaleX: 0, transformOrigin: "left center" });
 
-      const createBlockRevealAnimation = (block, line, index) => {
+      const createBlockRevealAnimation = (block: HTMLDivElement, line: HTMLElement, index: number) => {
         const tl = gsap.timeline({ delay: delay + index * stagger });
 
         tl.to(block, { scaleX: 1, duration: duration, ease: "power4.inOut" });
@@ -100,7 +109,7 @@ export default function Copy({
       return () => {
         splitRefs.current.forEach((split) => split?.revert());
 
-        const wrappers = containerRef.current?.querySelectorAll(
+        const wrappers = containerRef.current?.querySelectorAll<HTMLElement>(
           ".block-line-wrapper"
         );
         wrappers?.forEach((wrapper) => {

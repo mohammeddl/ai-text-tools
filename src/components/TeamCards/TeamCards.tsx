@@ -9,16 +9,16 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function TeamCards() {
-  const stickyRef = useRef(null);
-  const headerRef = useRef(null);
-  const cardsRef = useRef([]);
+  const stickyRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useGSAP(
     () => {
       const mm = gsap.matchMedia();
 
       mm.add("(min-width: 1000px)", () => {
-        let scrollTriggerInstance = null;
+        let scrollTriggerInstance: ScrollTrigger | null = null;
 
         const stickySection = stickyRef.current;
         const stickyHeader = headerRef.current;
@@ -64,7 +64,7 @@ export default function TeamCards() {
         };
         measure();
 
-        const transforms = [
+        const transforms: [number[], number[]][] = [
           [
             [10, 50, -10, 10],
             [20, -10, -45, 20],
@@ -100,6 +100,8 @@ export default function TeamCards() {
             gsap.set(stickyHeader, { x: translateX });
 
             cards.forEach((card, index) => {
+              if (!card) return;
+              
               const delay = index * 0.1125;
               const cardProgress = Math.max(
                 0,
@@ -206,7 +208,7 @@ export default function TeamCards() {
             className="card"
             id={m.id}
             key={m.id}
-            ref={(el) => (cardsRef.current[idx] = el)}
+            ref={(el) => { cardsRef.current[idx] = el; }}
           >
             <div className="card-img">
               <img src={m.img} alt={m.alt} />

@@ -7,8 +7,18 @@ import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { IconType } from "react-icons";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
+
+interface ButtonProps {
+  href?: string;
+  children: React.ReactNode;
+  variant?: "dark" | "light";
+  icon?: IconType;
+  animateOnScroll?: boolean;
+  delay?: number;
+}
 
 export default function Button({
   href,
@@ -17,16 +27,16 @@ export default function Button({
   icon,
   animateOnScroll = false,
   delay = 0,
-}) {
+}: ButtonProps) {
   const IconComponent = icon || HiLightningBolt;
   const { navigateWithTransition } = useViewTransition();
-  const buttonRef = useRef(null);
-  const labelRef = useRef(null);
-  const iconRef = useRef(null);
-  const splitRef = useRef(null);
-  const lines = useRef([]);
+  const buttonRef = useRef<HTMLAnchorElement>(null);
+  const labelRef = useRef<HTMLSpanElement>(null);
+  const iconRef = useRef<HTMLSpanElement>(null);
+  const splitRef = useRef<SplitText | null>(null);
+  const lines = useRef<HTMLElement[]>([]);
 
-  const waitForFonts = async () => {
+  const waitForFonts = async (): Promise<boolean> => {
     try {
       await document.fonts.ready;
 
@@ -60,7 +70,7 @@ export default function Button({
         splitRef.current = null;
         lines.current = [];
 
-        const split = SplitText.create(labelRef.current, {
+        const split = SplitText.create(labelRef.current!, {
           type: "lines",
           mask: "lines",
           linesClass: "line++",
@@ -68,7 +78,7 @@ export default function Button({
         });
 
         splitRef.current = split;
-        lines.current = split.lines;
+        lines.current = split.lines as HTMLElement[];
 
         gsap.set(lines.current, { y: "100%" });
 
@@ -137,7 +147,7 @@ export default function Button({
       ref={buttonRef}
       href={href}
       className={`button button--${variant}`}
-      onClick={(e) => {
+      onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
         if (!href) return;
         e.preventDefault();
         navigateWithTransition(href);

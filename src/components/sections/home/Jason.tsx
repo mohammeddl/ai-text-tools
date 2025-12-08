@@ -6,16 +6,18 @@ const Jason = () => {
   useGSAP(() => {
     gsap.set('.jason', { marginTop: '-90vh' });
 
-    gsap.timeline({
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: '.jason',
         start: 'top 90%',
         end: '10% center',
         scrub: 2,
       }
-    }).to('.first-vd', { opacity: 0, duration: 1, ease: 'power1.inOut' });
+    });
 
-    gsap.to('.jason .img-box', {
+    tl.to('.first-vd', { opacity: 0, duration: 1, ease: 'power1.inOut' });
+
+    tl.to('.jason .img-box', {
       scrollTrigger: {
         trigger: '.jason',
         start: 'top center',

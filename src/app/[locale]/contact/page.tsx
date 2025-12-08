@@ -5,9 +5,9 @@ import Button from "@/components/Button/Button";
 import Copy from "@/components/Copy/Copy";
 
 const Page = () => {
-  const screensaverRef = useRef(null);
-  const animationIdRef = useRef(null);
-  const containerRef = useRef(null);
+  const screensaverRef = useRef<HTMLDivElement>(null);
+  const animationIdRef = useRef<number | null>(null);
+  const containerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -29,11 +29,11 @@ const Page = () => {
     };
 
     let isDesktop = window.innerWidth >= 1000;
-    let screensaverElement = null;
+    let screensaverElement: HTMLDivElement | null = null;
 
     const preloadedImages = [];
     const preloadImages = () => {
-      return new Promise((resolve) => {
+      return new Promise<void>((resolve) => {
         let loadedCount = 0;
 
         for (let i = 1; i <= config.imageCount; i++) {
@@ -106,6 +106,7 @@ const Page = () => {
       screensaverElement.style.top = `${posY}px`;
 
       const changeImage = () => {
+        if (!screensaverElement) return;
         currentImageIndex = (currentImageIndex % config.imageCount) + 1;
         screensaverElement.style.backgroundImage = `url(/images/objects/obj-${currentImageIndex}.png)`;
       };

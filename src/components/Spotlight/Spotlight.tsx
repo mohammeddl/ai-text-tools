@@ -8,21 +8,21 @@ import SplitType from "split-type";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-const Spotlight = () => {
-  const spotlightRef = useRef(null);
+const Spotlight: React.FC = () => {
+  const spotlightRef = useRef<HTMLElement>(null);
 
   useGSAP(
     () => {
-      const scrollTriggerInstances = [];
+      const scrollTriggerInstances: ScrollTrigger[] = [];
 
       const initSpotlight = () => {
         new SplitType(".marquee-text-item h1", { types: "chars" });
 
         document
-          .querySelectorAll(".marquee-container")
+          .querySelectorAll<HTMLElement>(".marquee-container")
           .forEach((container, index) => {
-            const marquee = container.querySelector(".marquee");
-            const chars = container.querySelectorAll(".char");
+            const marquee = container.querySelector<HTMLElement>(".marquee");
+            const chars = container.querySelectorAll<HTMLElement>(".char");
 
             const marqueeTrigger = gsap.to(marquee, {
               x: index % 2 === 0 ? "5%" : "-15%",

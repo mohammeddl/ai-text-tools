@@ -9,12 +9,55 @@ import Copy from "../Copy/Copy";
 
 gsap.registerPlugin(useGSAP);
 
-const Footer = () => {
-  const footerRef = useRef(null);
-  const explosionContainerRef = useRef(null);
+interface Config {
+  gravity: number;
+  friction: number;
+  imageSize: number;
+  horizontalForce: number;
+  verticalForce: number;
+  rotationSpeed: number;
+  resetDelay: number;
+}
+
+class Particle {
+  element: HTMLElement;
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  rotation: number;
+  rotationSpeed: number;
+  config: Config;
+
+  constructor(element: HTMLElement, config: Config) {
+    this.element = element;
+    this.config = config;
+    this.x = 0;
+    this.y = 0;
+    this.vx = (Math.random() - 0.5) * config.horizontalForce;
+    this.vy = -config.verticalForce - Math.random() * 10;
+    this.rotation = 0;
+    this.rotationSpeed = (Math.random() - 0.5) * config.rotationSpeed;
+  }
+
+  update() {
+    this.vy += this.config.gravity;
+    this.vx *= this.config.friction;
+    this.vy *= this.config.friction;
+    this.rotationSpeed *= this.config.friction;
+    this.x += this.vx;
+    this.y += this.vy;
+    this.rotation += this.rotationSpeed;
+    this.element.style.transform = `translate(${this.x}px, ${this.y}px) rotate(${this.rotation}deg)`;
+  }
+}
+
+const Footer: React.FC = () => {
+  const footerRef = useRef<HTMLElement>(null);
+  const explosionContainerRef = useRef<HTMLDivElement>(null);
   const [torontoTime, setTorontoTime] = useState("");
 
-  const config = {
+  const config: Config = {
     gravity: 0.25,
     friction: 0.99,
     imageSize: 300,
@@ -32,7 +75,7 @@ const Footer = () => {
 
   useEffect(() => {
     const updateTorontoTime = () => {
-      const options = {
+      const options: Intl.DateTimeFormatOptions = {
         timeZone: "America/Toronto",
         hour: "2-digit",
         minute: "2-digit",
@@ -51,34 +94,11 @@ const Footer = () => {
     return () => clearInterval(timeInterval);
   }, []);
 
-  class Particle {
-    constructor(element) {
-      this.element = element;
-      this.x = 0;
-      this.y = 0;
-      this.vx = (Math.random() - 0.5) * config.horizontalForce;
-      this.vy = -config.verticalForce - Math.random() * 10;
-      this.rotation = 0;
-      this.rotationSpeed = (Math.random() - 0.5) * config.rotationSpeed;
-    }
-
-    update() {
-      this.vy += config.gravity;
-      this.vx *= config.friction;
-      this.vy *= config.friction;
-      this.rotationSpeed *= config.friction;
-      this.x += this.vx;
-      this.y += this.vy;
-      this.rotation += this.rotationSpeed;
-      this.element.style.transform = `translate(${this.x}px, ${this.y}px) rotate(${this.rotation}deg)`;
-    }
-  }
-
   useGSAP(
     () => {
       let hasExploded = false;
-      let animationId;
-      let checkTimeout;
+      let animationId: number;
+      let checkTimeout: NodeJS.Timeout;
 
       imagePaths.forEach((path) => {
         const img = new Image();
@@ -112,7 +132,7 @@ const Footer = () => {
           const particle = document.createElement("img");
           particle.src = path;
           particle.classList.add("explosion-particle-img");
-          explosionContainerRef.current.appendChild(particle);
+          explosionContainerRef.current!.appendChild(particle);
         });
       };
 
@@ -122,11 +142,11 @@ const Footer = () => {
         hasExploded = true;
         createParticles();
 
-        const particleElements = explosionContainerRef.current.querySelectorAll(
+        const particleElements = explosionContainerRef.current.querySelectorAll<HTMLElement>(
           ".explosion-particle-img"
         );
         const particles = Array.from(particleElements).map(
-          (element) => new Particle(element)
+          (element) => new Particle(element, config)
         );
 
         const animate = () => {
@@ -137,7 +157,7 @@ const Footer = () => {
             explosionContainerRef.current &&
             particles.every(
               (particle) =>
-                particle.y > explosionContainerRef.current.offsetHeight / 2
+                particle.y > explosionContainerRef.current!.offsetHeight / 2
             )
           ) {
             cancelAnimationFrame(animationId);

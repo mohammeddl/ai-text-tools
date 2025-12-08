@@ -12,8 +12,8 @@ CustomEase.create("hop", "0.9, 0, 0.1, 1");
 
 export let isInitialLoad = true;
 
-const Preloader = () => {
-  const preloaderRef = useRef(null);
+const Preloader: React.FC = () => {
+  const preloaderRef = useRef<HTMLDivElement>(null);
   const [showPreloader, setShowPreloader] = useState(isInitialLoad);
   const [loaderAnimating, setLoaderAnimating] = useState(false);
   const lenis = useLenis();
@@ -39,7 +39,7 @@ const Preloader = () => {
       if (!showPreloader) return;
       setLoaderAnimating(true);
 
-      const waitForFonts = async () => {
+      const waitForFonts = async (): Promise<boolean> => {
         try {
           await document.fonts.ready;
           const customFonts = ["Big Shoulders Display"];
@@ -66,7 +66,7 @@ const Preloader = () => {
           mask: "chars",
         });
 
-        const chars = preloaderHeaderSplit.chars;
+        const chars = preloaderHeaderSplit.chars as HTMLElement[];
 
         chars.forEach((char, index) => {
           gsap.set(char, { yPercent: index % 2 === 0 ? -100 : 100 });
@@ -74,8 +74,8 @@ const Preloader = () => {
 
         gsap.set(".preloader-header h1", { opacity: 1 });
 
-        const preloaderImages = gsap.utils.toArray(".preloader-images .img");
-        const preloaderImagesInner = gsap.utils.toArray(
+        const preloaderImages = gsap.utils.toArray<HTMLElement>(".preloader-images .img");
+        const preloaderImagesInner = gsap.utils.toArray<HTMLElement>(
           ".preloader-images .img img"
         );
 

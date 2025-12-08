@@ -1,10 +1,10 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, RefObject } from "react";
 import { ReactLenis } from "lenis/react";
-import Menu from "./components/Menu/Menu";
+import Menu from "../Menu/Menu";
 
-export default function ClientLayout({ children }) {
-  const pageRef = useRef();
+export default function ClientLayout({ children }: { children: React.ReactNode }) {
+  const pageRef = useRef<HTMLDivElement>(null);
 
   const [isMobile, setIsMobile] = useState(false);
 
@@ -23,7 +23,7 @@ export default function ClientLayout({ children }) {
   const scrollSettings = isMobile
     ? {
         duration: 0.8,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         direction: "vertical",
         gestureDirection: "vertical",
         smooth: true,
@@ -38,7 +38,7 @@ export default function ClientLayout({ children }) {
       }
     : {
         duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         direction: "vertical",
         gestureDirection: "vertical",
         smooth: true,
@@ -53,8 +53,8 @@ export default function ClientLayout({ children }) {
       };
 
   return (
-    <ReactLenis root options={scrollSettings}>
-      <Menu pageRef={pageRef} />
+    <ReactLenis root options={scrollSettings as any}>
+      <Menu pageRef={pageRef as RefObject<HTMLElement>} />
 
       <div className="page" ref={pageRef}>
         {children}

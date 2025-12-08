@@ -1,7 +1,7 @@
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 
-const Outro = () => {
+const Outro: React.FC = () => {
   useGSAP(() => {
     gsap.set('.final-message', { marginTop: '-100vh', opacity: 0 })
 

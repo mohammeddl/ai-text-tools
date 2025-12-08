@@ -8,13 +8,19 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
-export default function Copy({ children, animateOnScroll = true, delay = 0 }) {
-  const containerRef = useRef(null);
-  const elementRefs = useRef([]);
-  const splitRefs = useRef([]);
-  const lines = useRef([]);
+interface CopyProps {
+  children: React.ReactNode;
+  animateOnScroll?: boolean;
+  delay?: number;
+}
 
-  const waitForFonts = async () => {
+export default function Copy({ children, animateOnScroll = true, delay = 0 }: CopyProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const elementRefs = useRef<HTMLElement[]>([]);
+  const splitRefs = useRef<SplitText[]>([]);
+  const lines = useRef<HTMLElement[]>([]);
+
+  const waitForFonts = async (): Promise<boolean> => {
     try {
       await document.fonts.ready;
 
@@ -49,11 +55,11 @@ export default function Copy({ children, animateOnScroll = true, delay = 0 }) {
         lines.current = [];
         elementRefs.current = [];
 
-        let elements = [];
-        if (containerRef.current.hasAttribute("data-copy-wrapper")) {
-          elements = Array.from(containerRef.current.children);
+        let elements: HTMLElement[] = [];
+        if (containerRef.current!.hasAttribute("data-copy-wrapper")) {
+          elements = Array.from(containerRef.current!.children) as HTMLElement[];
         } else {
-          elements = [containerRef.current];
+          elements = [containerRef.current!];
         }
 
         elements.forEach((element) => {
@@ -73,12 +79,12 @@ export default function Copy({ children, animateOnScroll = true, delay = 0 }) {
 
           if (textIndent && textIndent !== "0px") {
             if (split.lines.length > 0) {
-              split.lines[0].style.paddingLeft = textIndent;
+              (split.lines[0] as HTMLElement).style.paddingLeft = textIndent;
             }
             element.style.textIndent = "0";
           }
 
-          lines.current.push(...split.lines);
+          lines.current.push(...(split.lines as HTMLElement[]));
         });
 
         gsap.set(lines.current, { y: "100%" });
@@ -119,7 +125,7 @@ export default function Copy({ children, animateOnScroll = true, delay = 0 }) {
   );
 
   if (React.Children.count(children) === 1) {
-    return React.cloneElement(children, { ref: containerRef });
+    return React.cloneElement(children as any, { ref: containerRef });
   }
 
   return (

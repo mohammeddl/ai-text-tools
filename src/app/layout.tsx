@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
-import ClientLayout from "../client-layout";
+import ClientLayout from "@/components/Layout/ClientLayout";
 export const metadata: Metadata = {
   title: "AI Text Tools - Transform and Generate Text with AI Power",
   description:
