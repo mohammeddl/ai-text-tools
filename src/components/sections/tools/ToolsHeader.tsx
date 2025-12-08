@@ -1,24 +1,22 @@
 "use client";
 import { useTranslations } from "next-intl";
-import { useRouter, useParams } from "next/navigation";
+import { useViewTransition } from "@/hooks/useViewTransition";
 
 export default function ToolsHeader() {
   const t = useTranslations();
-  const router = useRouter();
-  const params = useParams();
+  const { navigateWithTransition } = useViewTransition();
 
   const goBackToHome = () => {
-    const locale = params.locale || 'en';
-    router.push(`/${locale}`);
+    navigateWithTransition("/");
   };
 
   return (
-    <div className="mb-6">
+    <div className="mb-6 relative z-50">
       {/* Back to Home Button */}
       <div className="">
         <button
           onClick={goBackToHome}
-          className="flex items-center gap-2 px-6 py-3 bg-transparent border-2 border-white rounded-full text-white hover:bg-white hover:text-black transition-all duration-300 text-base"
+          className="flex items-center gap-2 px-6 py-3 bg-transparent cursor-pointer border-2 border-white rounded-full text-white hover:bg-white hover:text-black transition-all duration-300 text-base"
         >
           <span className="text-lg ">←</span>
           Back to Home

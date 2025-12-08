@@ -6,6 +6,7 @@ import { SplitText } from "gsap/all";
 import { useGSAP } from "@gsap/react";
 import { useLenis } from "lenis/react";
 import { useViewTransition } from "@/hooks/useViewTransition";
+import { usePathname } from "next/navigation";
 
 gsap.registerPlugin(useGSAP, SplitText);
 
@@ -26,8 +27,15 @@ const Menu = ({ pageRef }) => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMenuAnimating, setIsMenuAnimating] = useState(false);
+  
+  const pathname = usePathname();
+  const [currentPath, setCurrentPath] = useState("");
 
   const lenis = useLenis();
+
+  useEffect(() => {
+    setCurrentPath(pathname);
+  }, [pathname]);
 
   const { navigateWithTransition } = useViewTransition();
 
@@ -457,19 +465,21 @@ const Menu = ({ pageRef }) => {
     <>
       <nav>
         <div className="nav-logo">
-          <a
-            href="/"
-            onClick={(e) => {
-              e.preventDefault();
-              const currentPath = window.location.pathname;
-              if (currentPath === "/") {
-                return;
-              }
-              navigateWithTransition("/", isMenuOpen ? toggleMenu : null);
-            }}
-          >
-            <img src="/images/gsap-images/images/logo-white.png" alt="" />
-          </a>
+          {!currentPath.includes('/tools') && (
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                const currentPath = window.location.pathname;
+                if (currentPath === "/") {
+                  return;
+                }
+                navigateWithTransition("/", isMenuOpen ? toggleMenu : null);
+              }}
+            >
+              <img src="/images/gsap-images/images/logo-white.png" alt="" />
+            </a>
+          )}
         </div>
 
         <div className="nav-toggle" ref={navToggleRef} onClick={toggleMenu}>
