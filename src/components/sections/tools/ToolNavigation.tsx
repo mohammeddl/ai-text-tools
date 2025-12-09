@@ -45,7 +45,7 @@ export default function ToolNavigation({
   ];
 
   return (
-    <div className="mb-12 max-w-7xl mx-auto px-4">
+    <div className="md:mb-12 mb-4 max-w-7xl mx-auto px-4">
       {/* All buttons in one grid: 3 columns on mobile, flex on desktop */}
       <div className="grid grid-cols-3 md:flex md:flex-wrap gap-2 md:gap-3 md:justify-center">
         {/* Main Tools */}

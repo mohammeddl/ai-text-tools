@@ -16,9 +16,9 @@ nav .nav-logo a {
 }
 
 nav .nav-logo img {
-  width: 60%;
-  height: 60%;
-  object-fit: cover;
+  width: 40%;
+  height: 80%;
+
 }
 
 nav .nav-toggle {

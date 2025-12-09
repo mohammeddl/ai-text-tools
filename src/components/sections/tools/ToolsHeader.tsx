@@ -16,7 +16,7 @@ export default function ToolsHeader() {
       <div className="">
         <button
           onClick={goBackToHome}
-          className="flex items-center gap-2 px-6 py-3 bg-transparent cursor-pointer border-2 border-white rounded-full text-white hover:bg-white hover:text-black transition-all duration-300 text-base"
+          className="flex items-center gap-2 px-6 py-3 bg-transparent cursor-pointer border-2 border-white rounded-lg text-white hover:bg-white hover:text-black transition-all duration-300 text-base"
         >
           <span className="text-lg ">←</span>
           Back to Home
