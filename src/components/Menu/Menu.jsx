@@ -42,8 +42,6 @@ const Menu = ({ pageRef }) => {
   const menuItems = [
     { label: "Home", route: "/" },
     { label: "Tools", route: "/en/tools" },
-    // { label: "Studio", route: "/en/studio" },
-    // { label: "Stories", route: "/en/stories" },
     { label: "Contact", route: "/en/contact" },
   ];
 

@@ -7,10 +7,8 @@ import { useGSAP } from '@gsap/react';
 export default function Info() {
 
      useGSAP(() => {
-        // register ScrollTrigger and set up animation that scales the mask from the top-left
+        // Scale mask on scroll
         gsap.registerPlugin(ScrollTrigger);
-
-        // ensure transform origin is top-left (applies to the wrapper div below)
         gsap.set('.mask', { transformOrigin: '0 0' });
 
         const tl = gsap.timeline({
@@ -22,7 +20,6 @@ export default function Info() {
             }
         });
 
-        // animate the wrapper div with class "mask"
         tl.to('.mask', { scale: 4, duration: 1, ease: 'power1.inOut' });
     })
 
@@ -38,7 +35,7 @@ export default function Info() {
                     <div
                         className="mask absolute inset-0 pointer-events-none"
                         style={{
-                            // start with identity matrix so scaling is predictable
+                            // Reset matrix for predictable scaling
                             transform: 'matrix(1, 0, 0, 1, 0, 0)',
                             transformOrigin: '0 0',
                             mixBlendMode: 'screen',

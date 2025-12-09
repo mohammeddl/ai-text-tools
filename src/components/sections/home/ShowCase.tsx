@@ -13,8 +13,8 @@ function ShowCase() {
 
   useGSAP(() => {
     if (!isTablet) {
-      // Set initial state: mask is invisible
-      gsap.set(".mask", { opacity: 0 });
+      // Show mask on scroll
+      gsap.set('.case-mask', { opacity: 0 });
       gsap.set(".content", { opacity: 0, y: 50 });
 
       const tl = gsap.timeline({

@@ -5,22 +5,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url
   const locales = ['en', 'ar']
   
-  // Base pages for each locale
-  const pages = [
-    '',
-    '/about',
-    '/contact',
-    '/privacy',
-    '/terms',
-    '/tools'
-  ]
+  // Base routes
+  const routes = ["", "/tools", "/contact"];
 
-  const routes: MetadataRoute.Sitemap = []
+  // Generate localized URLs
+  const entries: MetadataRoute.Sitemap = [];
 
   // Add routes for each locale
   locales.forEach(locale => {
-    pages.forEach(page => {
-      routes.push({
+    routes.forEach(page => { // Changed 'pages' to 'routes' here
+      entries.push({ // Changed 'routes' to 'entries' here
         url: `${baseUrl}/${locale}${page}`,
         lastModified: new Date(),
         changeFrequency: 'weekly',
@@ -29,5 +23,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   })
 
-  return routes
+  return entries
 }
