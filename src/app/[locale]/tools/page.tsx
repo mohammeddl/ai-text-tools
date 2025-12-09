@@ -4,7 +4,7 @@ import ToolsHeader from "@/components/sections/tools/ToolsHeader";
 import ToolNavigation from "@/components/sections/tools/ToolNavigation";
 import ToolWorkspace from "@/components/sections/tools/ToolWorkspace";
 import QRCodeWorkspace from "@/components/sections/tools/QRCodeWorkspace";
-import Footer from "@/components/Footer/Footer";
+import Footer from "@/components/layout/Footer/Footer";
 
 interface Notification {
   id: number;

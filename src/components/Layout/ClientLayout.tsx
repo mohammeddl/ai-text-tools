@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState, useRef, RefObject } from "react";
 import { ReactLenis } from "lenis/react";
-import Menu from "../Menu/Menu";
+import Menu from "./Menu/Menu";
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const pageRef = useRef<HTMLDivElement>(null);

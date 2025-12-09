@@ -6,12 +6,12 @@ import Hero from '@/components/sections/home/Hero'
 import Jason from '@/components/sections/home/Jason'
 import FirstVideo from '@/components/sections/home/FirstVideo'
 import Info from '@/components/sections/home/Info'
-import Preloader from '@/components/Preloader/Preloader'
-import Footer from '@/components/Footer/Footer'
+import Preloader from '@/components/layout/Preloader/Preloader'
+import Footer from '@/components/layout/Footer/Footer'
 import { useEffect } from 'react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Spotlight from '@/components/Spotlight/Spotlight'  
-import TeamCards from '@/components/TeamCards/TeamCards'
+import Spotlight from '@/components/ui/Spotlight/Spotlight'  
+import TeamCards from '@/components/ui/TeamCards/TeamCards'
 
 function page() {
 

@@ -1,8 +1,8 @@
 "use client";
 import "./contact.css";
 import { useEffect, useRef } from "react";
-import Button from "@/components/Button/Button";
-import Copy from "@/components/Copy/Copy";
+import Button from "@/components/ui/Button/Button";
+import Copy from "@/components/ui/Copy/Copy";
 
 const Page = () => {
   const screensaverRef = useRef<HTMLDivElement>(null);

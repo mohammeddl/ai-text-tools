@@ -3,9 +3,9 @@ import "./Footer.css";
 import React, { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import Button from "../Button/Button";
+import Button from "../../ui/Button/Button";
 import { IoMail } from "react-icons/io5";
-import Copy from "../Copy/Copy";
+import Copy from "../../ui/Copy/Copy";
 
 gsap.registerPlugin(useGSAP);
 
