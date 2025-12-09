@@ -223,7 +223,7 @@ const Footer: React.FC = () => {
         <div className="footer-header-content">
           <div className="footer-header ">
             <Copy animateOnScroll={true} delay={0.2}>
-              <h1 className="font-bold">Let's build something that feels alive</h1>
+              <h1 className="font-bold">Let&apos;s build something that feels alive</h1>
             </Copy>
           </div>
           <div className="footer-link">

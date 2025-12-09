@@ -47,12 +47,13 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         infinite: false,
         lerp: 0.1,
         wheelMultiplier: 1,
-        orientation: "vertical",
+        orientation: "vertical" as const,
         smoothWheel: true,
         syncTouch: true,
       };
 
   return (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     <ReactLenis root options={scrollSettings as any}>
       <Menu pageRef={pageRef as RefObject<HTMLElement>} />
 

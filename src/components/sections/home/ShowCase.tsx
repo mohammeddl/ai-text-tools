@@ -45,7 +45,7 @@ function ShowCase() {
         <div className='content'>
         <div className="wrapper">
             <h1>Experience the Future of Text Transformation</h1>
-            <p>Join us on this exciting journey as we revolutionize the way you interact with text. Whether you're a student, professional, or creative, our platform is designed to make your life easier and more productive.</p>
+            <p>Join us on this exciting journey as we revolutionize the way you interact with text. Whether you&apos;re a student, professional, or creative, our platform is designed to make your life easier and more productive.</p>
             </div>
         </div>
     </section>

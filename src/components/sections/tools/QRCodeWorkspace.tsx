@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useRef, useEffect, useMemo } from "react";
-// @ts-ignore
 import qrcode from "@/lib/qrcode"; // Import local library
 import { useTranslations } from "next-intl";
 
@@ -59,7 +58,6 @@ export default function QRCodeWorkspace() {
         try {
             const typeNumber = 0; // Auto detection
             const errorCorrectionLevel = 'H';
-            // @ts-ignore
             const qr = new qrcode(typeNumber, errorCorrectionLevel);
             qr.addData(text);
             qr.make();
@@ -107,6 +105,7 @@ export default function QRCodeWorkspace() {
                             {styles.map((style) => (
                                 <button
                                     key={style.id}
+                                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                                     onClick={() => setQrStyle(style.id as any)}
                                     className={`flex-1 py-3 font-bold uppercase text-xs tracking-wide transition-all ${qrStyle === style.id
                                         ? "bg-[#fff9cb] text-black shadow-lg"

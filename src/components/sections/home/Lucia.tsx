@@ -40,8 +40,8 @@ const Lucia: React.FC = () => {
       <div className="lg:w-1/2 lucia-life-content">
         <div className="max-w-xl lg:ps-32 ps-10">
           <h1>Lucia Caminos</h1>
-          <h2>Lucia's father taught her to fight as soon as she could walk.</h2>
-          <p>Life has been coming at her swinging ever since. Fighting for her family landed her in the Leonida Penitentiary. Sheer luck got her out. Lucia's learned her lesson — only smart moves from here.</p>
+          <h2>Lucia&apos;s father taught her to fight as soon as she could walk.</h2>
+          <p>Life has been coming at her swinging ever since. Fighting for her family landed her in the Leonida Penitentiary. Sheer luck got her out. Lucia&apos;s learned her lesson — only smart moves from here.</p>
         </div>
 
         <div className="lucia-2">

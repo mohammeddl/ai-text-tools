@@ -35,7 +35,7 @@ const Jason = () => {
        
         <h1>Text Crafter</h1>
         <h2>Our mission to simplify writing </h2>
-        <p>Our platform is designed to be simple, fast, and accessible for everyone. Whether you need basic text transformations or advanced AI-powered features, we've got you covered.</p>
+        <p>Our platform is designed to be simple, fast, and accessible for everyone. Whether you need basic text transformations or advanced AI-powered features, we&apos;ve got you covered.</p>
 
         </Copy>
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-array-constructor */
 var qrcode = (function () {
     var qrcode = function (typeNumber, errorCorrectLevel) {
         var PAD0 = 0xEC;

@@ -125,6 +125,7 @@ export default function Copy({ children, animateOnScroll = true, delay = 0 }: Co
   );
 
   if (React.Children.count(children) === 1) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return React.cloneElement(children as any, { ref: containerRef });
   }
 
