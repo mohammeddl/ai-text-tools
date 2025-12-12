@@ -11,6 +11,7 @@ import { useEffect } from 'react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Spotlight from '@/components/ui/Spotlight/Spotlight'  
 import TeamCards from '@/components/ui/TeamCards/TeamCards'
+import HeroV2 from '@/components/sections/home/HeroV2'
 
 function Page() {
 
@@ -30,7 +31,8 @@ function Page() {
   return (
     <>
     <Preloader/>
-    <Hero/>
+    <HeroV2/>
+    {/* <Hero/> */}
     <FirstVideo/>
     <Jason/>
     <TeamCards />
