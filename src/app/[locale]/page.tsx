@@ -12,6 +12,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Spotlight from '@/components/ui/Spotlight/Spotlight'  
 import TeamCards from '@/components/ui/TeamCards/TeamCards'
 import HeroV2 from '@/components/sections/home/HeroV2'
+import CardsRevealScroll from '@/components/sections/home/CardsRevealScrollComponent'
 
 function Page() {
 
@@ -31,7 +32,8 @@ function Page() {
   return (
     <>
     <Preloader/>
-    <HeroV2/>
+    <CardsRevealScroll/>
+    {/* <HeroV2/> */}
     {/* <Hero/> */}
     <FirstVideo/>
     <Jason/>

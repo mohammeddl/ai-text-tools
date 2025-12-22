@@ -1,0 +1,137 @@
+/* Cards Reveal Scroll Component Styles */
+
+.cards-reveal-hero,
+.cards-reveal-main,
+.cards-reveal-footer {
+  position: relative;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.cards-reveal-hero {
+  height: 100vh;
+}
+
+.cards-reveal-hero .cards-reveal-img {
+  width: 50%;
+  aspect-ratio: 1;
+}
+
+.cards-reveal-hero .cards-reveal-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cards-reveal-footer {
+  height: 50vh;
+  align-items: flex-start;
+}
+
+.cards-reveal-footer a {
+  font-size: 4vw;
+  color: #fff;
+}
+
+.cards-reveal-main {
+  width: 100vw;
+  height: 150vh;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+.cards-reveal-row {
+  position: relative;
+  width: 100%;
+  margin: 1em 0;
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+}
+
+.cards-reveal-card {
+  position: relative;
+  width: 40%;
+  height: 360px;
+  border-radius: 0.75em;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.cards-reveal-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cards-reveal-main-content {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cards-reveal-logo {
+  width: 150px;
+  height: 150px;
+  border: 2px solid #fff;
+  border-radius: 100%;
+  overflow: hidden;
+  transform: scale(0);
+}
+
+.cards-reveal-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cards-reveal-copy {
+  margin: 2em 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cards-reveal-line {
+  position: relative;
+  margin: 0.5em 0;
+  width: max-content;
+  height: 28px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.cards-reveal-line p {
+  position: relative;
+  font-size: 24px;
+  transform: translateY(30px);
+}
+
+.cards-reveal-btn button {
+  position: relative;
+  padding: 1em 2em;
+  font-size: 18px;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 8em;
+  background: none;
+  outline: none;
+  cursor: pointer;
+  transform: translateY(30px);
+  opacity: 0;
+}
+
+@media (max-width: 900px) {
+  .cards-reveal-card {
+    width: 50%;
+    height: 240px;
+  }
+}
