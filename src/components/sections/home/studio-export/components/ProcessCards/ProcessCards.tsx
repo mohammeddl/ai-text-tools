@@ -18,31 +18,31 @@ const ProcessCards: React.FC = () => {
   const processCardsData: ProcessCardData[] = [
     {
       index: "01",
-      title: "Principles",
+      title: "Transform",
       image: "/images/process/process_001.jpeg",
       description:
-        "We design with restraint and intention. Every decision is shaped by a set of values—clarity, structure, and calm execution.",
+        "Instantly convert text between uppercase, lowercase, title case, and more. Our powerful text transformation tools handle any formatting challenge with precision and speed.",
     },
     {
       index: "02",
-      title: "Approach",
+      title: "Translate",
       image: "/images/process/process_002.jpeg",
       description:
-        "Our process is iterative and deliberate. We prioritize simplicity over excess, and build systems that scale with clarity.",
+        "Break language barriers with seamless translation across multiple languages. Connect with global audiences using our AI-powered translation engine.",
     },
     {
       index: "03",
-      title: "Practice",
+      title: "Generate",
       image: "/images/process/process_003.jpeg",
       description:
-        "We work at the intersection of design and code. Every detail is shaped by consistency, rhythm, and quiet precision.",
+        "Create QR codes, convert text to speech, and generate content effortlessly. Transform your words into shareable, accessible formats with one click.",
     },
     {
       index: "04",
-      title: "Vision",
+      title: "Analyze",
       image: "/images/process/process_004.jpeg",
       description:
-        "We believe the web should feel honest and effortless. Our aim is to create digital experiences that stand the test of time.",
+        "Get deep insights with word counting, text summarization, grammar checking, and regex testing. AI-powered analysis tools that understand your content.",
     },
   ];
 

@@ -1,8 +1,6 @@
-/* ProcessCards Component Scoped Styles */
 .processCardsWrapper {
   position: relative;
   width: 100%;
-  /* Height = number of cards * 100vh to create scroll space for stacking */
   height: 400svh;
 }
 

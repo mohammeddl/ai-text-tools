@@ -109,23 +109,23 @@ const WhoWeAre: React.FC = () => {
       <div className={styles.whoweareContainer}>
         <div className={styles.whoweareScroll}>
           <div className={styles.whoweareHeader}>
-            <h1>Who we are</h1>
+            <h1>text crafter</h1>
           </div>
 
           <div className={`${styles.whoweareImg} ${styles.whoweareImg1}`}>
-            <img src="/studio-assets/who-we-are/team-1.jpg" alt="" />
+            <img src="/images/who-we-are/info1.jpg" alt="" />
           </div>
           <div className={`${styles.whoweareImg} ${styles.whoweareImg2}`}>
-            <img src="/studio-assets/who-we-are/team-2.jpg" alt="" />
+            <img src="/images/who-we-are/info2.jpg" alt="" />
           </div>
           <div className={`${styles.whoweareImg} ${styles.whoweareImg3}`}>
-            <img src="/studio-assets/who-we-are/team-3.jpg" alt="" />
+            <img src="/images/who-we-are/info3.jpg" alt="" />
           </div>
           <div className={`${styles.whoweareImg} ${styles.whoweareImg4}`}>
-            <img src="/studio-assets/who-we-are/team-4.jpg" alt="" />
+            <img src="/images/who-we-are/info4.jpg" alt="" />
           </div>
           <div className={`${styles.whoweareImg} ${styles.whoweareImg5}`}>
-            <img src="/studio-assets/who-we-are/team-5.jpg" alt="" />
+            <img src="/images/who-we-are/info5.jpg" alt="" />
           </div>
         </div>
       </div>

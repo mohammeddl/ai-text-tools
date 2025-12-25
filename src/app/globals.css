@@ -104,3 +104,20 @@
   will-change: transform;
   z-index: 1;
 }
+
+.first-vd-wrapper {
+  position: relative;
+  margin-top: -10%;
+}
+
+.first-vd {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 600px) {
+  .first-vd-wrapper {
+    margin-top: -20%;
+  }
+}

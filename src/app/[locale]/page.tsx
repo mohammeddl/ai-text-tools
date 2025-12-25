@@ -13,7 +13,7 @@ import Spotlight from '@/components/ui/Spotlight/Spotlight'
 import TeamCards from '@/components/ui/TeamCards/TeamCards'
 import HeroV2 from '@/components/sections/home/HeroV2'
 import StudioPage from '@/components/sections/home/studio-export/StudioPage'
-import { ProcessCards, RecognitionSection, StudioHeader, StudioHero } from '@/components/sections/home/studio-export'
+import { ProcessCards, RecognitionSection, StudioHeader, StudioHero, WhoWeAre } from '@/components/sections/home/studio-export'
 
 function Page() {
 
@@ -33,6 +33,8 @@ function Page() {
   return (
     <>  
     <Preloader/>
+    <StudioHero/>
+    <WhoWeAre/>
     <FirstVideo/>
     <Jason/>
     <TeamCards />

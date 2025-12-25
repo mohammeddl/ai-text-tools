@@ -1,16 +1,16 @@
-/* StudioHero Component - Standalone Styles */
 
-/* CSS Variables - Override in your project if needed */
 .studioHeroContainer {
-  --studio-background: #f5f5f5;
-  --studio-foreground: #1a1a1a;
+  --studio-background: #000000;
+  --studio-foreground: #ffffff;
 }
 
-.studioHeroContainer {
+.studioHeroContainer {  
   position: relative;
   width: 100%;
   background-color: var(--studio-background);
   color: var(--studio-foreground);
+  overflow: hidden;
+  padding-bottom: 0;
 }
 
 .studioHero {
@@ -31,7 +31,7 @@
 }
 
 .studioHeroImg {
-  aspect-ratio: 7/5;
+  aspect-ratio: 6/3;
   position: relative;
   width: calc(100vw - 3rem);
   margin: 0 auto -25% auto;
@@ -67,3 +67,16 @@
     padding: 7.5rem 1.5rem 1.5rem 1.5rem;
   }
 }
+
+@media (max-width: 600px) {
+ .studioHeroImg {
+  aspect-ratio: 5/3;
+
+}
+
+.studioHeroImgWrapper img {
+  width: 100%;
+
+}
+}
+

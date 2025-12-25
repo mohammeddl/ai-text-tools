@@ -14,8 +14,8 @@ interface StudioHeroProps {
 }
 
 const StudioHero: React.FC<StudioHeroProps> = ({ 
-  title = "Wu",
-  heroImage = "/studio-assets/studio/hero.jpeg"
+  title = "TC",
+  heroImage = "/images/studio/hero.jpg"
 }) => {
   const heroRef = useRef<HTMLDivElement>(null);
 
