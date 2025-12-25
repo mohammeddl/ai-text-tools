@@ -40,11 +40,6 @@ const WhoWeAre: React.FC = () => {
           clipPath: `circle(${clipPathValue}% at 50% 50%)`,
         });
       },
-      onComplete: () => {
-        gsap.set(`.${styles.whoweareContainer}`, {
-          clipPath: `circle(100% at 50% 50%)`,
-        });
-      },
     });
 
     ScrollTrigger.create({

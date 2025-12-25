@@ -31,13 +31,14 @@ const StudioHero: React.FC<StudioHeroProps> = ({
         charsClass: "char++",
       });
 
-      split.chars.forEach((char: HTMLElement) => {
+      split.chars.forEach((char) => {
+        const charEl = char as HTMLElement;
         const wrapper = document.createElement("span");
         wrapper.className = styles.charMask;
         wrapper.style.overflow = "hidden";
         wrapper.style.display = "inline-block";
-        char.parentNode?.insertBefore(wrapper, char);
-        wrapper.appendChild(char);
+        charEl.parentNode?.insertBefore(wrapper, charEl);
+        wrapper.appendChild(charEl);
       });
 
       gsap.set(split.chars, { y: "100%" });
