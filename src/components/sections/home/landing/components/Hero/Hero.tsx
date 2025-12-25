@@ -1,6 +1,6 @@
 "use client";
 import { useRef } from "react";
-import styles from "./StudioHero.module.css";
+import styles from "./Hero.module.css";
 
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
@@ -13,7 +13,7 @@ interface StudioHeroProps {
   heroImage?: string;
 }
 
-const StudioHero: React.FC<StudioHeroProps> = ({ 
+const Hero: React.FC<StudioHeroProps> = ({ 
   title = "TC",
   heroImage = "/images/studio/hero.jpg"
 }) => {
@@ -81,4 +81,4 @@ const StudioHero: React.FC<StudioHeroProps> = ({
   );
 };
 
-export default StudioHero;
+export default Hero;

@@ -1,5 +1,5 @@
 "use client";
-import styles from "./WhoWeAre.module.css";
+import styles from "./About.module.css";
 
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const WhoWeAre: React.FC = () => {
+const About: React.FC = () => {
   useGSAP(() => {
     const whoweareScroll = document.querySelector(`.${styles.whoweareScroll}`) as HTMLElement;
     if (!whoweareScroll) return;
@@ -128,4 +128,4 @@ const WhoWeAre: React.FC = () => {
   );
 };
 
-export default WhoWeAre;
+export default About;

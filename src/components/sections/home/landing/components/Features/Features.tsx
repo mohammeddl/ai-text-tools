@@ -1,5 +1,5 @@
 "use client";
-import styles from "./ProcessCards.module.css";
+import styles from "./Features.module.css";
 
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
@@ -14,7 +14,7 @@ interface ProcessCardData {
   description: string;
 }
 
-const ProcessCards: React.FC = () => {
+const Features: React.FC = () => {
   const processCardsData: ProcessCardData[] = [
     {
       index: "01",
@@ -117,4 +117,4 @@ const ProcessCards: React.FC = () => {
   );
 };
 
-export default ProcessCards;
+export default Features;

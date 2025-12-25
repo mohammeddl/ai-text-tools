@@ -9,7 +9,7 @@ import { useEffect } from 'react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Spotlight from '@/components/ui/Spotlight/Spotlight'  
 import TeamCards from '@/components/ui/TeamCards/TeamCards'
-import { ProcessCards, StudioHero, WhoWeAre } from '@/components/sections/home/studio-export'
+import { Hero, About, Features } from '@/components/sections/home/landing'
 
 function Page() {
 
@@ -30,13 +30,13 @@ function Page() {
   return (
     <>  
       <Preloader/>
-      <StudioHero/>
-      <WhoWeAre/>
+      <Hero/>
+      <About/>
       <HeroVideo/>
       <MissionSection/>
       <TeamCards />
       <Spotlight />
-      <ProcessCards/>
+      <Features/>
       <Footer/>
     </>
   )
