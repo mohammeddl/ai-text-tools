@@ -1,0 +1,51 @@
+/* RecognitionSection Component - Standalone Styles */
+
+.recognition {
+  --studio-background: #f5f5f5;
+  --studio-foreground: #1a1a1a;
+  --studio-foreground-200: #666;
+}
+
+.recognition {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  padding: 1.5rem;
+  background-color: var(--studio-background);
+  color: var(--studio-foreground);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.recognitionCopy {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.recognitionCopy p {
+  color: var(--studio-foreground-200);
+}
+
+.recognitionCopy h2 {
+  margin: 0;
+  font-weight: 400;
+}
+
+.caps {
+  text-transform: uppercase;
+}
+
+.sm {
+  font-size: 0.875rem;
+}
+
+@media (max-width: 1000px) {
+  .recognitionCopy {
+    width: 100%;
+  }
+}

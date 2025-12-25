@@ -6,7 +6,7 @@ const FirstVideo = () => {
   const videoRef = useRef(null);
 
   useGSAP(() => {
-    gsap.set('.first-vd-wrapper', { marginTop: '-150vh', opacity: 0 });
+    gsap.set('.first-vd-wrapper', { opacity: 0 });
 
     const tl = gsap.timeline({
       scrollTrigger: {
