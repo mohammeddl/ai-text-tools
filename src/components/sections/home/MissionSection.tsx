@@ -40,16 +40,17 @@ const Jason = () => {
         </Copy>
 
         <div className="jason-2">
-          <img src="/images/gsap-images/images/jason-3-2.webp" />
+          <img src="/images/process/card1.jpg" />
+
         </div>
       </div>
 
       <div className="space-y-5 mt-96 img-box">
         <div className="jason-1">
-          <img src="/images/gsap-images/images/jason-3-1.webp" />
+          <img src="/images/process/card4.jpg" />
         </div>
         <div className="jason-3">
-          <img src="/images/gsap-images/images/jason-3-3.webp" />
+          <img src="/images/process/card2.jpg" />
         </div>
       </div>
     </section>
