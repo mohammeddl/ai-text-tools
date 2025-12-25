@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // MyMemory API - Free translation service, no signup required
+    // MyMemory API 
     const response = await fetch(
       `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|${targetLang}`,
       {
