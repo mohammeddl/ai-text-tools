@@ -11,7 +11,7 @@ export default function ToolsHeader() {
   };
 
   return (
-    <div className="mb-6 relative z-50">
+    <div className="mb-6 relative z-[1100]">
       {/* Back to Home Button */}
       <div className="">
         <button
