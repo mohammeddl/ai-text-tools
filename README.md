@@ -1,6 +1,6 @@
-# Text Tools 📖🤖
+# Text Tools 📖
 
-AI Text Tools is a comprehensive suite for text analysis and processing, powered by cutting-edge artificial intelligence. The tool is designed for developers, researchers, and enthusiasts who want to quickly analyze, manipulate, or gain insights from textual content.
+Text Tools is a comprehensive suite for text analysis and processing, powered by cutting-edge artificial intelligence. The tool is designed for developers, researchers, and enthusiasts who want to quickly analyze, manipulate, or gain insights from textual content.
 
 [![Website](https://img.shields.io/badge/website-visit-blue)](https://textcrafter-three.vercel.app)
 
